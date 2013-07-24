@@ -122,5 +122,5 @@ BespokeGenerator.prototype.src = function src() {
 
   this.template('src/index.jade', 'src/index.jade');
   this.copy('src/js/js.js', 'src/js/js.js');
-  this.copy('src/css/css.styl', 'src/css/css.styl');
+  this.template('src/css/css.styl', 'src/css/css.styl');
 };
