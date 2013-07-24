@@ -34,7 +34,7 @@ describe('bespoke generator', function () {
     ];
 
     helpers.mockPrompt(this.app, {
-      'name': 'Foo Bar',
+      'title': 'Foo Bar',
       'bullets': 'Y',
       'hash': 'Y'
     });
