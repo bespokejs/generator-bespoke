@@ -32,6 +32,12 @@ head
           li Bullet 1
           li Bullet 2
           li Bullet 3
+<% if (state) { %>
+      section(data-bespoke-state='emphatic')
+        h1 Emphatic Slide!
+<% } %>
+      section
+        h1 The End
 
 <% _.each(bowerComponentPaths, function(path) { %>  script(src='bower_components/<%= path %>')
 <% }) %>  script(src='js/js.js')

@@ -55,6 +55,11 @@ BespokeGenerator.prototype.askFor = function askFor() {
       name: 'hash',
       message: 'Would you like hash routing support?',
       'default': 'Y/n'
+    },
+    {
+      name: 'state',
+      message: 'Would you slide-specific deck styles?',
+      'default': 'Y/n'
     }
   ];
 
@@ -65,12 +70,14 @@ BespokeGenerator.prototype.askFor = function askFor() {
 
     this.bullets = (/^y/i).test(props.bullets);
     this.hash = (/^y/i).test(props.hash);
+    this.state = (/^y/i).test(props.state);
     this.title = props.title;
     this.shortName = slug(props.title).toLowerCase();
 
     this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
     this.bullets && this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
     this.hash && this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
+    this.state && this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
 
     cb();
   }.bind(this));
@@ -112,7 +119,17 @@ BespokeGenerator.prototype.bowerJson = function bowerJson() {
   };
   if (this.bullets) bowerJson.dependencies['bespoke-bullets'] = '~0.2.0';
   if (this.hash) bowerJson.dependencies['bespoke-hash'] = '~0.1.0';
+  if (this.state) bowerJson.dependencies['bespoke-state'] = '~0.2.0';
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
+};
+
+BespokeGenerator.prototype.plugins = function plugins() {
+  var plugins = {};
+  if (this.bullets) plugins['bullets'] = 'li';
+  if (this.hash) plugins['hash'] = true;
+  if (this.state) plugins['state'] = true;
+  this.hasPlugins = this.bullets || this.hash || this.state;
+  this.pluginsJson = JSON.stringify(plugins, null, 2);
 };
 
 BespokeGenerator.prototype.src = function src() {
@@ -121,6 +138,6 @@ BespokeGenerator.prototype.src = function src() {
   this.mkdir('src/css');
 
   this.template('src/index.jade', 'src/index.jade');
-  this.copy('src/js/js.js', 'src/js/js.js');
+  this.template('src/js/js.js', 'src/js/js.js');
   this.template('src/css/css.styl', 'src/css/css.styl');
 };

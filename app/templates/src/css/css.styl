@@ -10,7 +10,8 @@
 
 /* bespoke.js layout styles */
 
-section {
+article {
+  transition: background .3s ease;
   display: none;
 
   &.bespoke-parent {
@@ -67,6 +68,17 @@ section {
 
 .bespoke-bullet-active {
   opacity: 1;
+}<% } %><% if (state) { %>
+
+/* bespoke-state styles */
+
+.emphatic {
+  background: #303030;
+  color: #f0f0f0;
+
+  .bespoke-slide {
+    background: #000;
+  }
 }<% } %>
 
 /* typography */
