@@ -1,0 +1,93 @@
+@import 'nib'
+
+/* base */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* bespoke.js layout styles */
+
+section {
+  display: none;
+
+  &.bespoke-parent {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+}
+
+.bespoke-slide {
+  transition: all .3s ease;
+  display: block;
+  width: 640px;
+  height: 480px;
+  position: absolute;
+  top: 50%;
+  margin-top: -240px;
+  left: 50%;
+  margin-left: -320px;
+}
+
+.bespoke-before {
+  transform: translateX(-100px);
+}
+
+.bespoke-after {
+  transform: translateX(100px);
+}
+
+.bespoke-inactive {
+  opacity: 0;
+}
+
+.bespoke-active {
+  opacity: 1;
+}
+
+/* bespoke-bullet styles */
+
+.bespoke-bullet {
+  transition: all .3s ease;
+}
+
+.bespoke-bullet-inactive {
+  opacity: 0;
+}
+
+.bespoke-bullet-active {
+  opacity: 1;
+}
+
+/* typography */
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: #303030;
+}
+
+h1 {
+  font-size: 32px;
+  letter-spacing: -1px;
+}
+
+h2 {
+  margin-bottom: 12px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-bottom: 6px;
+}

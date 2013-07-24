@@ -1,0 +1,37 @@
+!!! 5
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+  title <%= title %>
+  link(rel='stylesheet', type='text/css', href='css/css.css')
+
+  body
+
+    article
+
+      section
+        h1 <%= title %>
+
+      section
+        h2 Slide 1
+        ul
+          li Bullet 1
+          li Bullet 2
+          li Bullet 3
+
+      section
+        h2 Slide 2
+        ul
+          li Bullet 1
+          li Bullet 2
+          li Bullet 3
+
+      section
+        h2 Slide 3
+        ul
+          li Bullet 1
+          li Bullet 2
+          li Bullet 3
+
+<% _.each(bowerComponentPaths, function(path) { %>  script(src='bower_components/<%= path %>')
+<% }) %>  script(src='js/js.js')
