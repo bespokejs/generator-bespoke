@@ -99,11 +99,12 @@ BespokeGenerator.prototype.packageJson = function packageJson() {
       'grunt': '~0.4.1',
       'grunt-contrib-clean': '~0.4.0',
       'grunt-contrib-copy': '~0.4.1',
-      'grunt-contrib-watch': '~0.3.1',
+      'grunt-contrib-watch': '~0.5.1',
       'grunt-contrib-jade': '~0.5.0',
       'grunt-contrib-stylus': '~0.5.0',
       'grunt-contrib-connect': '~0.3.0',
-      'grunt-concurrent': '~0.3.0'
+      'grunt-concurrent': '~0.3.0',
+      'connect-livereload': '~0.2.0'
     }
   };
   this.write('package.json', JSON.stringify(packageJson, null, 2));

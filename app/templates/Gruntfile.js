@@ -3,6 +3,9 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    clean: {
+      public: 'public/**/*'
+    },
     jade: {
       src: {
         files: [{
@@ -10,9 +13,11 @@ module.exports = function(grunt) {
           cwd: 'src/',
           src: '**/*.jade',
           dest: 'public/',
-          ext: '.html',
+          ext: '.html'
+        }],
+        options: {
           pretty: true
-        }]
+        }
       }
     },
     stylus: {
@@ -22,19 +27,12 @@ module.exports = function(grunt) {
           cwd: 'src/',
           src: '**/*.styl',
           dest: 'public/',
-          ext: '.css',
+          ext: '.css'
+        }],
+        options: {
           compress: false
-        }]
+        }
       }
-    },
-    watch: {
-      src: {
-        files: 'src/**',
-        tasks: 'default'
-      }
-    },
-    clean: {
-      public: 'public/**/*'
     },
     copy: {
       src: {
@@ -46,12 +44,41 @@ module.exports = function(grunt) {
         }]
       }
     },
+    watch: {
+      jade: {
+        cwd: '<%%= jade.src.files[0].cwd %>',
+        files: '<%%= jade.src.files[0].src %>',
+        tasks: 'jade'
+      },
+      stylus: {
+        cwd: '<%%= stylus.src.files[0].cwd %>',
+        files: '<%%= stylus.src.files[0].src %>',
+        tasks: 'stylus'
+      },
+      copy: {
+        cwd: '<%%= copy.src.files[0].cwd %>',
+        files: '<%%= copy.src.files[0].src %>',
+        tasks: 'copy'
+      },
+      public: {
+        files: ['public/**/*', '!public/bower_components/**/*'],
+        options: {
+          livereload: true
+        }
+      }
+    },
     connect: {
       server: {
         options: {
           port: 8000,
           base: 'public',
-          keepalive: true
+          keepalive: true,
+          middleware: function(connect, options) {
+            return [
+              require('connect-livereload')(),
+              connect.static(options.base)
+            ];
+          }
         }
       }
     },
@@ -63,7 +90,7 @@ module.exports = function(grunt) {
         }
       },
       server: {
-        tasks: ['connect', 'watch'],
+        tasks: ['connect', 'watch:jade', 'watch:stylus', 'watch:copy', 'watch:public'],
         options: {
             logConcurrentOutput: true
         }
