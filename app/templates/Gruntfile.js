@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src/',
-          src: ['**', '!**/*.jade', '!**/*.styl'],
+          src: ['**/*', '!**/*.jade', '!**/*.styl'],
           dest: 'public/'
         }]
       }
