@@ -12,32 +12,47 @@ head
       section
         h1 <%= title %>
 
+<% if (bullets) { %>
       section
-        h2 Slide 1
+        h2 Bullet List
+        h3.bullet
+          | Powered by 
+          a(href='https://github.com/markdalgleish/bespoke-bullets') bespoke-bullets
         ul
           li Bullet 1
           li Bullet 2
           li Bullet 3
-
-      section
-        h2 Slide 2
-        ul
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
-
-      section
-        h2 Slide 3
-        ul
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
+<% } %>
 <% if (state) { %>
       section(data-bespoke-state='emphatic')
-        h1 Emphatic Slide!
+        h2 Emphatic Slide!
+        h3.bullet
+          | Powered by 
+          a(href='https://github.com/markdalgleish/bespoke-state') bespoke-state
 <% } %>
+
       section
-        h1 The End
+        h2.bullet Just the beginning...
+        br
+        ul
+          li
+            | Edit 
+            a(href='http://jade-lang.com/') Jade 
+            | markup in 
+            em 'src/index.jade'
+          li
+            | Edit 
+            a(href='http://learnboost.github.io/stylus/') Stylus 
+            | styles in 
+            em 'src/css/css.styl'
+          li
+            | Edit JavaScript in 
+            em 'src/js/js.js'
+        br
+        ul
+          li
+            strong Enjoy! :) 
+            a(href='http://twitter.com/markdalgleish') -@markdalgleish
 
 <% _.each(bowerComponentPaths, function(path) { %>  script(src='bower_components/<%= path %>')
 <% }) %>  script(src='js/js.js')

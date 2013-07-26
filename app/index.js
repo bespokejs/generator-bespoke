@@ -126,7 +126,7 @@ BespokeGenerator.prototype.bowerJson = function bowerJson() {
 
 BespokeGenerator.prototype.plugins = function plugins() {
   var plugins = {};
-  if (this.bullets) plugins['bullets'] = 'li';
+  if (this.bullets) plugins['bullets'] = 'li, .bullet';
   if (this.hash) plugins['hash'] = true;
   if (this.state) plugins['state'] = true;
   this.hasPlugins = this.bullets || this.hash || this.state;
