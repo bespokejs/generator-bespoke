@@ -35,33 +35,50 @@ module.exports = function(grunt) {
       }
     },
     copy: {
+      bower: {
+        files: [{
+          expand: true,
+          cwd: 'src/bower_components/',
+          src: '**/*',
+          dest: 'public/bower_components/'
+        }]
+      },
       src: {
         files: [{
           expand: true,
           cwd: 'src/',
-          src: ['**/*', '!**/*.jade', '!**/*.styl'],
+          src: [
+            '**/*',
+            '!<%%= copy.bower.files[0].cwd + copy.bower.files[0].src %>',
+            '!<%%= jade.src.files[0].src %>',
+            '!<%%= stylus.src.files[0].src %>'
+          ],
           dest: 'public/'
         }]
       }
     },
     watch: {
       jade: {
-        cwd: '<%%= jade.src.files[0].cwd %>',
-        files: '<%%= jade.src.files[0].src %>',
+        files: '<%%= jade.src.files[0].cwd + jade.src.files[0].src %>',
         tasks: 'jade'
       },
       stylus: {
-        cwd: '<%%= stylus.src.files[0].cwd %>',
-        files: '<%%= stylus.src.files[0].src %>',
+        files: '<%%= stylus.src.files[0].cwd + stylus.src.files[0].src %>',
         tasks: 'stylus'
       },
       copy: {
-        cwd: '<%%= copy.src.files[0].cwd %>',
-        files: '<%%= copy.src.files[0].src %>',
-        tasks: 'copy'
+        files: [
+          '<%%= copy.src.files[0].cwd %>**/*',
+          '!<%%= jade.src.files[0].cwd + jade.src.files[0].src %>',
+          '!<%%= stylus.src.files[0].cwd + stylus.src.files[0].src %>'
+        ],
+        tasks: 'copy:src'
       },
       public: {
-        files: ['public/**/*', '!public/bower_components/**/*'],
+        files: [
+          'public/**/*',
+          '!<%%= copy.bower.files[0].dest + copy.bower.files[0].src %>'
+        ],
         options: {
           livereload: true
         }
@@ -84,13 +101,23 @@ module.exports = function(grunt) {
     },
     concurrent: {
       compile: {
-        tasks: ['jade', 'stylus', 'copy'],
+        tasks: [
+          'jade',
+          'stylus',
+          'copy'
+        ],
         options: {
             logConcurrentOutput: false
         }
       },
       server: {
-        tasks: ['connect', 'watch:jade', 'watch:stylus', 'watch:copy', 'watch:public'],
+        tasks: [
+          'connect',
+          'watch:jade',
+          'watch:stylus',
+          'watch:copy',
+          'watch:public'
+        ],
         options: {
             logConcurrentOutput: true
         }
