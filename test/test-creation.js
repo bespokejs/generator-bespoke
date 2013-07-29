@@ -29,8 +29,8 @@ describe('bespoke generator', function () {
       '.jshintrc',
       '.bowerrc',
       'src/index.jade',
-      'src/js/js.js',
-      'src/css/css.styl'
+      'src/scripts/main.js',
+      'src/styles/main.styl'
     ];
 
     helpers.mockPrompt(this.app, {
