@@ -130,7 +130,7 @@ BespokeGenerator.prototype.plugins = function plugins() {
   if (this.hash) plugins['hash'] = true;
   if (this.state) plugins['state'] = true;
   this.hasPlugins = this.bullets || this.hash || this.state;
-  this.pluginsJson = JSON.stringify(plugins, null, 2);
+  this.pluginsJson = JSON.stringify(plugins, null, 2).replace(/\"/g,"'");
 };
 
 BespokeGenerator.prototype.src = function src() {
