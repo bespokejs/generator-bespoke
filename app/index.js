@@ -130,7 +130,9 @@ BespokeGenerator.prototype.plugins = function plugins() {
   if (this.hash) plugins['hash'] = true;
   if (this.state) plugins['state'] = true;
   this.hasPlugins = this.bullets || this.hash || this.state;
-  this.pluginsJson = JSON.stringify(plugins, null, 2).replace(/\"/g,"'");
+  this.pluginsJson = JSON.stringify(plugins, null, 2)
+    .replace(/\"/g,"'") // Switch to single quotes
+    .replace(/\'([a-z0-9_$]+)\'(:)/gi, '$1$2') // Unquote object keys
 };
 
 BespokeGenerator.prototype.src = function src() {
