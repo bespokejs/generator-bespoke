@@ -35,21 +35,12 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      bower: {
-        files: [{
-          expand: true,
-          cwd: 'src/bower_components/',
-          src: '**/*',
-          dest: 'public/bower_components/'
-        }]
-      },
       src: {
         files: [{
           expand: true,
           cwd: 'src/',
           src: [
             '**/*',
-            '!<%%= copy.bower.files[0].cwd + copy.bower.files[0].src %>',
             '!<%%= jade.src.files[0].src %>',
             '!<%%= stylus.src.files[0].src %>'
           ],
@@ -77,7 +68,7 @@ module.exports = function(grunt) {
       public: {
         files: [
           'public/**/*',
-          '!<%%= copy.bower.files[0].dest + copy.bower.files[0].src %>'
+          '!public/bower_components/**/*'
         ],
         options: {
           livereload: true
