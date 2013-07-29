@@ -24,7 +24,8 @@
     "slug": "~0.3.3"
   },
   "devDependencies": {
-    "mocha": "~1.9.0"
+    "mocha": "~1.9.0",
+    "bower": "~1.0.1"
   },
   "engines": {
     "node": ">=0.8.0"
