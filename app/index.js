@@ -102,6 +102,7 @@ BespokeGenerator.prototype.packageJson = function packageJson() {
       'grunt-contrib-watch': '~0.5.1',
       'grunt-contrib-jade': '~0.5.0',
       'grunt-contrib-stylus': '~0.5.0',
+      'grunt-contrib-coffee': '~0.7.0',
       'grunt-contrib-connect': '~0.3.0',
       'grunt-concurrent': '~0.3.0',
       'connect-livereload': '~0.2.0'

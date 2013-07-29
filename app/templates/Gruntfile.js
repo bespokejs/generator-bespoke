@@ -34,6 +34,17 @@ module.exports = function(grunt) {
         }
       }
     },
+    coffee: {
+      src: {
+        files: [{
+          expand: true,
+          cwd: 'src/js/',
+          src: '**/*.coffee',
+          dest: 'public/js/',
+          ext: '.js'
+        }]
+      }
+    },
     copy: {
       src: {
         files: [{
@@ -42,7 +53,8 @@ module.exports = function(grunt) {
           src: [
             '**/*',
             '!<%%= jade.src.files[0].src %>',
-            '!<%%= stylus.src.files[0].src %>'
+            '!<%%= stylus.src.files[0].src %>',
+            '!<%%= coffee.src.files[0].src %>'
           ],
           dest: 'public/'
         }]
@@ -57,11 +69,16 @@ module.exports = function(grunt) {
         files: '<%%= stylus.src.files[0].cwd + stylus.src.files[0].src %>',
         tasks: 'stylus'
       },
+      coffee: {
+        files: '<%%= coffee.src.files[0].cwd + coffee.src.files[0].src %>',
+        tasks: 'coffee'
+      },
       copy: {
         files: [
           '<%%= copy.src.files[0].cwd + copy.src.files[0].src %>',
           '!<%%= jade.src.files[0].cwd + jade.src.files[0].src %>',
-          '!<%%= stylus.src.files[0].cwd + stylus.src.files[0].src %>'
+          '!<%%= stylus.src.files[0].cwd + stylus.src.files[0].src %>',
+          '!<%%= coffee.src.files[0].cwd + coffee.src.files[0].src %>'
         ],
         tasks: 'copy:src'
       },
@@ -95,6 +112,7 @@ module.exports = function(grunt) {
         tasks: [
           'jade',
           'stylus',
+          'coffee',
           'copy'
         ],
         options: {
@@ -106,6 +124,7 @@ module.exports = function(grunt) {
           'connect',
           'watch:jade',
           'watch:stylus',
+          'watch:coffee',
           'watch:copy',
           'watch:public'
         ],
@@ -122,6 +141,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-concurrent');
 
   grunt.registerTask('default', ['clean', 'concurrent:compile']);
