@@ -138,10 +138,10 @@ BespokeGenerator.prototype.plugins = function plugins() {
 
 BespokeGenerator.prototype.src = function src() {
   this.mkdir('src');
-  this.mkdir('src/js');
-  this.mkdir('src/css');
+  this.mkdir('src/scripts');
+  this.mkdir('src/styles');
 
   this.template('src/index.jade', 'src/index.jade');
-  this.template('src/js/js.js', 'src/js/js.js');
-  this.template('src/css/css.styl', 'src/css/css.styl');
+  this.template('src/scripts/main.js', 'src/scripts/main.js');
+  this.template('src/styles/main.styl', 'src/styles/main.styl');
 };
