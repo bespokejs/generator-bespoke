@@ -1,6 +1,6 @@
 @import 'nib'
 
-/* variables! */
+// variables!
 
 slide_width = 640px
 slide_height = 480px
@@ -15,138 +15,116 @@ bullet_transition_length = .3s
 bullet_transition_easing = ease
 bullet_transition_translate_x = 16px
 
-/* base */
+// base
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
 
-/* bespoke.js layout styles */
+// bespoke.js layout styles
 
-article {
-  transition: background slide_transition_length slide_transition_easing;
-  display: none;
+article
+  transition: background slide_transition_length slide_transition_easing
+  display: none
 
-  &.bespoke-parent {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    perspective: 600px;
-  }
-}
+  &.bespoke-parent
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    overflow: hidden
+    perspective: 600px
 
-.bespoke-slide {
-  transition: all slide_transition_length slide_transition_easing;
-  transform-origin: 50% 50% ((slide_width / 2) * -1);
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: slide_width;
-  height: slide_height;
-  position: absolute;
-  top: 50%;
-  margin-top: (slide_height / 2) * -1;
-  left: 50%;
-  margin-left: (slide_width / 2) * -1;
-  background: slide_background;
-  padding: 40px;
-  border-radius: 0;
-}
+.bespoke-slide
+  transition: all slide_transition_length slide_transition_easing
+  transform-origin: 50% 50% ((slide_width / 2) * -1)
+  backface-visibility: hidden
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+  width: slide_width
+  height: slide_height
+  position: absolute
+  top: 50%
+  margin-top: (slide_height / 2) * -1
+  left: 50%
+  margin-left: (slide_width / 2) * -1
+  background: slide_background
+  padding: 40px
+  border-radius: 0
 
-.bespoke-before {
-  transform: translateX(slide_transition_translate_x * -1) rotateY(slide_transition_rotate_y * -1);
-}
+.bespoke-before
+  transform: translateX(slide_transition_translate_x * -1) rotateY(slide_transition_rotate_y * -1)
 
-.bespoke-after {
-  transform: translateX(slide_transition_translate_x) rotateY(slide_transition_rotate_y);
-}
+.bespoke-after
+  transform: translateX(slide_transition_translate_x) rotateY(slide_transition_rotate_y)
 
-.bespoke-inactive {
-  opacity: 0;
-  pointer-events: none;
-}
+.bespoke-inactive
+  opacity: 0
+  pointer-events: none
 
-.bespoke-active {
-  opacity: 1;
-}<% if (bullets) { %>
+.bespoke-active
+  opacity: 1<% if (bullets) { %>
 
-/* bespoke-bullet styles */
+// bespoke-bullet styles
 
-.bespoke-bullet {
-  transition: all bullet_transition_length bullet_transition_easing;
-}
+.bespoke-bullet
+  transition: all bullet_transition_length bullet_transition_easing
 
-.bespoke-bullet-inactive {
-  opacity: 0;
+.bespoke-bullet-inactive
+  opacity: 0
 
-  li& {
-    transform: translateX(bullet_transition_translate_x);
-  }
-}
+  li&
+      transform: translateX(bullet_transition_translate_x)
 
-.bespoke-bullet-active {
-  opacity: 1;
-}<% } %><% if (state) { %>
+.bespoke-bullet-active
+  opacity: 1<% } %><% if (state) { %>
 
-/* bespoke-state styles */
+// bespoke-state styles
 
-.emphatic {
-  &.bespoke-slide {
-    background: darken(slide_background, 20%);
-  }
-}<% } %>
+.emphatic
+  &.bespoke-slide
+    background: darken(slide_background, 20%)<% } %>
 
-/* typography */
+// typography
 
-body {
-  font-family: helvetica, arial, sans-serif;
-  font-size: 18px;
-  color: #404040;
-}
+body
+  font-family: helvetica, arial, sans-serif
+  font-size: 18px
+  color: #404040
 
-h1 {
-  font-size: 72px;
-  line-height: 68px;
-  letter-spacing: -2px;
-  margin-bottom: 16px;
-}
+h1
+  font-size: 72px
+  line-height: 68px
+  letter-spacing: -2px
+  margin-bottom: 16px
 
-h2 {
-  font-size: 42px;
-  letter-spacing: -1px;
-  margin-bottom: 8px;
-}
+h2
+  font-size: 42px
+  letter-spacing: -1px
+  margin-bottom: 8px
 
-h3 {
-  font-size: 24px;
-  font-weight: normal;
-  margin-bottom: 24px;
-  color: #606060;
-}
+h3
+  font-size: 24px
+  font-weight: normal
+  margin-bottom: 24px
+  color: #606060
 
-ul {
-  list-style: none;
-}
+ul
+  list-style: none
 
-li {
-  margin-bottom: 12px;
-}
+li
+  margin-bottom: 12px
 
-p {
-  margin: 0 100px 12px;
-  line-height: 22px;
-}
+p
+  margin: 0 100px 12px
+  line-height: 22px
 
-a {
-  color: #0093CC;
-  text-decoration: none;
-}
+a
+  color: #0093CC
+  text-decoration: none
