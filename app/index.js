@@ -80,17 +80,11 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.title = props.title;
     this.shortName = slug(props.title).toLowerCase();
 
-    this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
-    this.bullets && this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
-    this.hash && this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
-    this.state && this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
-    this.syntax && this.bowerComponentPaths.push('prism/prism.js');
-
     cb();
   }.bind(this));
 };
 
-BespokeGenerator.prototype.projectFiles = function projectFiles() {
+BespokeGenerator.prototype.setupProjectFiles = function setupProjectFiles() {
   this.template('Gruntfile.js', 'Gruntfile.js');
 
   this.copy('bowerrc', '.bowerrc');
@@ -98,7 +92,7 @@ BespokeGenerator.prototype.projectFiles = function projectFiles() {
   this.copy('jshintrc', '.jshintrc');
 }
 
-BespokeGenerator.prototype.packageJson = function packageJson() {
+BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
   var packageJson = {
     'name': this.shortName + '-bespoke',
     'version': '0.0.0',
@@ -118,7 +112,7 @@ BespokeGenerator.prototype.packageJson = function packageJson() {
   this.write('package.json', JSON.stringify(packageJson, null, 2));
 };
 
-BespokeGenerator.prototype.bowerJson = function bowerJson() {
+BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
   var bowerJson = {
     'name': this.shortName + '-bespoke',
     'version': '0.0.0',
@@ -133,7 +127,15 @@ BespokeGenerator.prototype.bowerJson = function bowerJson() {
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
 };
 
-BespokeGenerator.prototype.plugins = function plugins() {
+BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerComponentPaths() {
+  this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
+  this.bullets && this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
+  this.hash && this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
+  this.state && this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
+  this.syntax && this.bowerComponentPaths.push('prism/prism.js');
+};
+
+BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
   var plugins = {};
   if (this.bullets) plugins['bullets'] = 'li, .bullet';
   if (this.hash) plugins['hash'] = true;
@@ -144,7 +146,7 @@ BespokeGenerator.prototype.plugins = function plugins() {
     .replace(/\'([a-z0-9_$]+)\'(:)/gi, '$1$2') // Unquote object keys
 };
 
-BespokeGenerator.prototype.src = function src() {
+BespokeGenerator.prototype.setupFiles = function setupFiles() {
   this.mkdir('src');
   this.mkdir('src/scripts');
   this.mkdir('src/styles');
