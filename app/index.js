@@ -58,7 +58,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     },
     {
       name: 'state',
-      message: 'Would you slide-specific deck styles?',
+      message: 'Would you like slide-specific deck styles?',
       'default': 'Y/n'
     },
     {
