@@ -60,6 +60,11 @@ BespokeGenerator.prototype.askFor = function askFor() {
       name: 'state',
       message: 'Would you slide-specific deck styles?',
       'default': 'Y/n'
+    },
+    {
+      name: 'syntax',
+      message: 'Would you like syntax highlighting?',
+      'default': 'Y/n'
     }
   ];
 
@@ -71,6 +76,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.bullets = (/^y/i).test(props.bullets);
     this.hash = (/^y/i).test(props.hash);
     this.state = (/^y/i).test(props.state);
+    this.syntax = (/^y/i).test(props.syntax);
     this.title = props.title;
     this.shortName = slug(props.title).toLowerCase();
 
@@ -78,6 +84,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.bullets && this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
     this.hash && this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
     this.state && this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
+    this.syntax && this.bowerComponentPaths.push('prism/prism.js');
 
     cb();
   }.bind(this));
@@ -122,6 +129,7 @@ BespokeGenerator.prototype.bowerJson = function bowerJson() {
   if (this.bullets) bowerJson.dependencies['bespoke-bullets'] = '~0.2.0';
   if (this.hash) bowerJson.dependencies['bespoke-hash'] = '~0.1.0';
   if (this.state) bowerJson.dependencies['bespoke-state'] = '~0.2.0';
+  if (this.syntax) bowerJson.dependencies['prism'] = '*';
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
 };
 

@@ -2,8 +2,12 @@
 head
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-  title <%= title %>
-  link(rel='stylesheet', type='text/css', href='styles/main.css')
+  title <%= title %><% if (bullets) { %>
+
+  // Check out 'src/bower_components/prism/' for available themes
+  link(rel='stylesheet', type='text/css', href='bower_components/prism/prism-tomorrow.css')
+
+  <% } %>link(rel='stylesheet', type='text/css', href='styles/main.css')
 
   body
 
@@ -21,7 +25,20 @@ head
           li Bullet 1
           li Bullet 2
           li Bullet 3
-
+<% } %><% if (syntax) { %>
+      section
+        h2 Syntax Highlighting
+        h3.bullet
+          | Powered by 
+          a(href='http://twitter.com/LeaVerou') Lea Verou
+          | 's 
+          a(href='https://github.com/LeaVerou/prism') Prism
+        code.language-javascript
+          pre.
+            bespoke.from('#foo', {
+              bullets: true,
+              hash: true
+            });
 <% } %><% if (hash) { %>
       section(data-bespoke-hash='named-route')
         h2 Named Route
@@ -32,14 +49,12 @@ head
           | Look up! This route has been named with a 
           em 'data-bespoke-hash' 
           | attribute.
-
 <% } %><% if (state) { %>
       section(data-bespoke-state='emphatic')
         h2 Emphatic Slide!
         h3.bullet
           | Powered by 
           a(href='https://github.com/markdalgleish/bespoke-state') bespoke-state
-
 <% } %>
       section
         h2.bullet Just the beginning...

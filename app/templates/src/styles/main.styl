@@ -87,7 +87,13 @@ article
 
 .emphatic,
 .emphatic .bespoke-slide
-  background: darken(slide_background, 10%)<% } %>
+  background: darken(slide_background_color, 10%)<% } %><% if (syntax) { %>
+
+// prism styles
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"]
+  padding: 26px<% } %>
 
 // typography
 

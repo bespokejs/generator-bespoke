@@ -14,10 +14,7 @@ module.exports = function(grunt) {
           src: '**/*.jade',
           dest: 'public/',
           ext: '.html'
-        }],
-        options: {
-          pretty: true
-        }
+        }]
       }
     },
     stylus: {
