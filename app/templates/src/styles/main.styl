@@ -27,7 +27,6 @@ bullet_transition_translate_x = 16px
 article
   transition: background slide_transition_length slide_transition_easing
   display: none
-
   &.bespoke-parent
     display: block
     position: absolute
@@ -78,9 +77,8 @@ article
 
 .bespoke-bullet-inactive
   opacity: 0
-
   li&
-      transform: translateX(bullet_transition_translate_x)
+    transform: translateX(bullet_transition_translate_x)
 
 .bespoke-bullet-active
   opacity: 1<% } %><% if (state) { %>
