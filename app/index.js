@@ -96,7 +96,8 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
   var packageJson = {
     'name': this.shortName + '-bespoke',
     'version': '0.0.0',
-    'dependencies': {
+    'dependencies': {},
+    'devDependencies': {
       'grunt': '~0.4.1',
       'grunt-contrib-clean': '~0.4.0',
       'grunt-contrib-copy': '~0.4.1',
