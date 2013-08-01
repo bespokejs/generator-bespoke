@@ -106,7 +106,7 @@ module.exports = function(grunt) {
     },
     open: {
       server: {
-        path: 'http://localhost:<%= connect.server.options.port %>'
+        path: 'http://localhost:<%%= connect.server.options.port %>'
       }
     },
     concurrent: {
