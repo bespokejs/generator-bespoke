@@ -106,6 +106,7 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
       'grunt-contrib-stylus': '~0.5.0',
       'grunt-contrib-coffee': '~0.7.0',
       'grunt-contrib-connect': '~0.3.0',
+      'grunt-open': '~0.2.1',
       'grunt-concurrent': '~0.3.0',
       'grunt-gh-pages': '~0.6.0',
       'connect-livereload': '~0.2.0'

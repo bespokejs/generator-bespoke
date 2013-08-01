@@ -104,6 +104,11 @@ module.exports = function(grunt) {
         }
       }
     },
+    open: {
+      server: {
+        path: 'http://localhost:<%= connect.server.options.port %>'
+      }
+    },
     concurrent: {
       compile: {
         tasks: [
@@ -119,6 +124,7 @@ module.exports = function(grunt) {
       server: {
         tasks: [
           'connect',
+          'open',
           'watch:jade',
           'watch:stylus',
           'watch:coffee',
@@ -148,6 +154,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-concurrent');
 
   grunt.registerTask('default', ['clean', 'concurrent:compile']);
