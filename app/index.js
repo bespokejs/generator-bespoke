@@ -44,39 +44,39 @@ BespokeGenerator.prototype.askFor = function askFor() {
     {
       name: 'title',
       message: 'What is the title of your presentation?',
-      'default': 'Hello World'
+      default: 'Hello World'
     },
     {
+      type: 'confirm',
       name: 'bullets',
       message: 'Would you like bullet list support?',
-      'default': 'Y/n'
+      default: true
     },
     {
+      type: 'confirm',
       name: 'hash',
       message: 'Would you like hash routing support?',
-      'default': 'Y/n'
+      default: true
     },
     {
+      type: 'confirm',
       name: 'state',
       message: 'Would you like slide-specific deck styles?',
-      'default': 'Y/n'
+      default: true
     },
     {
+      type: 'confirm',
       name: 'syntax',
       message: 'Would you like syntax highlighting?',
-      'default': 'Y/n'
+      default: true
     }
   ];
 
-  this.prompt(prompts, function (err, props) {
-    if (err) {
-      return this.emit('error', err);
-    }
-
-    this.bullets = (/^y/i).test(props.bullets);
-    this.hash = (/^y/i).test(props.hash);
-    this.state = (/^y/i).test(props.state);
-    this.syntax = (/^y/i).test(props.syntax);
+  this.prompt(prompts, function (props) {
+    this.bullets = props.bullets;
+    this.hash = props.hash;
+    this.state = props.state;
+    this.syntax = props.syntax;
     this.title = props.title;
     this.shortName = slug(props.title).toLowerCase();
 
@@ -135,10 +135,10 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
 
 BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerComponentPaths() {
   this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
-  this.bullets && this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
-  this.hash && this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
-  this.state && this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
-  this.syntax && this.bowerComponentPaths.push('prism/prism.js');
+  if (this.bullets) this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
+  if (this.hash) this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
+  if (this.state) this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
+  if (this.syntax) this.bowerComponentPaths.push('prism/prism.js');
 };
 
 BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
