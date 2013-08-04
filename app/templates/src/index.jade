@@ -30,9 +30,10 @@ html
           h3.bullet Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
           code.language-javascript
             pre.
-              bespoke.from('#foo', {
-                bullets: true,
-                hash: true
+              bespoke.horizontal.from('article', {
+                bullets: 'li, .bullet',
+                hash: true,
+                state: true
               });
 <% } %><% if (hash) { %>
         section(data-bespoke-hash='named-route')
