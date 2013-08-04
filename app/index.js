@@ -129,7 +129,7 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
   if (this.bullets) bowerJson.dependencies['bespoke-bullets'] = '~0.2.0';
   if (this.hash) bowerJson.dependencies['bespoke-hash'] = '~0.1.0';
   if (this.state) bowerJson.dependencies['bespoke-state'] = '~0.2.0';
-  if (this.syntax) bowerJson.dependencies['prism'] = '*';
+  if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
 };
 
