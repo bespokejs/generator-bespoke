@@ -16,7 +16,7 @@ html
 
         section
           h1 <%= title %>
-  <% if (bullets) { %>
+<% if (bullets) { %>
         section
           h2 Bullet List
           h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
@@ -24,7 +24,7 @@ html
             li Bullet 1
             li Bullet 2
             li Bullet 3
-  <% } %><% if (syntax) { %>
+<% } %><% if (syntax) { %>
         section
           h2 Syntax Highlighting
           h3.bullet Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
@@ -34,16 +34,16 @@ html
                 bullets: true,
                 hash: true
               });
-  <% } %><% if (hash) { %>
+<% } %><% if (hash) { %>
         section(data-bespoke-hash='named-route')
           h2 Named Route
           h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
           p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
-  <% } %><% if (state) { %>
+<% } %><% if (state) { %>
         section(data-bespoke-state='emphatic')
           h2 Emphatic Slide!
           h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
-  <% } %>
+<% } %>
         section
           h2.bullet Just the beginning...
           br
@@ -57,5 +57,5 @@ html
               strong Enjoy! :)
               a(href='http://twitter.com/markdalgleish')  -@markdalgleish
 
-  <% _.each(bowerComponentPaths, function(path) { %>  script(src='bower_components/<%= path %>')
-  <% }) %>  script(src='scripts/main.js')
+<% _.each(bowerComponentPaths, function(path) { %>      script(src='bower_components/<%= path %>')
+<% }) %>      script(src='scripts/main.js')
