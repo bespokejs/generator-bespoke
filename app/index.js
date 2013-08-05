@@ -90,6 +90,7 @@ BespokeGenerator.prototype.setupProjectFiles = function setupProjectFiles() {
   this.copy('bowerrc', '.bowerrc');
   this.copy('gitignore', '.gitignore');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('editorconfig', '.editorconfig');
 }
 
 BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
