@@ -78,7 +78,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.state = props.state;
     this.syntax = props.syntax;
     this.title = props.title;
-    this.shortName = slug(props.title).toLowerCase();
+    this.shortName = slug(props.title).toLowerCase().replace(/:/g,'');
 
     cb();
   }.bind(this));
