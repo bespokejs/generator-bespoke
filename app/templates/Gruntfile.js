@@ -2,7 +2,7 @@
 
 module.exports = function(grunt) {
 
-  grunt.initConfig({
+  var config = {
     clean: {
       public: 'public/**/*'
     },
@@ -97,7 +97,9 @@ module.exports = function(grunt) {
           keepalive: true,
           middleware: function(connect, options) {
             return [
-              require('connect-livereload')(),
+              require('connect-livereload')({
+                port: config.watch.public.options.livereload
+              }),
               connect.static(options.base)
             ];
           }
@@ -145,7 +147,9 @@ module.exports = function(grunt) {
         src: '**/*'
       }
     }
-  });
+  };
+
+  grunt.initConfig(config);
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
