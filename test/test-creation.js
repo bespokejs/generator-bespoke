@@ -25,6 +25,7 @@ describe('bespoke generator', function () {
       'package.json',
       'bower.json',
       'Gruntfile.js',
+      'README.md',
       '.gitignore',
       '.jshintrc',
       '.bowerrc',

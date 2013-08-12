@@ -86,6 +86,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
 
 BespokeGenerator.prototype.setupProjectFiles = function setupProjectFiles() {
   this.template('Gruntfile.js', 'Gruntfile.js');
+  this.template('README.md', 'README.md');
 
   this.copy('bowerrc', '.bowerrc');
   this.copy('gitignore', '.gitignore');
