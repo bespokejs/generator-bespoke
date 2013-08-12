@@ -85,7 +85,7 @@ module.exports = function(grunt) {
           '!public/bower_components/**/*'
         ],
         options: {
-          livereload: true
+          livereload: 35729
         }
       }
     },
