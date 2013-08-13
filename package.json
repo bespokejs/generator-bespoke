@@ -1,9 +1,11 @@
 {
   "name": "generator-bespoke",
   "version": "0.0.0",
-  "description": "A generator for Yeoman",
+  "description": "Yeoman generator for Bespoke.js",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "scaffold",
+    "presentation"
   ],
   "homepage": "https://github.com/markdalgleish/generator-bespoke",
   "bugs": "https://github.com/markdalgleish/generator-bespoke/issues",
