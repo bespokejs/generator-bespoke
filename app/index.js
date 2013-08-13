@@ -2,7 +2,6 @@
 
 var util = require('util'),
   path = require('path'),
-  slug = require('slug'),
   yeoman = require('yeoman-generator');
 
 
@@ -78,7 +77,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.state = props.state;
     this.syntax = props.syntax;
     this.title = props.title;
-    this.shortName = slug(props.title).toLowerCase().replace(/:/g,'');
+    this.shortName = this._.slugify(props.title);
 
     cb();
   }.bind(this));
