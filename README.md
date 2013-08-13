@@ -8,18 +8,18 @@ The boilerplate project includes a [Grunt](http://gruntjs.com) build system, a p
 ## Usage
 
 Install Yeoman and `generator-bespoke`:
-```
-npm install -g yeoman generator-bespoke
+```bash
+$ npm install -g yeoman generator-bespoke
 ```
 
 Make a new directory and `cd` into it:
-```
-mkdir my-presentation && cd $_
+```bash
+$ mkdir my-presentation && cd $_
 ```
 
 Scaffold a new presentation:
-```
-yo bespoke
+```bash
+$ yo bespoke
 ```
 
 ## Presentation workflow
@@ -27,18 +27,18 @@ yo bespoke
 All source files for the presentation reside in the `src` directory.
 
 Start a local preview server:
-```
-grunt server
+```bash
+$ grunt server
 ```
 
 Compile and deploy to GitHub Pages, assuming a git repo with `origin` pointing to GitHub:
-```
-grunt deploy
+```bash
+$ grunt deploy
 ```
 
 To manually deploy elsewhere, compile all assets into the `public` directory:
-```
-grunt
+```bash
+$ grunt
 ```
 
 ## License
