@@ -27,5 +27,24 @@ Scaffold a new presentation:
 yo bespoke
 ```
 
+## Presentation workflow
+
+All source files for the presentation reside in the `src` directory.
+
+Start a local preview server:
+```
+grunt server
+```
+
+Compile and deploy to GitHub Pages, assuming a git repo with `origin` pointing to GitHub:
+```
+grunt deploy
+```
+
+To manually deploy elsewhere, compile all assets into the `public` directory:
+```
+grunt
+```
+
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
