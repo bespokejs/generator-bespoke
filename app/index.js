@@ -124,7 +124,7 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
     'name': this.shortName + '-bespoke',
     'version': '0.0.0',
     'dependencies': {
-      'bespoke.js': '~0.2.0'
+      'bespoke.js': '~0.3.0'
     }
   };
   if (this.bullets) bowerJson.dependencies['bespoke-bullets'] = '~0.2.0';
