@@ -21,14 +21,14 @@ describe('bespoke generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      // add files you expect to exist here.
-      'package.json',
-      'bower.json',
-      'Gruntfile.js',
-      'README.md',
+      '.bowerrc',
+      '.editorconfig',
       '.gitignore',
       '.jshintrc',
-      '.bowerrc',
+      'bower.json',
+      'Gruntfile.js',
+      'package.json',
+      'README.md',
       'src/index.jade',
       'src/scripts/main.js',
       'src/styles/main.styl'
@@ -37,7 +37,9 @@ describe('bespoke generator', function () {
     helpers.mockPrompt(this.app, {
       'title': 'Foo Bar',
       'bullets': 'Y',
-      'hash': 'Y'
+      'hash': 'Y',
+      'state': 'Y',
+      'prism': 'Y'
     });
 
     this.app.run({}, function () {
