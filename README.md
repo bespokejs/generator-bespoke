@@ -9,7 +9,7 @@ The boilerplate project includes a [Grunt](http://gruntjs.com) build system, a p
 
 Install Yeoman and `generator-bespoke`:
 ```bash
-$ npm install -g yeoman generator-bespoke
+$ npm install -g yo generator-bespoke
 ```
 
 Make a new directory and `cd` into it:
