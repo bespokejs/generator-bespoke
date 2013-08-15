@@ -10,54 +10,54 @@ html
 
     link(rel='stylesheet', type='text/css', href='styles/main.css')
 
-    body
+  body
 
-      article
+    article
 
-        section
-          h1 <%= title %>
+      section
+        h1 <%= title %>
 <% if (bullets) { %>
-        section
-          h2 Bullet List
-          h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
-          ul
-            li Bullet 1
-            li Bullet 2
-            li Bullet 3
+      section
+        h2 Bullet List
+        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
+        ul
+          li Bullet 1
+          li Bullet 2
+          li Bullet 3
 <% } %><% if (syntax) { %>
-        section
-          h2 Syntax Highlighting
-          h3.bullet Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-          hr
-          code.language-javascript
-            pre.
-              bespoke.horizontal.from('article', {
-                bullets: 'li, .bullet',
-                hash: true,
-                state: true
-              });
+      section
+        h2 Syntax Highlighting
+        h3.bullet Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
+        hr
+        code.language-javascript
+          pre.
+            bespoke.horizontal.from('article', {
+              bullets: 'li, .bullet',
+              hash: true,
+              state: true
+            });
 <% } %><% if (hash) { %>
-        section(data-bespoke-hash='named-route')
-          h2 Named Route
-          h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-          p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
+      section(data-bespoke-hash='named-route')
+        h2 Named Route
+        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
+        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
 <% } %><% if (state) { %>
-        section(data-bespoke-state='emphatic')
-          h2 Emphatic Slide!
-          h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
+      section(data-bespoke-state='emphatic')
+        h2 Emphatic Slide!
+        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
 <% } %>
-        section
-          h2.bullet Just the beginning...
-          hr
-          ul
-            li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-            li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-            li Edit JavaScript in <em>'src/scripts/main.js'</em>
-          hr
-          ul
-            li
-              strong Enjoy! :)
-              a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+      section
+        h2.bullet Just the beginning...
+        hr
+        ul
+          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
+          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
+          li Edit JavaScript in <em>'src/scripts/main.js'</em>
+        hr
+        ul
+          li
+            strong Enjoy! :)
+            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
 
-<% _.each(bowerComponentPaths, function(path) { %>      script(src='bower_components/<%= path %>')
-<% }) %>      script(src='scripts/main.js')
+<% _.each(bowerComponentPaths, function(path) { %>    script(src='bower_components/<%= path %>')
+<% }) %>    script(src='scripts/main.js')
