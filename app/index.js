@@ -2,7 +2,8 @@
 
 var util = require('util'),
   path = require('path'),
-  yeoman = require('yeoman-generator');
+  yeoman = require('yeoman-generator'),
+  chalk = require('chalk');
 
 
 var BespokeGenerator = module.exports = function BespokeGenerator(args, options, config) {
@@ -21,20 +22,20 @@ BespokeGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   // welcome message
-  var welcome =
+  var welcome = 
     "\n" +
-    "\noooooooooo.                                          oooo                          o8o          ".cyan.bold +
-    "\n`888'   `Y8b                                         `888                          `\"'          ".cyan.bold +
-    "\n 888     888  .ooooo.   .oooo.o oo.ooooo.   .ooooo.   888  oooo   .ooooo.         oooo  .oooo.o ".cyan.bold +
-    "\n 888oooo888' d88' `88b d88(  \"8  888' `88b d88' `88b  888 .8P'   d88' `88b        `888 d88(  \"8 ".cyan.bold +
-    "\n 888    `88b 888ooo888 `\"Y88b.   888   888 888   888  888888.    888ooo888         888 `\"Y88b.  ".cyan.bold +
-    "\n 888    .88P 888    .o o.  )88b  888   888 888   888  888 `88b.  888    .o .o.     888 o.  )88b ".cyan.bold +
-    "\no888bood8P'  `Y8bod8P' 8\"\"888P'  888bod8P' `Y8bod8P' o888o o888o `Y8bod8P' Y8P     888 8\"\"888P' ".cyan.bold +
-    "\n                                 888                                               888          ".cyan.bold +
-    "\n                                o888o                                          .o. 88P          ".cyan.bold +
-    "\n                                                                               `Y888P           ".cyan.bold +
+    chalk.cyan.bold("\noooooooooo.                                          oooo                          o8o          ") +
+    chalk.cyan.bold("\n`888'   `Y8b                                         `888                          `\"'          ") +
+    chalk.cyan.bold("\n 888     888  .ooooo.   .oooo.o oo.ooooo.   .ooooo.   888  oooo   .ooooo.         oooo  .oooo.o ") +
+    chalk.cyan.bold("\n 888oooo888' d88' `88b d88(  \"8  888' `88b d88' `88b  888 .8P'   d88' `88b        `888 d88(  \"8 ") +
+    chalk.cyan.bold("\n 888    `88b 888ooo888 `\"Y88b.   888   888 888   888  888888.    888ooo888         888 `\"Y88b.  ") +
+    chalk.cyan.bold("\n 888    .88P 888    .o o.  )88b  888   888 888   888  888 `88b.  888    .o .o.     888 o.  )88b ") +
+    chalk.cyan.bold("\no888bood8P'  `Y8bod8P' 8\"\"888P'  888bod8P' `Y8bod8P' o888o o888o `Y8bod8P' Y8P     888 8\"\"888P' ") +
+    chalk.cyan.bold("\n                                 888                                               888          ") +
+    chalk.cyan.bold("\n                                o888o                                          .o. 88P          ") +
+    chalk.cyan.bold("\n                                                                               `Y888P           ") +
     "\n" +
-    "Thanks for choosing Bespoke.js for your presentation! :)   -@markdalgleish".green.bold +
+    chalk.green.bold("Thanks for choosing Bespoke.js for your presentation! :)   -@markdalgleish") +
     "\n";
 
   console.log(welcome);
