@@ -41,5 +41,11 @@ To manually deploy elsewhere, compile all assets into the `public` directory:
 $ grunt
 ```
 
+## Creating a PDF or print version
+
+Many online presentation hosting services (eg, Speakerdeck) are PDF only. To help with this, the default bespoke.js theme includes print styles so slides print in landscape A4 with all items visible. You can create a PDF version by simply printing to PDF in your OS.
+
+If you're developing your own themes, open Chrome Developer Tools and set 'Emulate CSS media' to 'print' while you work.
+
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
