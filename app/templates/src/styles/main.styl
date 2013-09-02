@@ -4,6 +4,8 @@
 
 slide_width = 640px
 slide_height = 480px
+// The following value seems to correspond with an A4, landscape page height
+slide_height_print = 670px
 slide_background = #eaeaea
 
 slide_transition_length = .6s
@@ -22,6 +24,9 @@ bullet_transition_translate_x = 16px
   margin: 0
   padding: 0
 
+@page
+  size: landscape
+
 // bespoke.js layout styles
 
 article
@@ -35,6 +40,9 @@ article
     left: 0
     right: 0
     overflow: hidden
+    @media print
+      overflow: visible
+      position: static
     perspective: 600px
 
 .bespoke-slide
@@ -56,16 +64,27 @@ article
   background: slide_background
   padding: 40px
   border-radius: 0
+  @media print
+    height: slide_height_print
+    width: 100%
+    page-break-before: always
+    border-bottom: 1px solid whiteSmoke
+    position: static
+    margin: 0
 
 .bespoke-before
   transform: translateX(slide_transition_translate_x * -1) rotateY(slide_transition_rotate_y * -1)
 
 .bespoke-after
   transform: translateX(slide_transition_translate_x) rotateY(slide_transition_rotate_y)
+  @media print
+    transform: translateX(0) rotateY(0)
 
 .bespoke-inactive
   opacity: 0
   pointer-events: none
+  @media print
+    opacity 1
 
 .bespoke-active
   opacity: 1<% if (bullets) { %>
@@ -79,6 +98,8 @@ article
   opacity: 0
   li&
     transform: translateX(bullet_transition_translate_x)
+  @media print
+    opacity: 1
 
 .bespoke-bullet-active
   opacity: 1<% } %><% if (state) { %>
