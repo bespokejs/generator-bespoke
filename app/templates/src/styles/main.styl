@@ -4,8 +4,6 @@
 
 slide_width = 640px
 slide_height = 480px
-// The following value seems to correspond with an A4, landscape page height
-slide_height_print = 670px
 slide_background = #eaeaea
 
 slide_transition_length = .6s
@@ -24,8 +22,13 @@ bullet_transition_translate_x = 16px
   margin: 0
   padding: 0
 
+@media print
+  *
+    -webkit-print-color-adjust: exact
+
 @page
   size: landscape
+  margin: 0
 
 // bespoke.js layout styles
 
@@ -65,10 +68,9 @@ article
   padding: 40px
   border-radius: 0
   @media print
-    height: slide_height_print
+    height: 743px // seems to correspond with an A4, landscape page height
     width: 100%
     page-break-before: always
-    border-bottom: 1px solid whiteSmoke
     position: static
     margin: 0
 
