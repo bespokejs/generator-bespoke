@@ -22,6 +22,11 @@ Scaffold a new presentation:
 $ yo bespoke
 ```
 
+Install dependencies:
+```bash
+$ npm install && bower install
+```
+
 ## Presentation workflow
 
 All source files for the presentation reside in the `src` directory.
