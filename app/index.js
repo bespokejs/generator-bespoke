@@ -22,7 +22,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   // welcome message
-  var welcome = 
+  var welcome =
     "\n" +
     chalk.cyan.bold("\noooooooooo.                                          oooo                          o8o          ") +
     chalk.cyan.bold("\n`888'   `Y8b                                         `888                          `\"'          ") +
@@ -54,6 +54,12 @@ BespokeGenerator.prototype.askFor = function askFor() {
     },
     {
       type: 'confirm',
+      name: 'scale',
+      message: 'Would you like responsive slide scaling?',
+      default: true
+    },
+    {
+      type: 'confirm',
       name: 'hash',
       message: 'Would you like hash routing support?',
       default: true
@@ -74,6 +80,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
 
   this.prompt(prompts, function (props) {
     this.bullets = props.bullets;
+    this.scale = props.scale;
     this.hash = props.hash;
     this.state = props.state;
     this.syntax = props.syntax;
@@ -129,6 +136,7 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
     }
   };
   if (this.bullets) bowerJson.dependencies['bespoke-bullets'] = '~0.2.0';
+  if (this.scale) bowerJson.dependencies['bespoke-scale'] = '~0.1.0';
   if (this.hash) bowerJson.dependencies['bespoke-hash'] = '~0.1.0';
   if (this.state) bowerJson.dependencies['bespoke-state'] = '~0.2.0';
   if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
@@ -138,6 +146,7 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
 BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerComponentPaths() {
   this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
   if (this.bullets) this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
+  if (this.scale) this.bowerComponentPaths.push('bespoke-scale/dist/bespoke-scale.min.js');
   if (this.hash) this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
   if (this.state) this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
   if (this.syntax) this.bowerComponentPaths.push('prism/prism.js');
@@ -146,6 +155,7 @@ BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerCompone
 BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
   var plugins = {};
   if (this.bullets) plugins['bullets'] = 'li, .bullet';
+  if (this.scale) plugins['scale'] = true;
   if (this.hash) plugins['hash'] = true;
   if (this.state) plugins['state'] = true;
   this.hasPlugins = this.bullets || this.hash || this.state;
