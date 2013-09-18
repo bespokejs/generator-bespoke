@@ -49,7 +49,10 @@ article
     perspective: 600px
 
 .bespoke-slide
-  transition: all slide_transition_length slide_transition_easing
+  transition:
+    transform slide_transition_length slide_transition_easing,
+    opacity slide_transition_length slide_transition_easing,
+    background slide_transition_length slide_transition_easing
   transform-origin: 50% 50% ((slide_width / 2) * -1)
   backface-visibility: hidden
   display: flex
