@@ -8,8 +8,9 @@ slide_background = #eaeaea
 
 slide_transition_length = .6s
 slide_transition_easing = ease
-slide_transition_translate_x = 0
 slide_transition_rotate_y = 90deg
+// Safari bugs out on 3d transform-origins, so we have to fake it
+slide_transition_nudge_x = -100px
 
 bullet_transition_length = .3s
 bullet_transition_easing = ease
@@ -53,7 +54,7 @@ article
     transform slide_transition_length slide_transition_easing,
     opacity slide_transition_length slide_transition_easing,
     background slide_transition_length slide_transition_easing
-  transform-origin: 50% 50% ((slide_width / 2) * -1)
+  transform-origin: 50% 50% 0
   backface-visibility: hidden
   display: flex
   flex-direction: column
@@ -79,10 +80,10 @@ article
     margin: 0
 
 .bespoke-before
-  transform: translateX(slide_transition_translate_x * -1) rotateY(slide_transition_rotate_y * -1)
+  transform: translateX(slide_transition_nudge_x * -1) translateX(slide_width / -2) rotateY(slide_transition_rotate_y * -1) translateX(slide_width / -2)
 
 .bespoke-after
-  transform: translateX(slide_transition_translate_x) rotateY(slide_transition_rotate_y)
+  transform: translateX(slide_transition_nudge_x) translateX(slide_width / 2) rotateY(slide_transition_rotate_y) translateX(slide_width / 2)
   @media print
     transform: none
 
