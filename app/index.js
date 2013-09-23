@@ -66,6 +66,12 @@ BespokeGenerator.prototype.askFor = function askFor() {
     },
     {
       type: 'confirm',
+      name: 'progress',
+      message: 'Would you like an animated progress bar?',
+      default: true
+    },
+    {
+      type: 'confirm',
       name: 'state',
       message: 'Would you like slide-specific deck styles?',
       default: true
@@ -82,6 +88,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.bullets = props.bullets;
     this.scale = props.scale;
     this.hash = props.hash;
+    this.progress = props.progress;
     this.state = props.state;
     this.syntax = props.syntax;
     this.title = props.title;
@@ -138,6 +145,7 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
   if (this.bullets) bowerJson.dependencies['bespoke-bullets'] = '~0.2.0';
   if (this.scale) bowerJson.dependencies['bespoke-scale'] = '~0.1.0';
   if (this.hash) bowerJson.dependencies['bespoke-hash'] = '~0.1.0';
+  if (this.progress) bowerJson.dependencies['bespoke-progress'] = '~0.1.0';
   if (this.state) bowerJson.dependencies['bespoke-state'] = '~0.2.0';
   if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
@@ -148,6 +156,7 @@ BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerCompone
   if (this.bullets) this.bowerComponentPaths.push('bespoke-bullets/dist/bespoke-bullets.min.js');
   if (this.scale) this.bowerComponentPaths.push('bespoke-scale/dist/bespoke-scale.min.js');
   if (this.hash) this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
+  if (this.progress) this.bowerComponentPaths.push('bespoke-progress/dist/bespoke-progress.min.js');
   if (this.state) this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
   if (this.syntax) this.bowerComponentPaths.push('prism/prism.js');
 };
@@ -157,6 +166,7 @@ BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
   if (this.bullets) plugins['bullets'] = 'li, .bullet';
   if (this.scale) plugins['scale'] = true;
   if (this.hash) plugins['hash'] = true;
+  if (this.progress) plugins['progress'] = true;
   if (this.state) plugins['state'] = true;
   this.hasPlugins = this.bullets || this.hash || this.state;
   this.pluginsJson = JSON.stringify(plugins, null, 2)

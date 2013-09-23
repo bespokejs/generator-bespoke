@@ -39,6 +39,7 @@ describe('bespoke generator', function () {
       'bullets': 'Y',
       'scale': 'Y',
       'hash': 'Y',
+      'progress': 'Y',
       'state': 'Y',
       'prism': 'Y'
     });
