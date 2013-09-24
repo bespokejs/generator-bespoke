@@ -6,6 +6,14 @@ A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://
 
 The boilerplate project includes a [Grunt](http://gruntjs.com) build system, a preview server with [LiveReload](http://livereload.com), static asset compilation ([Jade](http://jade-lang.com), [Stylus](http://learnboost.github.io/stylus) and [CoffeeScript](http://coffeescript.org)), and a [GitHub Pages](http://pages.github.com) deployment task.
 
+Your generated presentation optionally includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins):
+
+ - [bespoke-bullets](https://github.com/markdalgleish/bespoke-bullets)
+ - [bespoke-scale](https://github.com/markdalgleish/bespoke-scale)
+ - [bespoke-hash](https://github.com/markdalgleish/bespoke-hash)
+ - [bespoke-state](https://github.com/markdalgleish/bespoke-state)
+ - [bespoke-progress](https://github.com/markdalgleish/bespoke-progress)
+
 ## Usage
 
 Install Yeoman and `generator-bespoke`:
