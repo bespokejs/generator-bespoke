@@ -52,7 +52,7 @@ $ grunt
 
 ## Creating a PDF or print version
 
-Many online presentation hosting services (e.g. [Speakerdeck](https://speakerdeck.com)) only support PDF uploads. To help with this, the default Bespoke.js theme includes print styles so slides print in landscape A4 with all items visible. For PDF printing, it is recommended that you use [Google Chrome](http://google.com/chrome).
+Many online presentation hosting services (e.g. [Speaker Deck](https://speakerdeck.com)) only support PDF uploads. To help with this, the default Bespoke.js theme includes print styles so slides print in landscape A4 with all items visible. For PDF printing, it is recommended that you use [Google Chrome](http://google.com/chrome).
 
 If you're developing your own themes, open Chrome Developer Tools and set 'Emulate CSS media' to 'print' while you work.
 
