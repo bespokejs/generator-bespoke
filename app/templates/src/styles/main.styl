@@ -109,7 +109,19 @@ article
     opacity: 1
 
 .bespoke-bullet-active
-  opacity: 1<% } %><% if (progress) { %>
+  opacity: 1<% } %><% if (scale) { %>
+
+// bespoke-scale styles
+
+.bespoke-scale-parent
+  perspective: 600px
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  @media print
+    transform: none !important<% } %><% if (progress) { %>
 
 // bespoke-progress styles
 
