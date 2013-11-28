@@ -73,7 +73,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     {
       type: 'confirm',
       name: 'state',
-      message: 'Would you like slide-specific deck styles?',
+      message: 'Would you like to be able to change the entire presentation style based on the active slide?',
       default: true
     },
     {
