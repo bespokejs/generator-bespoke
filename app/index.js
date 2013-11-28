@@ -78,6 +78,12 @@ BespokeGenerator.prototype.askFor = function askFor() {
     },
     {
       type: 'confirm',
+      name: 'forms',
+      message: 'Will your presentation include interactive form elements?',
+      default: true
+    },
+    {
+      type: 'confirm',
       name: 'syntax',
       message: 'Would you like syntax highlighting?',
       default: true
@@ -90,6 +96,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.hash = props.hash;
     this.progress = props.progress;
     this.state = props.state;
+    this.forms = props.forms;
     this.syntax = props.syntax;
     this.title = props.title;
     this.shortName = this._.slugify(props.title);
@@ -147,6 +154,7 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
   if (this.hash) bowerJson.dependencies['bespoke-hash'] = '~0.1.0';
   if (this.progress) bowerJson.dependencies['bespoke-progress'] = '~0.1.0';
   if (this.state) bowerJson.dependencies['bespoke-state'] = '~0.2.0';
+  if (this.forms) bowerJson.dependencies['bespoke-forms'] = '~0.1.0';
   if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
 };
@@ -158,6 +166,7 @@ BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerCompone
   if (this.hash) this.bowerComponentPaths.push('bespoke-hash/dist/bespoke-hash.min.js');
   if (this.progress) this.bowerComponentPaths.push('bespoke-progress/dist/bespoke-progress.min.js');
   if (this.state) this.bowerComponentPaths.push('bespoke-state/dist/bespoke-state.min.js');
+  if (this.forms) this.bowerComponentPaths.push('bespoke-forms/dist/bespoke-forms.min.js');
   if (this.syntax) this.bowerComponentPaths.push('prism/prism.js');
 };
 
@@ -168,6 +177,7 @@ BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
   if (this.hash) plugins['hash'] = true;
   if (this.progress) plugins['progress'] = true;
   if (this.state) plugins['state'] = true;
+  if (this.forms) plugins['forms'] = true;
   this.hasPlugins = this.bullets || this.hash || this.state;
   this.pluginsJson = JSON.stringify(plugins, null, 2)
     .replace(/\"/g,"'") // Switch to single quotes
