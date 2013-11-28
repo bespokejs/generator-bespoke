@@ -178,7 +178,7 @@ BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
   if (this.progress) plugins['progress'] = true;
   if (this.state) plugins['state'] = true;
   if (this.forms) plugins['forms'] = true;
-  this.hasPlugins = this.bullets || this.hash || this.state;
+  this.hasPlugins = this.bullets || this.scale || this.hash || this.state || this.forms;
   this.pluginsJson = JSON.stringify(plugins, null, 2)
     .replace(/\"/g,"'") // Switch to single quotes
     .replace(/\'([a-z0-9_$]+)\'(:)/gi, '$1$2') // Unquote object keys
