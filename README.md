@@ -13,6 +13,7 @@ Your generated presentation optionally includes the following [Bespoke.js plugin
  - [bespoke-hash](https://github.com/markdalgleish/bespoke-hash)
  - [bespoke-state](https://github.com/markdalgleish/bespoke-state)
  - [bespoke-progress](https://github.com/markdalgleish/bespoke-progress)
+ - [bespoke-forms](https://github.com/markdalgleish/bespoke-forms)
 
 ## Usage
 
