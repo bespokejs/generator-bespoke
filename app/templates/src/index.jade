@@ -1,14 +1,15 @@
-!!! 5
+doctype html
 html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-    title <%= title %><% if (syntax) { %>
+    title <%= title %>
 
+    // build:css styles/styles.css<% if (syntax) { %>
     //- Check out 'src/bower_components/prism/themes/' for available themes
     link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')<% } %>
-
     link(rel='stylesheet', type='text/css', href='styles/main.css')
+    // endbuild
 
   body
 
@@ -29,8 +30,8 @@ html
         h2 Syntax Highlighting
         h3.bullet Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
         hr
-        code.language-javascript
-          pre.
+        pre
+          code.language-javascript.
             bespoke.horizontal.from('article', {
               bullets: 'li, .bullet',
               hash: true,
@@ -59,5 +60,7 @@ html
             strong Enjoy! :)
             a(href='http://twitter.com/markdalgleish')  -@markdalgleish
 
+    // build:js scripts/scripts.js
 <% _.each(bowerComponentPaths, function(path) { %>    script(src='bower_components/<%= path %>')
 <% }) %>    script(src='scripts/main.js')
+    // endbuild

@@ -14,7 +14,10 @@ module.exports = function(grunt) {
           src: '**/*.jade',
           dest: 'public/',
           ext: '.html'
-        }]
+        }],
+        options: {
+          pretty: true
+        }
       }
     },
     stylus: {
@@ -121,7 +124,7 @@ module.exports = function(grunt) {
           'copy'
         ],
         options: {
-            logConcurrentOutput: false
+          logConcurrentOutput: false
         }
       },
       server: {
@@ -135,9 +138,18 @@ module.exports = function(grunt) {
           'watch:public'
         ],
         options: {
-            logConcurrentOutput: true
+          logConcurrentOutput: true
         }
       }
+    },
+    useminPrepare: {
+      html: 'public/index.html',
+      options: {
+        dest: 'public'
+      }
+    },
+    usemin: {
+      html: 'public/index.html'
     },
     'gh-pages': {
       public: {
@@ -159,12 +171,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-usemin');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-concurrent');
 
-  grunt.registerTask('default', ['clean', 'concurrent:compile']);
-  grunt.registerTask('server', ['default', 'concurrent:server']);
+  grunt.registerTask('default', ['compile', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'usemin']);
+  grunt.registerTask('compile', ['clean', 'concurrent:compile']);
+  grunt.registerTask('server', ['compile', 'concurrent:server']);
   grunt.registerTask('deploy', ['default', 'gh-pages:public']);
 
 };
