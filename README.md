@@ -17,14 +17,15 @@ Your generated presentation optionally includes the following [Bespoke.js plugin
 
 ## Usage
 
-Install Yeoman and `generator-bespoke`:
+Assuming you have [Node.js](http://nodejs.org), install `generator-bespoke`:
 ```bash
-$ npm install -g yo generator-bespoke
+$ npm install -g generator-bespoke
 ```
 
 Make a new directory and `cd` into it:
 ```bash
-$ mkdir my-presentation && cd $_
+$ mkdir my-presentation
+$ cd my-presentation
 ```
 
 Scaffold a new presentation:
