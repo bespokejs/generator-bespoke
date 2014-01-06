@@ -17,7 +17,19 @@ html
 
       section
         h1 <%= title %>
-<% if (bullets) { %>
+
+      section
+        h2 Keyboard Interaction
+        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
+
+      section
+        h2 Touch Interaction
+        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
+<% if (scale) { %>
+      section
+        h2 Responsive Slides
+        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
+<% } %><% if (bullets) { %>
       section
         h2 Bullet List
         h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
@@ -28,24 +40,26 @@ html
 <% } %><% if (syntax) { %>
       section
         h2 Syntax Highlighting
-        h3.bullet Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
+        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
         hr
         pre
           code.language-javascript.
-            bespoke.horizontal.from('article', {
-              bullets: 'li, .bullet',
+            bespoke.from('article', {
+              keys: true,
+              touch: true,
               hash: true,
-              state: true
+              state: true,
+              bullets: 'li, .bullet'
             });
 <% } %><% if (hash) { %>
       section(data-bespoke-hash='named-route')
         h2 Named Route
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
+        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
         p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
 <% } %><% if (state) { %>
       section(data-bespoke-state='emphatic')
         h2 Emphatic Slide!
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
+        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-state">bespoke-state</a>
 <% } %>
       section
         h2.bullet Just the beginning...

@@ -1,1 +1,1 @@
-bespoke.horizontal.from('article'<% if (hasPlugins) { %>, <%= pluginsJson %><% } %>);
+bespoke.from('article', <%= pluginsJson %>);

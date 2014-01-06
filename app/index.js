@@ -35,7 +35,18 @@ var welcome =
   chalk.green.bold("Thanks for choosing Bespoke.js for your presentation! :)   -@markdalgleish") +
   "\n";
 
-var bespokePlugins = [
+var mandatoryPlugins = [
+  {
+    name: 'keys',
+    version: '~0.1.0'
+  },
+  {
+    name: 'touch',
+    version: '~0.1.0'
+  }
+];
+
+var optionalPlugins = [
   {
     name: 'bullets',
     message: 'Would you like bullet list support?',
@@ -79,11 +90,11 @@ BespokeGenerator.prototype.askFor = function askFor() {
       message: 'What is the title of your presentation?',
       default: 'Hello World'
     }]
-    .concat(bespokePlugins.map(function(bespokePlugin) {
+    .concat(optionalPlugins.map(function(plugin) {
       return {
         type: 'confirm',
-        name: bespokePlugin.name,
-        message: bespokePlugin.message,
+        name: plugin.name,
+        message: plugin.message,
         default: true
       };
     }))
@@ -95,13 +106,17 @@ BespokeGenerator.prototype.askFor = function askFor() {
     });
 
   this.prompt(prompts, function (props) {
-    bespokePlugins.forEach(function(bespokePlugin) {
-      this[bespokePlugin.name] = props[bespokePlugin.name];
+    mandatoryPlugins.forEach(function(plugin) {
+      this[plugin.name] = true;
     }.bind(this));
 
-    this.selectedBespokePlugins = bespokePlugins.filter(function(bespokePlugin) {
-      return props[bespokePlugin.name];
-    });
+    optionalPlugins.forEach(function(plugin) {
+      this[plugin.name] = props[plugin.name];
+    }.bind(this));
+
+    this.selectedPlugins = mandatoryPlugins.concat(optionalPlugins.filter(function(plugin) {
+      return props[plugin.name];
+    }));
 
     this.syntax = props.syntax;
     this.title = props.title;
@@ -157,12 +172,12 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
     'name': this.shortName + '-bespoke',
     'version': '0.0.0',
     'dependencies': {
-      'bespoke.js': '~0.3.0'
+      'bespoke.js': '~0.4.0'
     }
   };
 
-  this.selectedBespokePlugins.forEach(function(bespokePlugin) {
-    bowerJson.dependencies['bespoke-' + bespokePlugin.name] = bespokePlugin.version;
+  this.selectedPlugins.forEach(function(plugin) {
+    bowerJson.dependencies['bespoke-' + plugin.name] = plugin.version;
   }.bind(this));
 
   if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
@@ -173,20 +188,19 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
 BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerComponentPaths() {
   this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
 
-  this.selectedBespokePlugins.forEach(function(bespokePlugin) {
-    this.bowerComponentPaths.push('bespoke-' + bespokePlugin.name + '/dist/bespoke-' + bespokePlugin.name +'.min.js');
+  this.selectedPlugins.forEach(function(plugin) {
+    this.bowerComponentPaths.push('bespoke-' + plugin.name + '/dist/bespoke-' + plugin.name +'.min.js');
   }.bind(this));
 
   if (this.syntax) this.bowerComponentPaths.push('prism/prism.js');
 };
 
 BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
-  var plugins = this.selectedBespokePlugins.reduce(function(pluginsObj, bespokePlugin) {
-    pluginsObj[bespokePlugin.name] = bespokePlugin.configValue != null ? bespokePlugin.configValue : true;
+  var plugins = this.selectedPlugins.reduce(function(pluginsObj, plugin) {
+    pluginsObj[plugin.name] = plugin.configValue != null ? plugin.configValue : true;
     return pluginsObj;
   }.bind(this), {});
 
-  this.hasPlugins = this.selectedBespokePlugins.length > 0;
   this.pluginsJson = JSON.stringify(plugins, null, 2)
     .replace(/\"/g,"'") // Switch to single quotes
     .replace(/\'([a-z0-9_$]+)\'(:)/gi, '$1$2') // Unquote object keys
