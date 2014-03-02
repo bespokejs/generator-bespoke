@@ -19,13 +19,7 @@ module.exports = function(grunt) {
           pretty: true,
           filters: {
             escape : function( block ) {
-              return block
-                  .replace( /&/g, '&amp;'  )
-                  .replace( /</g, '&lt;'   )
-                  .replace( />/g, '&gt;'   )
-                  .replace( /"/g, '&quot;' )
-                  .replace( /#/g, '&#35;'  )
-                  .replace( /\\/g, '\\\\'  );
+              return require('html-strings').escape(block);
             }
           }
         }
