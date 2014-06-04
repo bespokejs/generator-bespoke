@@ -138,8 +138,8 @@ module.exports = function(grunt) {
           'jade',
           'stylus',
           'coffee',
-          'copy'
-          'uglify'
+          'copy',
+          'uglify',
           'cssmin'
         ],
         options: {
