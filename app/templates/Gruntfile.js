@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    coffee: {
+        coffee: {
       src: {
         files: [{
           expand: true,
@@ -59,6 +59,20 @@ module.exports = function(grunt) {
           dest: 'public/'
         }]
       }
+    },
+    uglify: {
+       dist: {
+         files: {
+            'public/scripts/min.js': ['public/scripts/*.js'] //Caution! Be careful to the order of the JS
+          }
+      }
+    },
+    cssmin: {
+              combine: {
+                files: {
+                  'public/styles/min.css': ['public/styles/*.css' ] //Caution! Be careful to the order of the CSS
+                }
+              }
     },
     watch: {
       jade: {
@@ -122,6 +136,8 @@ module.exports = function(grunt) {
           'stylus',
           'coffee',
           'copy'
+          'uglify'
+          'cssmin'
         ],
         options: {
           logConcurrentOutput: false
