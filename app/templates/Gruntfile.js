@@ -62,6 +62,9 @@ module.exports = function(grunt) {
     },
     uglify: {
        dist: {
+         options: {
+            mangle: false // false to prevent changes to your variable and function names.
+          },
          files: {
             'public/scripts/min.js': ['public/scripts/*.js'] //Caution! Be careful to the order of the JS
           }
