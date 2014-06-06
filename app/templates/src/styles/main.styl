@@ -2,9 +2,16 @@
 
 // variables!
 
-slide_width = 640px
-slide_height = 480px
-slide_background = #eaeaea
+slide_width = 1280px
+slide_height = 720px
+slide_background = #16a085
+
+progressbar_color = #2ecc71
+
+a_color = #2ecc71
+
+body_color = #fff
+body_selection = #2ecc71
 
 slide_transition_length = .6s
 slide_transition_easing = ease
@@ -79,6 +86,7 @@ article
     position: static
     margin: 0
 
+
 .bespoke-before
   transform: translateX(slide_transition_nudge_x * -1) translateX(slide_width / -2) rotateY(slide_transition_rotate_y * -1) translateX(slide_width / -2)
 
@@ -94,7 +102,7 @@ article
     opacity 1
 
 .bespoke-active
-  opacity: 1<% if (bullets) { %>
+  opacity: 1
 
 // bespoke-bullet styles
 
@@ -109,7 +117,7 @@ article
     opacity: 1
 
 .bespoke-bullet-active
-  opacity: 1<% } %><% if (scale) { %>
+  opacity: 1
 
 // bespoke-scale styles
 
@@ -121,7 +129,7 @@ article
   right: 0
   bottom: 0
   @media print
-    transform: none !important<% } %><% if (progress) { %>
+    transform: none !important
 
 // bespoke-progress styles
 
@@ -140,27 +148,31 @@ article
   transition: width .6s ease
   position: absolute
   height: 100%
-  background: #0089f3
-  border-radius: 0 4px 4px 0<% } %><% if (state) { %>
+  background:progressbar_color
+  border-radius: 0 4px 4px 0
 
 // bespoke-state styles
 
 .emphatic,
 .emphatic .bespoke-slide
-  background: slide_background<% } %><% if (syntax) { %>
+  background: slide_background
 
 // prism styles
 
 pre
   padding: 26px !important
-  border-radius: 8px<% } %>
+  border-radius: 8px
 
 // content styles
 
 body
   font-family: helvetica, arial, sans-serif
   font-size: 18px
-  color: #404040
+  color: body_color
+
+::selection
+   background-color: body_selection
+   color: body_color
 
 h1
   font-size: 72px
@@ -177,7 +189,7 @@ h3
   font-size: 24px
   font-weight: normal
   margin-bottom: 24px
-  color: #606060
+  color: #ecf0f1
 
 hr
   visibility: hidden
@@ -194,5 +206,5 @@ p
   line-height: 22px
 
 a
-  color: #0089f3
+  color: a_color
   text-decoration: none
