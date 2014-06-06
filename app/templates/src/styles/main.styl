@@ -102,7 +102,7 @@ article
     opacity 1
 
 .bespoke-active
-  opacity: 1
+  opacity: 1<% if (bullets) { %>
 
 // bespoke-bullet styles
 
@@ -117,7 +117,7 @@ article
     opacity: 1
 
 .bespoke-bullet-active
-  opacity: 1
+  opacity: 1<% } %><% if (scale) { %>
 
 // bespoke-scale styles
 
@@ -129,7 +129,7 @@ article
   right: 0
   bottom: 0
   @media print
-    transform: none !important
+    transform: none !important<% } %><% if (progress) { %>
 
 // bespoke-progress styles
 
@@ -149,13 +149,13 @@ article
   position: absolute
   height: 100%
   background:progressbar_color
-  border-radius: 0 4px 4px 0
+  border-radius: 0 4px 4px 0<% } %><% if (state) { %>
 
 // bespoke-state styles
 
 .emphatic,
 .emphatic .bespoke-slide
-  background: slide_background
+  background: slide_background<% } %><% if (syntax) { %>
 
 // prism styles
 
