@@ -6,6 +6,15 @@ slide_width = 640px
 slide_height = 480px
 slide_background = #eaeaea
 
+progressbar_color = #0089f3
+
+a_color = #0089f3
+
+body_color = #404040
+body_selection = #eaeaea
+
+h3_color = #606060
+
 slide_transition_length = .6s
 slide_transition_easing = ease
 slide_transition_rotate_y = 90deg
@@ -79,6 +88,7 @@ article
     position: static
     margin: 0
 
+
 .bespoke-before
   transform: translateX(slide_transition_nudge_x * -1) translateX(slide_width / -2) rotateY(slide_transition_rotate_y * -1) translateX(slide_width / -2)
 
@@ -140,7 +150,7 @@ article
   transition: width .6s ease
   position: absolute
   height: 100%
-  background: #0089f3
+  background:progressbar_color
   border-radius: 0 4px 4px 0<% } %><% if (state) { %>
 
 // bespoke-state styles
@@ -160,7 +170,11 @@ pre
 body
   font-family: helvetica, arial, sans-serif
   font-size: 18px
-  color: #404040
+  color: body_color
+
+::selection
+   background-color: body_selection
+   color: body_color
 
 h1
   font-size: 72px
@@ -177,7 +191,7 @@ h3
   font-size: 24px
   font-weight: normal
   margin-bottom: 24px
-  color: #606060
+  color: h3_color
 
 hr
   visibility: hidden
@@ -194,5 +208,5 @@ p
   line-height: 22px
 
 a
-  color: #0089f3
+  color: a_color
   text-decoration: none
