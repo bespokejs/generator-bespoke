@@ -78,9 +78,12 @@ article
     page-break-before: always
     position: static
     margin: 0
+    transition: none
 
 .bespoke-before
   transform: translateX(slide_transition_nudge_x * -1) translateX(slide_width / -2) rotateY(slide_transition_rotate_y * -1) translateX(slide_width / -2)
+  @media print
+    transform: none
 
 .bespoke-after
   transform: translateX(slide_transition_nudge_x) translateX(slide_width / 2) rotateY(slide_transition_rotate_y) translateX(slide_width / 2)
