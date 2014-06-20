@@ -103,11 +103,15 @@ article
 
 .bespoke-bullet
   transition: all bullet_transition_length bullet_transition_easing
+  @media print
+    transition: none
 
 .bespoke-bullet-inactive
   opacity: 0
   li&
     transform: translateX(bullet_transition_translate_x)
+    @media print
+      transform: none
   @media print
     opacity: 1
 
