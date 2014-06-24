@@ -16,7 +16,12 @@ module.exports = function(grunt) {
           ext: '.html'
         }],
         options: {
-          pretty: true
+          pretty: true,
+          filters: {
+            escape : function( block ) {
+              return require('html-strings').escape(block);
+            }
+          }
         }
       }
     },
