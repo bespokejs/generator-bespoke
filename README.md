@@ -4,7 +4,7 @@
 
 A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
 
-The boilerplate project includes a [Grunt](http://gruntjs.com) build system, a preview server with [LiveReload](http://livereload.com), static asset compilation ([Jade](http://jade-lang.com), [Stylus](http://learnboost.github.io/stylus) and [CoffeeScript](http://coffeescript.org)), and a [GitHub Pages](http://pages.github.com) deployment task.
+The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Jade](http://jade-lang.com) and [Stylus](http://learnboost.github.io/stylus) compilation, and a [GitHub Pages](http://pages.github.com) deployment task.
 
 Your generated presentation optionally includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins):
 
@@ -39,17 +39,17 @@ All source files for the presentation reside in the `src` directory.
 
 Start a local preview server:
 ```bash
-$ grunt server
+$ gulp serve
 ```
 
 Compile and deploy to GitHub Pages, assuming a git repo with `origin` pointing to GitHub:
 ```bash
-$ grunt deploy
+$ gulp deploy
 ```
 
-To manually deploy elsewhere, compile all assets into the `public` directory:
+To manually deploy elsewhere, compile all assets into the `dist` directory:
 ```bash
-$ grunt
+$ gulp
 ```
 
 ## Creating a PDF or print version
