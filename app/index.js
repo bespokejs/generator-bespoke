@@ -3,7 +3,8 @@
 var util = require('util'),
   path = require('path'),
   yeoman = require('yeoman-generator'),
-  chalk = require('chalk');
+  chalk = require('chalk'),
+  sortedObject = require('sorted-object');
 
 
 var BespokeGenerator = module.exports = function BespokeGenerator(args, options, config) {
@@ -37,12 +38,16 @@ var welcome =
 
 var mandatoryPlugins = [
   {
+    name: 'theme-cube',
+    version: '^1.0.0'
+  },
+  {
     name: 'keys',
-    version: '~0.1.0'
+    version: '^1.0.0'
   },
   {
     name: 'touch',
-    version: '~0.1.0'
+    version: '^1.0.0'
   }
 ];
 
@@ -50,33 +55,33 @@ var optionalPlugins = [
   {
     name: 'bullets',
     message: 'Would you like bullet list support?',
-    version: '~0.2.0',
+    version: '^1.0.0',
     configValue: 'li, .bullet'
   },
   {
     name: 'scale',
     message: 'Would you like responsive slide scaling?',
-    version: '~0.2.0'
+    version: '^1.0.0'
   },
   {
     name: 'hash',
     message: 'Would you like hash routing support?',
-    version: '~0.1.0'
+    version: '^1.0.0'
   },
   {
     name: 'progress',
     message: 'Would you like an animated progress bar?',
-    version: '~0.1.0'
+    version: '^1.0.0'
   },
   {
     name: 'state',
     message: 'Would you like to be able to change the entire presentation style based on the active slide?',
-    version: '~0.2.0'
+    version: '^1.0.0'
   },
   {
     name: 'forms',
     message: 'Will your presentation include interactive form elements?',
-    version: '~0.1.0'
+    version: '^1.0.0'
   }
 ];
 
@@ -127,83 +132,65 @@ BespokeGenerator.prototype.askFor = function askFor() {
 };
 
 BespokeGenerator.prototype.setupProjectFiles = function setupProjectFiles() {
-  this.template('Gruntfile.js', 'Gruntfile.js');
+  this.template('gulpfile.js', 'gulpfile.js');
   this.template('README.md', 'README.md');
 
-  this.copy('bowerrc', '.bowerrc');
-  this.copy('gitignore', '.gitignore');
-  this.copy('jshintrc', '.jshintrc');
-  this.copy('editorconfig', '.editorconfig');
+  this.copy('_bowerrc', '.bowerrc');
+  this.copy('_gitignore', '.gitignore');
+  this.copy('_editorconfig', '.editorconfig');
 }
 
 BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
   var packageJson = {
-    'name': this.shortName + '-bespoke',
+    'name': 'presentation-' + this.shortName,
     'version': '0.0.0',
     'dependencies': {},
     'devDependencies': {
-      'grunt': '~0.4.1',
-      'grunt-contrib-clean': '~0.4.0',
-      'grunt-contrib-copy': '~0.4.1',
-      'grunt-contrib-watch': '~0.5.1',
-      'grunt-contrib-jade': '~0.9.0',
-      'grunt-contrib-stylus': '~0.5.0',
-      'grunt-contrib-coffee': '~0.7.0',
-      'grunt-usemin': '~2.0.2',
-      'grunt-contrib-concat': '~0.3.0',
-      'grunt-contrib-cssmin': '~0.7.0',
-      'grunt-contrib-uglify': '~0.2.7',
-      'grunt-contrib-connect': '~0.3.0',
-      'grunt-open': '~0.2.1',
-      'grunt-concurrent': '~0.3.0',
-      'grunt-gh-pages': '~0.6.0',
-      'connect-livereload': '~0.2.0',
-      'matchdep': '~0.3.0'
+      'bespoke': '^1.0.0',
+      'debowerify': '^0.7.1',
+      'gh-pages': '^0.2.0',
+      'gulp': '^3.8.1',
+      'gulp-autoprefixer': '0.0.7',
+      'gulp-browserify': '^0.5.0',
+      'gulp-cache': '^0.2.0',
+      'gulp-connect': '^2.0.5',
+      'gulp-csso': '^0.2.9',
+      'gulp-imagemin': '^0.6.1',
+      'gulp-jade': '^0.6.0',
+      'gulp-plumber': '^0.6.3',
+      'gulp-rename': '^1.2.0',
+      'gulp-rimraf': '^0.1.0',
+      'gulp-stylus': '^1.0.2',
+      'gulp-uglify': '^0.3.1',
+      'gulp-util': '^2.2.17',
+      'imagemin-pngcrush': '^0.1.0',
+      'insert-css': '^0.2.0',
+      'opn': '^0.1.2',
+      'through': '^2.3.4'
     },
     'engines': {
-      'node': '>=0.8.0'
+      'node': '>=0.10.0'
     }
   };
+
+  this.selectedPlugins.forEach(function(plugin) {
+    packageJson.devDependencies['bespoke-' + plugin.name] = plugin.version;
+  }.bind(this));
+
+  packageJson.devDependencies = sortedObject(packageJson.devDependencies);
   this.write('package.json', JSON.stringify(packageJson, null, 2));
 };
 
 BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
   var bowerJson = {
-    'name': this.shortName + '-bespoke',
+    'name': 'presentation-' + this.shortName,
     'version': '0.0.0',
-    'dependencies': {
-      'bespoke.js': '~0.4.0'
-    }
+    'dependencies': {}
   };
-
-  this.selectedPlugins.forEach(function(plugin) {
-    bowerJson.dependencies['bespoke-' + plugin.name] = plugin.version;
-  }.bind(this));
 
   if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
 
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
-};
-
-BespokeGenerator.prototype.setupBowerComponentPaths = function setupBowerComponentPaths() {
-  this.bowerComponentPaths = ['bespoke.js/dist/bespoke.min.js'];
-
-  this.selectedPlugins.forEach(function(plugin) {
-    this.bowerComponentPaths.push('bespoke-' + plugin.name + '/dist/bespoke-' + plugin.name +'.min.js');
-  }.bind(this));
-
-  if (this.syntax) this.bowerComponentPaths.push('prism/prism.js');
-};
-
-BespokeGenerator.prototype.setupPlugins = function setupPlugins() {
-  var plugins = this.selectedPlugins.reduce(function(pluginsObj, plugin) {
-    pluginsObj[plugin.name] = plugin.configValue != null ? plugin.configValue : true;
-    return pluginsObj;
-  }.bind(this), {});
-
-  this.pluginsJson = JSON.stringify(plugins, null, 2)
-    .replace(/\"/g,"'") // Switch to single quotes
-    .replace(/\'([a-z0-9_$]+)\'(:)/gi, '$1$2') // Unquote object keys
 };
 
 BespokeGenerator.prototype.setupFiles = function setupFiles() {

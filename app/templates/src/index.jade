@@ -5,11 +5,7 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     title <%= title %>
 
-    // build:css styles/styles.css<% if (syntax) { %>
-    //- Check out 'src/bower_components/prism/themes/' for available themes
-    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')<% } %>
-    link(rel='stylesheet', type='text/css', href='styles/main.css')
-    // endbuild
+    link(rel='stylesheet', type='text/css', href='build/build.css')
 
   body
 
@@ -41,7 +37,6 @@ html
       section
         h2 Syntax Highlighting
         h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        hr
         pre
           code.language-javascript.
             bespoke.from('article', {
@@ -63,7 +58,7 @@ html
 <% } %>
       section
         h2.bullet Just the beginning...
-        hr
+        br
         ul
           li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
           li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
@@ -74,7 +69,4 @@ html
             strong Enjoy! :)
             a(href='http://twitter.com/markdalgleish')  -@markdalgleish
 
-    // build:js scripts/scripts.js
-<% _.each(bowerComponentPaths, function(path) { %>    script(src='bower_components/<%= path %>')
-<% }) %>    script(src='scripts/main.js')
-    // endbuild
+    script(src='build/build.js')
