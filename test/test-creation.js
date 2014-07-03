@@ -30,7 +30,8 @@ describe('bespoke generator', function () {
       'README.md',
       'src/index.jade',
       'src/scripts/main.js',
-      'src/styles/main.styl'
+      'src/styles/main.styl',
+      'src/images'
     ];
 
     helpers.mockPrompt(this.app, {

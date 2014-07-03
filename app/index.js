@@ -197,6 +197,7 @@ BespokeGenerator.prototype.setupFiles = function setupFiles() {
   this.mkdir('src');
   this.mkdir('src/scripts');
   this.mkdir('src/styles');
+  this.mkdir('src/images');
 
   this.template('src/index.jade', 'src/index.jade');
   this.template('src/scripts/main.js', 'src/scripts/main.js');
