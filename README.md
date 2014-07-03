@@ -24,8 +24,8 @@ $ npm install -g generator-bespoke
 
 Make a new directory and `cd` into it:
 ```bash
-$ mkdir my-presentation
-$ cd my-presentation
+$ mkdir presentation-hello-world
+$ cd presentation-hello-world
 ```
 
 Scaffold a new presentation:
