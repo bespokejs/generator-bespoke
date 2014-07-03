@@ -38,10 +38,6 @@ var welcome =
 
 var mandatoryPlugins = [
   {
-    name: 'theme-cube',
-    version: '^1.0.0'
-  },
-  {
     name: 'keys',
     version: '^1.0.0'
   },
@@ -90,11 +86,19 @@ BespokeGenerator.prototype.askFor = function askFor() {
 
   console.log(welcome);
 
-  var prompts = [{
-      name: 'title',
-      message: 'What is the title of your presentation?',
-      default: 'Hello World'
-    }]
+  var prompts = [
+      {
+        name: 'title',
+        message: 'What is the title of your presentation?',
+        default: 'Hello World'
+      },
+      {
+        type: 'confirm',
+        name: 'useTheme',
+        message: 'Would you like to use a pre-made theme?',
+        default: true
+      }
+    ]
     .concat(optionalPlugins.map(function(plugin) {
       return {
         type: 'confirm',
@@ -119,7 +123,23 @@ BespokeGenerator.prototype.askFor = function askFor() {
       this[plugin.name] = props[plugin.name];
     }.bind(this));
 
-    this.selectedPlugins = mandatoryPlugins.concat(optionalPlugins.filter(function(plugin) {
+    this.selectedPlugins = [];
+
+    this.useTheme = props.useTheme;
+    this.selectedPlugins.push(
+      props.useTheme ?
+        {
+          name: 'theme-cube',
+          version: '^1.0.0'
+        } :
+        {
+          name: 'classes',
+          version: '^1.0.0'
+        }
+    );
+
+    this.selectedPlugins = this.selectedPlugins.concat(mandatoryPlugins);
+    this.selectedPlugins = this.selectedPlugins.concat(optionalPlugins.filter(function(plugin) {
       return props[plugin.name];
     }));
 

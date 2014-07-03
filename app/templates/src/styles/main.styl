@@ -5,3 +5,27 @@
 
 <% } %>// New to Stylus? Check out http://learnboost.github.io/stylus
 // Use modern CSS thanks to Autoprefixer: https://github.com/ai/autoprefixer
+<% if (!useTheme) { %>
+// Style using Bespoke Classes: https://github.com/markdalgleish/bespoke-classes
+.bespoke-parent
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+
+.bespoke-slide
+  width: 640px
+  height: 480px
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-left: -(@width / 2)
+  margin-top: -(@height / 2)
+
+.bespoke-inactive
+  display: none
+
+.bespoke-bullet-inactive
+  display: none
+<% } %>
