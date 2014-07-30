@@ -172,10 +172,8 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
       'gulp': '^3.8.1',
       'gulp-autoprefixer': '0.0.7',
       'gulp-browserify': '^0.5.0',
-      'gulp-cache': '^0.2.0',
       'gulp-connect': '^2.0.5',
       'gulp-csso': '^0.2.9',
-      'gulp-imagemin': '^0.6.1',
       'gulp-jade': '^0.6.0',
       'gulp-plumber': '^0.6.3',
       'gulp-rename': '^1.2.0',
@@ -183,7 +181,6 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
       'gulp-stylus': '^1.0.2',
       'gulp-uglify': '^0.3.1',
       'gulp-util': '^2.2.17',
-      'imagemin-pngcrush': '^0.1.0',
       'insert-css': '^0.2.0',
       'opn': '^0.1.2',
       'through': '^2.3.4'
