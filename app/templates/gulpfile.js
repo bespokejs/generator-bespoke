@@ -20,7 +20,7 @@ var pkg = require('./package.json'),
   path = require('path'),
   isDist = process.argv.indexOf('serve') === -1;
 
-gulp.task('js', function() {
+gulp.task('js', ['clean:js'], function() {
   return gulp.src('src/scripts/main.js')
     .pipe(isDist ? through() : plumber())
     .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
@@ -30,7 +30,7 @@ gulp.task('js', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('html', function() {
+gulp.task('html', ['clean:html'], function() {
   return gulp.src('src/index.jade')
     .pipe(isDist ? through() : plumber())
     .pipe(jade({ pretty: true }))
@@ -39,7 +39,7 @@ gulp.task('html', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('css', function() {
+gulp.task('css', ['clean:css'], function() {
   return gulp.src('src/styles/main.styl')
     .pipe(isDist ? through() : plumber())
     .pipe(stylus({
@@ -63,6 +63,21 @@ gulp.task('images', ['clean:images'], function() {
 
 gulp.task('clean', function() {
   return gulp.src('dist')
+    .pipe(rimraf());
+});
+
+gulp.task('clean:html', function() {
+  return gulp.src('dist/index.html')
+    .pipe(rimraf());
+});
+
+gulp.task('clean:js', function() {
+  return gulp.src('dist/build/build.js')
+    .pipe(rimraf());
+});
+
+gulp.task('clean:css', function() {
+  return gulp.src('dist/build/build.css')
     .pipe(rimraf());
 });
 
@@ -96,4 +111,4 @@ gulp.task('deploy', ['build'], function(done) {
 
 gulp.task('build', ['js', 'html', 'css', 'images']);
 gulp.task('serve', ['connect', 'watch']);
-gulp.task('default', ['clean', 'build']);
+gulp.task('default', ['build']);
