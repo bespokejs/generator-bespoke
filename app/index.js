@@ -50,7 +50,7 @@ var mandatoryPlugins = [
 var optionalPlugins = [
   {
     name: 'bullets',
-    message: 'Would you like bullet list support?',
+    message: 'Would you like bullet lists?',
     version: '^1.0.0',
     configValue: 'li, .bullet'
   },
@@ -61,7 +61,7 @@ var optionalPlugins = [
   },
   {
     name: 'hash',
-    message: 'Would you like hash routing support?',
+    message: 'Would you like hash routing?',
     version: '^1.0.0'
   },
   {
@@ -71,12 +71,12 @@ var optionalPlugins = [
   },
   {
     name: 'state',
-    message: 'Would you like to be able to change the entire presentation style based on the active slide?',
+    message: 'Would you like some slides to have different styles?',
     version: '^1.0.0'
   },
   {
     name: 'forms',
-    message: 'Will your presentation include interactive form elements?',
+    message: 'Will your presentation include form elements?',
     version: '^1.0.0'
   }
 ];
@@ -110,7 +110,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
     .concat({
       type: 'confirm',
       name: 'syntax',
-      message: 'Would you like syntax highlighting?',
+      message: 'Will your presentation include code samples?',
       default: true
     });
 
