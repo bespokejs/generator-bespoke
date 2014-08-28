@@ -194,6 +194,10 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
     packageJson.devDependencies['bespoke-' + plugin.name] = plugin.version;
   }.bind(this));
 
+  if (!this.useTheme) {
+    packageJson.devDependencies['normalizecss'] = '^3.0.0';
+  }
+
   packageJson.devDependencies = sortedObject(packageJson.devDependencies);
   this.write('package.json', JSON.stringify(packageJson, null, 2));
 };
