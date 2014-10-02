@@ -55,6 +55,11 @@ var optionalPlugins = [
     configValue: 'li, .bullet'
   },
   {
+    name: 'backdrop',
+    message: 'Would you like to have different backgrounds?',
+    version: '^1.0.0'
+  },
+  {
     name: 'scale',
     message: 'Would you like responsive slide scaling?',
     version: '^1.0.0'
@@ -67,11 +72,6 @@ var optionalPlugins = [
   {
     name: 'progress',
     message: 'Would you like a progress bar?',
-    version: '^1.0.0'
-  },
-  {
-    name: 'state',
-    message: 'Would you like some slides to have different styles?',
     version: '^1.0.0'
   },
   {
@@ -130,7 +130,7 @@ BespokeGenerator.prototype.askFor = function askFor() {
       props.useTheme ?
         {
           name: 'theme-cube',
-          version: '^1.0.0'
+          version: '^2.0.0'
         } :
         {
           name: 'classes',

@@ -37,10 +37,10 @@ describe('bespoke generator', function () {
     helpers.mockPrompt(this.app, {
       'title': 'Foo Bar',
       'bullets': 'Y',
+      'backdrop': 'Y',
       'scale': 'Y',
       'hash': 'Y',
       'progress': 'Y',
-      'state': 'Y',
       'prism': 'Y'
     });
 
