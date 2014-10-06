@@ -9,9 +9,9 @@ The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a pre
 Your generated presentation optionally includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins):
 
  - [bespoke-bullets](https://github.com/markdalgleish/bespoke-bullets)
+ - [bespoke-backdrop](https://github.com/markdalgleish/bespoke-backdrop)
  - [bespoke-scale](https://github.com/markdalgleish/bespoke-scale)
  - [bespoke-hash](https://github.com/markdalgleish/bespoke-hash)
- - [bespoke-state](https://github.com/markdalgleish/bespoke-state)
  - [bespoke-progress](https://github.com/markdalgleish/bespoke-progress)
  - [bespoke-forms](https://github.com/markdalgleish/bespoke-forms)
 
