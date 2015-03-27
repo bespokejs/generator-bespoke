@@ -1,8 +1,10 @@
+'use strict';
+
 var pkg = require('./package.json'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   plumber = require('gulp-plumber'),
-  rimraf = require('gulp-rimraf'),
+  del = require('del'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect'),
   browserify = require('gulp-browserify'),
@@ -64,28 +66,23 @@ gulp.task('pdf', ['connect'], function () {
 });
 <% } %>
 gulp.task('clean', function() {
-  return gulp.src('dist')
-    .pipe(rimraf());
+  del('dist');
 });
 
 gulp.task('clean:html', function() {
-  return gulp.src('dist/index.html')
-    .pipe(rimraf());
+  del('dist/index.html');
 });
 
 gulp.task('clean:js', function() {
-  return gulp.src('dist/build/build.js')
-    .pipe(rimraf());
+  del('dist/build/build.js');
 });
 
 gulp.task('clean:css', function() {
-  return gulp.src('dist/build/build.css')
-    .pipe(rimraf());
+  del('dist/build/build.css');
 });
 
 gulp.task('clean:images', function() {
-  return gulp.src('dist/images')
-    .pipe(rimraf());
+  del('dist/images');
 });
 <% if (pdf) { %>
 gulp.task('clean:pdf', function() {
