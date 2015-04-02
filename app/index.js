@@ -75,6 +75,11 @@ var optionalPlugins = [
     version: '^1.0.0'
   },
   {
+    name: 'pdf',
+    message: 'Would you like to generate PDFs?',
+    version: '^1.0.4'
+  },
+  {
     name: 'forms',
     message: 'Will your presentation include form elements?',
     version: '^1.0.0'
@@ -147,6 +152,34 @@ BespokeGenerator.prototype.askFor = function askFor() {
     this.title = props.title;
     this.shortName = this._.slugify(props.title);
 
+    this.pdf = this.selectedPlugins.some(function (plugin) {
+      return plugin.name === 'pdf';
+    }) && {
+      require: 'pdf = require(\'bespoke-pdf\'),\n  ',
+      task: [
+        'gulp.task(\'pdf\', [\'connect\'], function () {',
+        '  return pdf(pkg.name + \'.pdf\')',
+        '    .pipe(gulp.dest(\'dist\'))',
+        '});'
+      ].join('\n'),
+      clean: [
+        'gulp.task(\'clean:pdf\', function() {',
+        '  return gulp.src(\'dist/\' + pkg.name + \'.pdf\')',
+        '     .pipe(rimraf());',
+        '});'
+      ].join('\n'),
+      exit: [
+        'gulp.task(\'exit\', [\'pdf\'], function () {',
+        '  process.exit();',
+        '})'
+      ].join('\n'),
+
+    }
+    
+    this.defaultTasks = this.pdf ? 
+      '[\'build\', \'pdf\', \'exit\']' : 
+      '[\'build\']';
+  
     cb();
   }.bind(this));
 };
