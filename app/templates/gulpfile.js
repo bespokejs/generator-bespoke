@@ -13,7 +13,7 @@ var pkg = require('./package.json'),
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
-  through = require('through'),
+  <%= pdf.require %>through = require('through'),
   opn = require('opn'),
   ghpages = require('gh-pages'),
   path = require('path'),
@@ -59,6 +59,8 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(connect.reload());
 });
 
+<%= pdf.task %>
+
 gulp.task('clean', function() {
   del('dist');
 });
@@ -79,14 +81,18 @@ gulp.task('clean:images', function() {
   del('dist/images');
 });
 
-gulp.task('connect', ['build'], function(done) {
+<%= pdf.clean %>
+
+gulp.task('connect', ['build'], function() {
   connect.server({
     root: 'dist',
     livereload: true
   });
-
-  opn('http://localhost:8080', done);
 });
+
+gulp.task('open', ['connect'], function (done) {
+  opn('http://localhost:8080', done);
+})
 
 gulp.task('watch', function() {
   gulp.watch('src/**/*.jade', ['html']);
@@ -98,10 +104,14 @@ gulp.task('watch', function() {
   ], ['js']);
 });
 
+<%= pdf.exit %>
+
 gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
 gulp.task('build', ['js', 'html', 'css', 'images']);
-gulp.task('serve', ['connect', 'watch']);
-gulp.task('default', ['build']);
+
+gulp.task('serve', ['open', 'watch']);
+
+gulp.task('default', <%= defaultTasks %>);
