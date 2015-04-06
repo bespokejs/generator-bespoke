@@ -95,7 +95,7 @@ gulp.task('connect', ['build'], function() {
 
 gulp.task('open', ['connect'], function (done) {
   opn('http://localhost:8080', done);
-})
+});
 
 gulp.task('watch', function() {
   gulp.watch('src/**/*.jade', ['html']);

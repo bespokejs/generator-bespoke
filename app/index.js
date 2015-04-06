@@ -171,15 +171,15 @@ BespokeGenerator.prototype.askFor = function askFor() {
       exit: [
         'gulp.task(\'exit\', [\'pdf\'], function () {',
         '  process.exit();',
-        '})'
+        '});'
       ].join('\n'),
 
     }
-    
-    this.defaultTasks = this.pdf ? 
-      '[\'build\', \'pdf\', \'exit\']' : 
+
+    this.defaultTasks = this.pdf ?
+      '[\'build\', \'pdf\', \'exit\']' :
       '[\'build\']';
-  
+
     cb();
   }.bind(this));
 };
