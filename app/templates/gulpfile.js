@@ -62,32 +62,31 @@ gulp.task('images', ['clean:images'], function() {
 <% if (pdf) { %>
 gulp.task('pdf', ['connect'], function () {
   return pdf(pkg.name + '.pdf')
-    .pipe(gulp.dest('pdf'))
+    .pipe(gulp.dest('pdf'));
 });
 <% } %>
-gulp.task('clean', function() {
-  del('dist');
+gulp.task('clean', function(done) {
+  del('dist', done);
 });
 
-gulp.task('clean:html', function() {
-  del('dist/index.html');
+gulp.task('clean:html', function(done) {
+  del('dist/index.html', done);
 });
 
-gulp.task('clean:js', function() {
-  del('dist/build/build.js');
+gulp.task('clean:js', function(done) {
+  del('dist/build/build.js', done);
 });
 
-gulp.task('clean:css', function() {
-  del('dist/build/build.css');
+gulp.task('clean:css', function(done) {
+  del('dist/build/build.css', done);
 });
 
-gulp.task('clean:images', function() {
-  del('dist/images');
+gulp.task('clean:images', function(done) {
+  del('dist/images', done);
 });
 <% if (pdf) { %>
-gulp.task('clean:pdf', function() {
-  return gulp.src('pdf/' + pkg.name + '.pdf')
-     .pipe(rimraf());
+gulp.task('clean:pdf', function(done) {
+  del('pdf/' + pkg.name + '.pdf', done);
 });
 <% } %>
 gulp.task('connect', ['build'], function() {
