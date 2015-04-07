@@ -175,6 +175,7 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
     'devDependencies': {
       'bespoke': '^1.0.0',
       'debowerify': '^0.7.1',
+      'del': '^1.1.1',
       'gh-pages': '^0.2.0',
       'gulp': '^3.8.1',
       'gulp-autoprefixer': '0.0.7',
@@ -184,7 +185,6 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
       'gulp-jade': '^0.6.0',
       'gulp-plumber': '^0.6.3',
       'gulp-rename': '^1.2.0',
-      'gulp-rimraf': '^0.1.0',
       'gulp-stylus': '^1.0.2',
       'gulp-uglify': '^0.3.1',
       'gulp-util': '^2.2.17',
