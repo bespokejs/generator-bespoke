@@ -159,12 +159,12 @@ BespokeGenerator.prototype.askFor = function askFor() {
       task: [
         'gulp.task(\'pdf\', [\'connect\'], function () {',
         '  return pdf(pkg.name + \'.pdf\')',
-        '    .pipe(gulp.dest(\'dist\'))',
+        '    .pipe(gulp.dest(\'pdf\'))',
         '});'
       ].join('\n'),
       clean: [
         'gulp.task(\'clean:pdf\', function() {',
-        '  return gulp.src(\'dist/\' + pkg.name + \'.pdf\')',
+        '  return gulp.src(\'pdf/\' + pkg.name + \'.pdf\')',
         '     .pipe(rimraf());',
         '});'
       ].join('\n'),
@@ -187,9 +187,9 @@ BespokeGenerator.prototype.askFor = function askFor() {
 BespokeGenerator.prototype.setupProjectFiles = function setupProjectFiles() {
   this.template('gulpfile.js', 'gulpfile.js');
   this.template('README.md', 'README.md');
+  this.template('_gitignore', '.gitignore');
 
   this.copy('_bowerrc', '.bowerrc');
-  this.copy('_gitignore', '.gitignore');
   this.copy('_editorconfig', '.editorconfig');
 }
 
