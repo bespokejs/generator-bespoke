@@ -4,9 +4,11 @@
 
 A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
 
-The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Jade](http://jade-lang.com) and [Stylus](http://learnboost.github.io/stylus) compilation, and a [GitHub Pages](http://pages.github.com) deployment task.
+The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Jade](http://jade-lang.com) and [Stylus](http://learnboost.github.io/stylus) compilation, a [GitHub Pages](http://pages.github.com) deployment task, and .
 
-Your generated presentation optionally includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins):
+Optionally, PDFs of your presentation can be generated using [bespoke-pdf](https://github.com/davidmarkclements/bespoke-pdf).
+
+Additionally, your generated presentation includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins) based on your configuration:
 
  - [bespoke-bullets](https://github.com/markdalgleish/bespoke-bullets)
  - [bespoke-backdrop](https://github.com/markdalgleish/bespoke-backdrop)
@@ -51,6 +53,8 @@ To manually deploy elsewhere, compile all assets into the `dist` directory:
 ```bash
 $ gulp
 ```
+
+If you've selected PDF generation, your PDFs will be created in the `pdf` directory.
 
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
