@@ -148,37 +148,10 @@ BespokeGenerator.prototype.askFor = function askFor() {
       return props[plugin.name];
     }));
 
+    this.pdf = props.pdf;
     this.syntax = props.syntax;
     this.title = props.title;
     this.shortName = this._.slugify(props.title);
-
-    this.pdf = this.selectedPlugins.some(function (plugin) {
-      return plugin.name === 'pdf';
-    }) && {
-      require: 'pdf = require(\'bespoke-pdf\'),\n  ',
-      task: [
-        'gulp.task(\'pdf\', [\'connect\'], function () {',
-        '  return pdf(pkg.name + \'.pdf\')',
-        '    .pipe(gulp.dest(\'pdf\'))',
-        '});'
-      ].join('\n'),
-      clean: [
-        'gulp.task(\'clean:pdf\', function() {',
-        '  return gulp.src(\'pdf/\' + pkg.name + \'.pdf\')',
-        '     .pipe(rimraf());',
-        '});'
-      ].join('\n'),
-      exit: [
-        'gulp.task(\'exit\', [\'pdf\'], function () {',
-        '  process.exit();',
-        '});'
-      ].join('\n'),
-
-    }
-
-    this.defaultTasks = this.pdf ?
-      '[\'build\', \'pdf\', \'exit\']' :
-      '[\'build\']';
 
     cb();
   }.bind(this));
