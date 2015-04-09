@@ -1,8 +1,10 @@
+'use strict';
+
 var pkg = require('./package.json'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   plumber = require('gulp-plumber'),
-  rimraf = require('gulp-rimraf'),
+  del = require('del'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect'),
   browserify = require('gulp-browserify'),
@@ -60,37 +62,31 @@ gulp.task('images', ['clean:images'], function() {
 <% if (pdf) { %>
 gulp.task('pdf', ['connect'], function () {
   return pdf(pkg.name + '.pdf')
-    .pipe(gulp.dest('pdf'))
+    .pipe(gulp.dest('pdf'));
 });
 <% } %>
-gulp.task('clean', function() {
-  return gulp.src('dist')
-    .pipe(rimraf());
+gulp.task('clean', function(done) {
+  del('dist', done);
 });
 
-gulp.task('clean:html', function() {
-  return gulp.src('dist/index.html')
-    .pipe(rimraf());
+gulp.task('clean:html', function(done) {
+  del('dist/index.html', done);
 });
 
-gulp.task('clean:js', function() {
-  return gulp.src('dist/build/build.js')
-    .pipe(rimraf());
+gulp.task('clean:js', function(done) {
+  del('dist/build/build.js', done);
 });
 
-gulp.task('clean:css', function() {
-  return gulp.src('dist/build/build.css')
-    .pipe(rimraf());
+gulp.task('clean:css', function(done) {
+  del('dist/build/build.css', done);
 });
 
-gulp.task('clean:images', function() {
-  return gulp.src('dist/images')
-    .pipe(rimraf());
+gulp.task('clean:images', function(done) {
+  del('dist/images', done);
 });
 <% if (pdf) { %>
-gulp.task('clean:pdf', function() {
-  return gulp.src('pdf/' + pkg.name + '.pdf')
-     .pipe(rimraf());
+gulp.task('clean:pdf', function(done) {
+  del('pdf/' + pkg.name + '.pdf', done);
 });
 <% } %>
 gulp.task('connect', ['build'], function() {
