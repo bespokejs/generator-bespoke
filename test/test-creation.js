@@ -6,6 +6,7 @@ var helpers = require('yeoman-generator').test;
 
 
 describe('bespoke generator', function () {
+  this.timeout(3500);
   beforeEach(function (done) {
     helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
       if (err) {

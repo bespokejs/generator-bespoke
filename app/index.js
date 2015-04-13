@@ -4,7 +4,9 @@ var util = require('util'),
   path = require('path'),
   yeoman = require('yeoman-generator'),
   chalk = require('chalk'),
-  sortedObject = require('sorted-object');
+  sortedObject = require('sorted-object'),
+  installNw = require('install-nw'),
+  traversePackages = require('traverse-packages');
 
 
 var BespokeGenerator = module.exports = function BespokeGenerator(args, options, config) {
@@ -47,13 +49,9 @@ var mandatoryPlugins = [
   }
 ];
 
+
+var pdf;
 var optionalPlugins = [
-  {
-    name: 'pdf',
-    message: 'Would you like to generate PDFs? (WARNING: 100MB+)',
-    version: '^1.0.4',
-    default: false
-  },
   {
     name: 'bullets',
     message: 'Would you like bullet lists?',
@@ -84,13 +82,25 @@ var optionalPlugins = [
     name: 'forms',
     message: 'Will your presentation include form elements?',
     version: '^1.0.0'
+  },
+  pdf = {
+    name: 'pdf',
+    message: 'Would you like to generate PDFs? (WARNING: 100MB+)',
+    version: '^1.0.4',
+    default: false
   }
 ];
+
+parallelCheckNwCache();
+
 
 BespokeGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   console.log(welcome);
+
+  //strip pdf from optionalPlugins (pdf is processed separately)
+  optionalPlugins.splice(optionalPlugins.indexOf(pdf), 1);
 
   var prompts = [
       {
@@ -149,12 +159,21 @@ BespokeGenerator.prototype.askFor = function askFor() {
       return props[plugin.name];
     }));
 
-    this.pdf = props.pdf;
     this.syntax = props.syntax;
     this.title = props.title;
     this.shortName = this._.slugify(props.title);
 
-    cb();
+    pollForPropertyValue({
+      object: pdf,
+      property: 'cacheChecked',
+      value: true
+    }, function () {
+      this.prompt(pdf, function (props) {
+        this.pdf = props.pdf;
+        cb();
+      }.bind(this));    
+    }.bind(this));
+
   }.bind(this));
 };
 
@@ -231,3 +250,37 @@ BespokeGenerator.prototype.setupFiles = function setupFiles() {
   this.template('src/scripts/main.js', 'src/scripts/main.js');
   this.template('src/styles/main.styl', 'src/styles/main.styl');
 };
+
+function parallelCheckNwCache() {
+  traversePackages({
+    root: {name: 'bespoke-' + pdf.name, version: pdf.name},
+    hops: ['bespoke-to-pdf', 'nw-shot'],
+    field: 'nw'
+  }, function (err, nwVersion) {
+    installNw.hasCached(nwVersion, function (err, cached) {
+      pdf.cacheChecked = true;
+      if (cached) {
+        pdf.default = 'Yes';
+        pdf.message = pdf.message.replace(' (WARNING: 100MB+)','');
+      }
+    });
+  });
+}
+
+//note could replace this with Object.observe in the future
+function pollForPropertyValue(opts, cb) {
+  var object = opts.object;
+  var property = opts.property;
+  var value  = opts.value;
+  var interval = opts.interval || 500;
+  var timeout = opts.timeout || 3000;
+
+  opts.totalTime = ~~(opts.totalTime) + interval;
+
+  if (object[property] === value || opts.totalTime >= timeout) {
+    return cb(null, object[property]);
+  }
+
+  setTimeout(pollForPropertyValue, interval, opts, cb);
+}
+
