@@ -6,7 +6,6 @@ var pkg = require('./package.json'),
   plumber = require('gulp-plumber'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect'),
-  browserify = require('gulp-browserify'),
   uglify = require('gulp-uglify'),
   jade = require('gulp-jade'),
   stylus = require('gulp-stylus'),
@@ -23,7 +22,6 @@ var pkg = require('./package.json'),
 gulp.task('js', ['clean:js'], function() {
   return gulp.src('src/scripts/main.js')
     .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
     .pipe(isDist ? uglify() : through())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
