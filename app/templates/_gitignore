@@ -1,6 +1,5 @@
 node_modules
 bower_components
-dist<% if (pdf) { %>
-pdf<% } %>
+dist
 bespoke-theme-*
 .idea
