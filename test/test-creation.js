@@ -37,7 +37,6 @@ describe('bespoke generator', function () {
     helpers.mockPrompt(this.app, {
       'title': 'Foo Bar',
       'backdrop': 'Y',
-      'hash': 'Y',
       'prism': 'Y'
     });
 

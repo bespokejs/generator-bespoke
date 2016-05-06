@@ -53,6 +53,10 @@ var mandatoryPlugins = [
     name: 'bullets',
     version: '^1.0.0',
     configValue: 'li, .bullet'
+  },
+  {
+    name: 'hash',
+    version: '^1.0.0'
   }
 ];
 
@@ -60,11 +64,6 @@ var optionalPlugins = [
   {
     name: 'backdrop',
     message: 'Would you like to have different backgrounds?',
-    version: '^1.0.0'
-  },
-  {
-    name: 'hash',
-    message: 'Would you like hash routing?',
     version: '^1.0.0'
   }
 ];
