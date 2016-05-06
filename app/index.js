@@ -48,16 +48,15 @@ var mandatoryPlugins = [
   {
     name: 'scale',
     version: '^1.0.0'
+  },
+  {
+    name: 'bullets',
+    version: '^1.0.0',
+    configValue: 'li, .bullet'
   }
 ];
 
 var optionalPlugins = [
-  {
-    name: 'bullets',
-    message: 'Would you like bullet lists?',
-    version: '^1.0.0',
-    configValue: 'li, .bullet'
-  },
   {
     name: 'backdrop',
     message: 'Would you like to have different backgrounds?',
