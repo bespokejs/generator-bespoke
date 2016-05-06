@@ -38,7 +38,6 @@ describe('bespoke generator', function () {
       'title': 'Foo Bar',
       'bullets': 'Y',
       'backdrop': 'Y',
-      'scale': 'Y',
       'hash': 'Y',
       'progress': 'Y',
       'prism': 'Y'
