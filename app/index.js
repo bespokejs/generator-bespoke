@@ -49,12 +49,6 @@ var mandatoryPlugins = [
 
 var optionalPlugins = [
   {
-    name: 'pdf',
-    message: 'Would you like to generate PDFs? (WARNING: 100MB+)',
-    version: '^1.0.4',
-    default: false
-  },
-  {
     name: 'bullets',
     message: 'Would you like bullet lists?',
     version: '^1.0.0',
@@ -149,7 +143,6 @@ BespokeGenerator.prototype.askFor = function askFor() {
       return props[plugin.name];
     }));
 
-    this.pdf = props.pdf;
     this.syntax = props.syntax;
     this.title = props.title;
     this.shortName = this._.slugify(props.title);
