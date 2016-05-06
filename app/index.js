@@ -73,11 +73,6 @@ var optionalPlugins = [
     name: 'progress',
     message: 'Would you like a progress bar?',
     version: '^1.0.0'
-  },
-  {
-    name: 'forms',
-    message: 'Will your presentation include form elements?',
-    version: '^1.0.0'
   }
 ];
 
