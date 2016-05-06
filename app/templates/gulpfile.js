@@ -22,7 +22,7 @@ var pkg = require('./package.json'),
 gulp.task('js', ['clean:js'], function() {
   return gulp.src('src/scripts/main.js')
     .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
+    .pipe(browserify({ debug: !isDist }))
     .pipe(isDist ? uglify() : through())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
@@ -42,9 +42,8 @@ gulp.task('css', ['clean:css'], function() {
   return gulp.src('src/styles/main.styl')
     .pipe(isDist ? through() : plumber())
     .pipe(stylus({
-      // Allow CSS to be imported from node_modules and bower_components
       'include css': true,
-      'paths': ['./node_modules', './bower_components']
+      'paths': ['./node_modules']
     }))
     .pipe(autoprefixer('last 2 versions', { map: false }))
     .pipe(isDist ? csso() : through())
