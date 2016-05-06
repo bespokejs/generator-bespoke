@@ -10,7 +10,6 @@ bespoke.from('article', [<%= selectedPlugins.map(function(plugin) {
 ]);<% if (syntax) { %>
 
 // Prism syntax highlighting
-// This is actually loaded from "bower_components" thanks to
-// debowerify: https://github.com/eugeneware/debowerify
-require('prism');
+require('prismjs');
+require('prismjs/plugins/normalize-whitespace/prism-normalize-whitespace');
 <% } %>
