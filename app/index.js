@@ -44,6 +44,10 @@ var mandatoryPlugins = [
   {
     name: 'touch',
     version: '^1.0.0'
+  },
+  {
+    name: 'scale',
+    version: '^1.0.0'
   }
 ];
 
@@ -57,11 +61,6 @@ var optionalPlugins = [
   {
     name: 'backdrop',
     message: 'Would you like to have different backgrounds?',
-    version: '^1.0.0'
-  },
-  {
-    name: 'scale',
-    message: 'Would you like responsive slide scaling?',
     version: '^1.0.0'
   },
   {
