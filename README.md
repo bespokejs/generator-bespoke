@@ -12,7 +12,6 @@ Additionally, your generated presentation includes the following [Bespoke.js plu
  - [bespoke-backdrop](https://github.com/markdalgleish/bespoke-backdrop)
  - [bespoke-scale](https://github.com/markdalgleish/bespoke-scale)
  - [bespoke-hash](https://github.com/markdalgleish/bespoke-hash)
- - [bespoke-progress](https://github.com/markdalgleish/bespoke-progress)
 
 ## Usage
 
