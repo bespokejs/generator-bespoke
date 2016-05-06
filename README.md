@@ -6,9 +6,6 @@ A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://
 
 The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Jade](http://jade-lang.com) and [Stylus](http://learnboost.github.io/stylus) compilation, a [GitHub Pages](http://pages.github.com) deployment task, and .
 
-Optionally, PDFs of your presentation can be generated using [bespoke-pdf](https://github.com/davidmarkclements/bespoke-pdf).
-This will mean a 100mb+ download (for nw.js) but it's cached once for all bespoke projects.
-
 Additionally, your generated presentation includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins) based on your configuration:
 
  - [bespoke-bullets](https://github.com/markdalgleish/bespoke-bullets)
@@ -54,8 +51,6 @@ To manually deploy elsewhere, compile all assets into the `dist` directory:
 ```bash
 $ gulp
 ```
-
-If you've selected PDF generation, your PDFs will be created in the `pdf` directory.
 
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
