@@ -11,7 +11,7 @@ var BespokeGenerator = module.exports = function BespokeGenerator(args, options,
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    this.installDependencies({ bower: false, skipInstall: options['skip-install'] });
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
@@ -143,7 +143,6 @@ BespokeGenerator.prototype.setupProjectFiles = function setupProjectFiles() {
   this.template('README.md', 'README.md');
   this.template('_gitignore', '.gitignore');
 
-  this.copy('_bowerrc', '.bowerrc');
   this.copy('_editorconfig', '.editorconfig');
 }
 
@@ -154,7 +153,6 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
     'dependencies': {},
     'devDependencies': {
       'bespoke': '^1.0.0',
-      'debowerify': '^0.7.1',
       'del': '^1.1.1',
       'gh-pages': '^0.2.0',
       'gulp': '^3.8.1',
@@ -185,20 +183,13 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
     packageJson.devDependencies['normalizecss'] = '^3.0.0';
   }
 
+  if (this.syntax) {
+    packageJson.devDependencies['prismjs'] = '^1.4.1';
+    packageJson.devDependencies['prism-themes'] = 'PrismJS/prism-themes';
+  }
+
   packageJson.devDependencies = sortedObject(packageJson.devDependencies);
   this.write('package.json', JSON.stringify(packageJson, null, 2));
-};
-
-BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
-  var bowerJson = {
-    'name': 'presentation-' + this.shortName,
-    'version': '0.0.0',
-    'dependencies': {}
-  };
-
-  if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
-
-  this.write('bower.json', JSON.stringify(bowerJson, null, 2));
 };
 
 BespokeGenerator.prototype.setupFiles = function setupFiles() {
