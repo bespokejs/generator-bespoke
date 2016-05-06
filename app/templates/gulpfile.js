@@ -57,25 +57,27 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(gulp.dest('dist/images'))
     .pipe(connect.reload());
 });
+
 gulp.task('clean', function(done) {
-  del('dist', done);
+  return del('dist');
 });
 
 gulp.task('clean:html', function(done) {
-  del('dist/index.html', done);
+  return del('dist/index.html');
 });
 
 gulp.task('clean:js', function(done) {
-  del('dist/build/build.js', done);
+  return del('dist/build/build.js');
 });
 
 gulp.task('clean:css', function(done) {
-  del('dist/build/build.css', done);
+  return del('dist/build/build.css');
 });
 
 gulp.task('clean:images', function(done) {
-  del('dist/images', done);
+  return del('dist/images');
 });
+
 gulp.task('connect', ['build'], function() {
   connect.server({
     root: 'dist',
