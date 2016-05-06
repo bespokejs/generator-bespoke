@@ -12,8 +12,7 @@ var pkg = require('./package.json'),
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
-  <% if (pdf) { %>pdf = require('bespoke-pdf'),
-  <% } %>del = require('del'),
+  del = require('del'),
   through = require('through'),
   opn = require('opn'),
   ghpages = require('gh-pages'),
@@ -59,12 +58,6 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(gulp.dest('dist/images'))
     .pipe(connect.reload());
 });
-<% if (pdf) { %>
-gulp.task('pdf', ['connect'], function () {
-  return pdf(pkg.name + '.pdf')
-    .pipe(gulp.dest('pdf'));
-});
-<% } %>
 gulp.task('clean', function(done) {
   del('dist', done);
 });
@@ -84,11 +77,6 @@ gulp.task('clean:css', function(done) {
 gulp.task('clean:images', function(done) {
   del('dist/images', done);
 });
-<% if (pdf) { %>
-gulp.task('clean:pdf', function(done) {
-  del('pdf/' + pkg.name + '.pdf', done);
-});
-<% } %>
 gulp.task('connect', ['build'], function() {
   connect.server({
     root: 'dist',
@@ -109,11 +97,6 @@ gulp.task('watch', function() {
     'bespoke-theme-*/dist/*.js' // Allow themes to be developed in parallel
   ], ['js']);
 });
-<% if (pdf) { %>
-gulp.task('exit', ['pdf'], function () {
-  process.exit();
-});
-<% } %>
 gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
@@ -122,4 +105,4 @@ gulp.task('build', ['js', 'html', 'css', 'images']);
 
 gulp.task('serve', ['open', 'watch']);
 
-gulp.task('default', <%= pdf ? "['build', 'pdf', 'exit']" : "['build']" %>);
+gulp.task('default', ['build']);
