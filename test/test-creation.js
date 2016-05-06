@@ -21,10 +21,8 @@ describe('bespoke generator', function () {
 
   it('creates expected files', function (done) {
     var expected = [
-      '.bowerrc',
       '.editorconfig',
       '.gitignore',
-      'bower.json',
       'gulpfile.js',
       'package.json',
       'README.md',
