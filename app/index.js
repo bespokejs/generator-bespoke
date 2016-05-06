@@ -67,11 +67,6 @@ var optionalPlugins = [
     name: 'hash',
     message: 'Would you like hash routing?',
     version: '^1.0.0'
-  },
-  {
-    name: 'progress',
-    message: 'Would you like a progress bar?',
-    version: '^1.0.0'
   }
 ];
 
