@@ -61,11 +61,6 @@ var mandatoryPlugins = [
 ];
 
 var optionalPlugins = [
-  {
-    name: 'backdrop',
-    message: 'Would you like to have different backgrounds?',
-    version: '^1.0.0'
-  }
 ];
 
 BespokeGenerator.prototype.askFor = function askFor() {
