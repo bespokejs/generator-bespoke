@@ -4,7 +4,7 @@
 
 A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
 
-The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Pug (formerly Jade)](http://jade-lang.com) and [Stylus](http://learnboost.github.io/stylus) compilation, a [GitHub Pages](http://pages.github.com) deployment task, and .
+The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Pug (formerly Jade)](http://jade-lang.com) and [Stylus](http://stylus-lang.com/) compilation, a [GitHub Pages](http://pages.github.com) deployment task, and .
 
 Additionally, your generated presentation includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins) based on your configuration:
 
