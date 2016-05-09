@@ -8,7 +8,7 @@ var pkg = require('./package.json'),
   connect = require('gulp-connect'),
   browserify = require('gulp-browserify'),
   uglify = require('gulp-uglify'),
-  jade = require('gulp-jade'),
+  pug = require('gulp-pug'),
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
@@ -30,9 +30,9 @@ gulp.task('js', ['clean:js'], function() {
 });
 
 gulp.task('html', ['clean:html'], function() {
-  return gulp.src('src/index.jade')
+  return gulp.src('src/index.pug')
     .pipe(isDist ? through() : plumber())
-    .pipe(jade({ pretty: true }))
+    .pipe(pug({ pretty: '  ' }))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
@@ -90,7 +90,7 @@ gulp.task('open', ['connect'], function (done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.jade', ['html']);
+  gulp.watch('src/**/*.pug', ['html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
   gulp.watch([

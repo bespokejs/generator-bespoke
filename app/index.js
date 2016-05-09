@@ -155,8 +155,8 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
       'gulp-browserify': '^0.5.0',
       'gulp-connect': '^4.1.0',
       'gulp-csso': '^2.0.0',
-      'gulp-jade': '^1.1.0',
       'gulp-plumber': '^1.1.0',
+      'gulp-pug': '^3.0.3',
       'gulp-rename': '^1.2.2',
       'gulp-stylus': '^2.5.0',
       'gulp-uglify': '^1.5.4',
@@ -193,7 +193,7 @@ BespokeGenerator.prototype.setupFiles = function setupFiles() {
   this.mkdir('src/styles');
   this.mkdir('src/images');
 
-  this.template('src/index.jade', 'src/index.jade');
+  this.template('src/index.pug', 'src/index.pug');
   this.template('src/scripts/main.js', 'src/scripts/main.js');
   this.template('src/styles/main.styl', 'src/styles/main.styl');
 };
