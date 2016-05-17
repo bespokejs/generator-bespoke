@@ -14,7 +14,6 @@ var pkg = require('./package.json'),
   csso = require('gulp-csso'),
   del = require('del'),
   through = require('through'),
-  opn = require('opn'),
   ghpages = require('gh-pages'),
   path = require('path'),
   isDist = process.argv.indexOf('serve') === -1;
@@ -85,10 +84,6 @@ gulp.task('connect', ['build'], function() {
   });
 });
 
-gulp.task('open', ['connect'], function (done) {
-  opn('http://localhost:8080', done);
-});
-
 gulp.task('watch', function() {
   gulp.watch('src/**/*.pug', ['html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
@@ -104,6 +99,6 @@ gulp.task('deploy', ['build'], function(done) {
 
 gulp.task('build', ['js', 'html', 'css', 'images']);
 
-gulp.task('serve', ['open', 'watch']);
+gulp.task('serve', ['connect', 'watch']);
 
 gulp.task('default', ['build']);
