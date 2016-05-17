@@ -133,7 +133,6 @@ module.exports = generators.Base.extend({
       'gulp-uglify': '^1.5.3',
       'gulp-util': '^3.0.7',
       'insert-css': '^0.2.0',
-      'opn': '^4.0.1',
       'through': '^2.3.4'
     }
 
