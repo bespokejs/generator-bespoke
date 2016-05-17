@@ -29,7 +29,8 @@ var mandatoryPlugins = [
   { name: 'touch', version: '^1.0.0' },
   { name: 'scale', version: '^1.0.0' },
   { name: 'bullets', version: '^1.0.0', configValue: "'li, .bullet'" },
-  { name: 'hash', version: '^1.0.0' }
+  { name: 'hash', version: '^1.0.0' },
+  { name: 'extern', version: '^1.0.0', configValue: "bespoke" },
 ];
 
 var optionalPlugins = [];
