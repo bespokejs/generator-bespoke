@@ -1,0 +1,21 @@
+Description:
+  Yeoman generator for Bespoke.js
+
+Example:
+  yo bespoke
+
+  This will create:
+    ├── .editorconfig             : Config for editor like VIM...
+    ├── .gitignore                : Classic gitignore
+    ├── gulpfile.js               : Gulp build setup
+    ├── package.json              : You know for Node...
+    ├── README.md                 : "How to" documentation
+    ├── node_modules/**           : All the installed modules
+    └── src
+        ├── images
+        │   └── bespoke-logo.jpg  : Example image
+        ├── index.pug             : Reference template
+        ├── scripts
+        │   └── main.js           : Bespoke setup with enabled plugins
+        └── styles
+            └── main.styl         : Reference stylesheet
