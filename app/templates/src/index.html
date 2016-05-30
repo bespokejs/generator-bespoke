@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="build/build.css">
+</head>
+<body>
+<article>
+
+  <section>
+    <h1><%= title %></h1>
+  </section>
+
+  <section>
+    <h2>Images</h2><img src="images/bespoke-logo.jpg">
+  </section>
+
+  <section>
+    <h2>Keyboard Interaction</h2>
+    <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a></h3>
+  </section>
+
+  <section>
+    <h2>Touch Interaction</h2>
+    <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a></h3>
+  </section>
+
+  <section>
+    <h2>Responsive Slides</h2>
+    <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a></h3>
+  </section>
+
+  <section>
+    <h2>Bullet List</h2>
+    <h3 class="bullet">Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a></h3>
+    <ul>
+      <li>Bullet 1</li>
+      <li>Bullet 2</li>
+      <li>Bullet 3</li>
+    </ul>
+  </section>
+
+<% if (syntax) { -%>
+  <section>
+    <h2>Syntax Highlighting</h2>
+    <h3>Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/PrismJS/prism">Prism</a></h3>
+      <pre><code class="language-javascript">
+        bespoke.from('article', [
+          classes(),
+          keys(),
+          touch(),
+          bullets('li, .bullet')
+        ]);
+      </code></pre>
+  </section>
+
+<% } -%>
+  <section data-bespoke-hash="named-route">
+    <h2>Named Route</h2>
+    <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a></h3>
+    <p>Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.</p>
+  </section>
+
+  <section>
+    <h2 class="bullet">Just the beginning...</h2><br>
+    <ul>
+      <li>Edit HTML markup in <em>'src/index.html'</em></li>
+      <li>Edit <a href="http://stylus-lang.com/">Stylus</a> styles in <em>'src/styles/main.styl'</em></li>
+      <li>Edit JavaScript in <em>'src/scripts/main.js'</em></li>
+    </ul>
+    <br>
+    <ul>
+      <li><strong>Enjoy! :)</strong><a href="http://twitter.com/markdalgleish"> -@markdalgleish</a></li>
+    </ul>
+  </section>
+</article>
+
+<script src="build/build.js"></script>
+
+</body>
+</html>
