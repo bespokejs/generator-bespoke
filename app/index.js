@@ -132,11 +132,11 @@ module.exports = generators.Base.extend({
 
     var devDependencies = {
       'bespoke': '^1.1.0',
+      'browserify': '^13.0.1',
       'del': '^2.2.1',
       'gh-pages': '^0.11.0',
       'gulp': '^3.9.1',
       'gulp-autoprefixer': '^3.1.0',
-      'gulp-browserify': '^0.5.0',
       'gulp-connect': '^4.1.0',
       'gulp-csso': '^2.0.0',
       'gulp-plumber': '^1.1.0',
@@ -145,7 +145,9 @@ module.exports = generators.Base.extend({
       'gulp-uglify': '^1.5.4',
       'gulp-util': '^3.0.7',
       'insert-css': '^0.2.0',
-      'through': '^2.3.8'
+      'through': '^2.3.8',
+      'vinyl-buffer': '^1.0.0',
+      'vinyl-source-stream': '^1.1.0',
     };
 
     if (this.usePug) {
