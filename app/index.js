@@ -25,8 +25,7 @@ var welcome = [
 ].join('\n');
 
 var mandatoryPlugins = [
-  { name: 'keys', version: '^1.0.0' },
-  { name: 'touch', version: '^1.0.0' },
+  { name: 'nav', version: '^1.0.2' },
   { name: 'scale', version: '^1.0.0' },
   { name: 'bullets', version: '^1.0.0', configValue: "'li, .bullet'" },
   { name: 'hash', version: '^1.0.0' },
