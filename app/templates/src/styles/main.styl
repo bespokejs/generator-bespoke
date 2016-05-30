@@ -1,63 +1,83 @@
 // New to Stylus? Check out http://learnboost.github.io/stylus
 // Use modern CSS thanks to Autoprefixer: https://github.com/ai/autoprefixer
 
-<% if (syntax || !useTheme) { -%>
+<% if (syntax) { -%>
 // Import CSS from "node_modules"
 // thanks to Stylus' "import css" and "paths" options
 <% } -%>
-<% if (!useTheme) { -%>
 @import 'normalizecss/normalize.css'
-<% } -%>
 <% if (syntax) { -%>
 // Theme with really good contrast FTW!
 @import 'prism-themes/themes/prism-ghcolors.css'
 // Check out "node_modules/prismjs/themes/" and "node_modules/prism-themes/themes/" for available themes
 <% } -%>
-<% if (!useTheme) { -%>
 // Style using Bespoke Classes: https://github.com/markdalgleish/bespoke-classes
 
-.bespoke-parent
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  overflow: hidden
+*, ::before, ::after
+  box-sizing inherit
 
-.bespoke-scale-parent
-  position: absolute
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  pointer-events: none
-  .bespoke-active
-    pointer-events: auto
+html
+  box-sizing border-box
+
+p, li
+  line-height 1.6
+
+p
+  margin 0 0 1rem 0
+
+ul, ol
+  padding 0 0 0 20px
+
+figure
+  margin 0
+
+img, video
+  vertical-align middle
+
+.bespoke-parent, .bespoke-scale-parent
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+
+.bespoke-scale-parent, .bespoke-slide
+  pointer-events none
 
 .bespoke-slide
-  width: 640px
-  height: 480px
-  position: absolute
-  top: 50%
-  left: 50%
-  margin-left: -(@width / 2)
-  margin-top: -(@height / 2)
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
+  overflow hidden
+  // NOTE force opacity to start at 0 to avoid transition on load when using bespoke-scale
+  opacity 0
+  background-color #fff
+  position absolute
+  top 50%
+  left 50%
+  width 640px
+  margin-left -(@width / 2)
+  height 480px
+  margin-top -(@height / 2)
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  transition opacity 200ms ease-in-out 150ms
+
+.bespoke-active
+  pointer-events auto
+  opacity 1
+  // NOTE Webkit requires z-index to be 1 for elements to receive focus (may no longer apply)
+  z-index 1
 
 .bespoke-inactive
-  opacity: 0
-  pointer-events: none
+  transition-delay 0
 
-.bespoke-bullet-inactive
-  opacity: 0
-  pointer-events: none
+.bespoke-bullet
+  transition opacity 200ms ease-in-out
+  &-inactive
+    visibility hidden
 
 .emphatic
-  background: #222
+  background-color #222
 
 .emphatic-text
-  color: white
-<% } -%>
+  color #fff
