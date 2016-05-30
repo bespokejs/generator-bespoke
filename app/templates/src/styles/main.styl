@@ -1,19 +1,16 @@
 // New to Stylus? Check out http://learnboost.github.io/stylus
 // Use modern CSS thanks to Autoprefixer: https://github.com/ai/autoprefixer
 
-<% if (syntax || !useTheme) { -%>
+<% if (syntax) { -%>
 // Import CSS from "node_modules"
 // thanks to Stylus' "import css" and "paths" options
 <% } -%>
-<% if (!useTheme) { -%>
 @import 'normalizecss/normalize.css'
-<% } -%>
 <% if (syntax) { -%>
 // Theme with really good contrast FTW!
 @import 'prism-themes/themes/prism-ghcolors.css'
 // Check out "node_modules/prismjs/themes/" and "node_modules/prism-themes/themes/" for available themes
 <% } -%>
-<% if (!useTheme) { -%>
 // Style using Bespoke Classes: https://github.com/markdalgleish/bespoke-classes
 
 .bespoke-parent
@@ -23,6 +20,7 @@
   right: 0
   bottom: 0
   overflow: hidden
+  opacity: 1
 
 .bespoke-scale-parent
   position: absolute
@@ -35,6 +33,7 @@
     pointer-events: auto
 
 .bespoke-slide
+  background-color: #fff;
   width: 640px
   height: 480px
   position: absolute
@@ -46,10 +45,15 @@
   flex-direction: column
   justify-content: center
   align-items: center
+  transition: opacity 200ms ease-in-out 150ms
 
 .bespoke-inactive
   opacity: 0
   pointer-events: none
+  transition-delay: 0ms
+
+.bespoke-bullet
+  transition: opacity 200ms ease-in-out
 
 .bespoke-bullet-inactive
   opacity: 0
@@ -60,4 +64,3 @@
 
 .emphatic-text
   color: white
-<% } -%>
