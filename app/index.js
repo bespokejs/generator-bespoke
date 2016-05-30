@@ -26,6 +26,7 @@ var welcome = [
 
 var mandatoryPlugins = [
   { name: 'nav', version: '^1.0.2' },
+  { name: 'classes', version: '^1.0.0' },
   { name: 'scale', version: '^1.0.0' },
   { name: 'bullets', version: '^1.0.0', configValue: "'li, .bullet'" },
   { name: 'hash', version: '^1.0.0' },
@@ -58,12 +59,6 @@ var questions = [
   },
   {
     type: 'confirm',
-    name: 'useTheme',
-    message: 'Would you like to use a pre-made theme?',
-    default: true
-  },
-  {
-    type: 'confirm',
     name: 'syntax',
     message: 'Will your presentation include code samples?',
     default: true
@@ -92,13 +87,7 @@ module.exports = generators.Base.extend({
 
     return this.prompt(prompts).then(function (answers) {
 
-      var themePlugin = { name: 'classes', version: '^1.0.0' };
-      if (answers.useTheme) {
-        themePlugin = { name: 'theme-cube', version: '^2.0.0' };
-      }
-
       this.selectedPlugins = []
-        .concat(themePlugin)
         .concat(mandatoryPlugins)
         .concat(optionalPlugins.filter(function (plugin) {
           return answers[plugin.name];
@@ -118,7 +107,6 @@ module.exports = generators.Base.extend({
 
       this.syntax = answers.syntax;
       this.title = answers.title;
-      this.useTheme = answers.useTheme;
       this.shortName = _.kebabCase(answers.title);
 
     }.bind(this));
@@ -151,6 +139,7 @@ module.exports = generators.Base.extend({
       'gulp-uglify': '^1.5.3',
       'gulp-util': '^3.0.7',
       'insert-css': '^0.2.0',
+      'normalizecss': '^3.0.0',
       'through': '^2.3.4',
       'vinyl-buffer': '^1.0.0',
       'vinyl-source-stream': '^1.1.0',
@@ -164,9 +153,6 @@ module.exports = generators.Base.extend({
       devDependencies['bespoke-' + plugin.name] = plugin.version;
     });
 
-    if (!this.useTheme) {
-      devDependencies['normalizecss'] = '^3.0.0';
-    }
 
     if (this.syntax) {
       devDependencies['prismjs'] = '^1.4.1';
