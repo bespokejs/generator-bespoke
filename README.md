@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/markdalgleish/generator-bespoke/master.svg?style=flat-square)](http://travis-ci.org/markdalgleish/generator-bespoke)
+[![Build Status](https://img.shields.io/travis/bespokejs/generator-bespoke/master.svg?style=flat-square)](http://travis-ci.org/bespokejs/generator-bespoke)
 
 # Bespoke.js Generator
 
