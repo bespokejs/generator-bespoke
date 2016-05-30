@@ -33,7 +33,14 @@ var mandatoryPlugins = [
   { name: 'extern', version: '^1.0.0', configValue: "bespoke" },
 ];
 
-var optionalPlugins = [];
+var optionalPlugins = [
+  {
+    name: 'multimedia',
+    version: '^1.0.0',
+    message: 'Would you like to use multimedia (audio, video, animated GIFs or SVGs)?',
+    default: false
+  },
+];
 
 var PUGJS = 'Pug (formerly Jade)';
 
@@ -61,7 +68,7 @@ var questions = [
     name: 'syntax',
     message: 'Will your presentation include code samples?',
     default: true
-  }
+  },
 ];
 
 module.exports = generators.Base.extend({
