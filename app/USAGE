@@ -14,7 +14,7 @@ Example:
     └── src
         ├── images
         │   └── bespoke-logo.jpg  : Example image
-        ├── index.pug             : Reference template
+        ├── index.(pug | html)    : Reference template
         ├── scripts
         │   └── main.js           : Bespoke setup with enabled plugins
         └── styles
