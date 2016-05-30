@@ -8,7 +8,9 @@ var pkg = require('./package.json'),
   connect = require('gulp-connect'),
   browserify = require('gulp-browserify'),
   uglify = require('gulp-uglify'),
+<% if (usePug) { -%>
   pug = require('gulp-pug'),
+<% } -%>
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
@@ -29,10 +31,15 @@ gulp.task('js', ['clean:js'], function() {
 });
 
 gulp.task('html', ['clean:html'], function() {
+<% if (usePug) { -%>
   return gulp.src('src/index.pug')
     .pipe(isDist ? through() : plumber())
     .pipe(pug({ pretty: true }))
     .pipe(rename('index.html'))
+<% } -%>
+<% if (useHtml) { -%>
+  return gulp.src('src/index.html')
+<% } -%>
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
@@ -85,7 +92,12 @@ gulp.task('connect', ['build'], function() {
 });
 
 gulp.task('watch', function() {
+<% if (usePug) { -%>
   gulp.watch('src/**/*.pug', ['html']);
+<% } -%>
+<% if (useHtml) { -%>
+  gulp.watch('src/**/*.html', ['html']);
+<% } -%>
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
   gulp.watch([

@@ -35,11 +35,20 @@ var mandatoryPlugins = [
 
 var optionalPlugins = [];
 
+var PUGJS = 'Pug (formerly Jade)';
+
 var questions = [
   {
     name: 'title',
     message: 'What is the title of your presentation?',
     default: 'Hello World'
+  },
+  {
+    name: 'templatingLanguage',
+    message: 'Which templating language would you like to use?',
+    type: 'list',
+    choices: [PUGJS, 'HTML'],
+    default: PUGJS
   },
   {
     type: 'confirm',
@@ -98,6 +107,9 @@ module.exports = generators.Base.extend({
         this[usePluginName] = answers[plugin.name];
       }.bind(this));
 
+      this.usePug = (answers.templatingLanguage === PUGJS);
+      this.useHtml = (answers.templatingLanguage === 'HTML');
+
       this.syntax = answers.syntax;
       this.title = answers.title;
       this.useTheme = answers.useTheme;
@@ -109,7 +121,7 @@ module.exports = generators.Base.extend({
   configuring: function () {
 
     this.template('README.md', 'README.md');
-    this.copy('gulpfile.js', 'gulpfile.js');
+    this.template('gulpfile.js', 'gulpfile.js');
     this.copy('_gitignore', '.gitignore');
     this.copy('_editorconfig', '.editorconfig');
 
@@ -128,13 +140,16 @@ module.exports = generators.Base.extend({
       'gulp-connect': '^4.0.0',
       'gulp-csso': '^2.0.0',
       'gulp-plumber': '^1.1.0',
-      'gulp-pug': '^3.0.2',
       'gulp-rename': '^1.2.0',
       'gulp-stylus': '^2.3.1',
       'gulp-uglify': '^1.5.3',
       'gulp-util': '^3.0.7',
       'insert-css': '^0.2.0',
       'through': '^2.3.4'
+    }
+
+    if (this.usePug) {
+      devDependencies['gulp-pug'] = '^3.0.2';
     }
 
     this.selectedPlugins.forEach(function (plugin) {
@@ -156,7 +171,14 @@ module.exports = generators.Base.extend({
   },
 
   writing: function () {
-    this.template('src/index.pug', 'src/index.pug');
+
+    if (this.usePug) {
+      this.template('src/index.pug', 'src/index.pug');
+    }
+    if (this.useHtml) {
+      this.template('src/index.html', 'src/index.html');
+    }
+
     this.copy('src/images/bespoke-logo.jpg', 'src/images/bespoke-logo.jpg');
     this.template('src/scripts/main.js', 'src/scripts/main.js');
     this.template('src/styles/main.styl', 'src/styles/main.styl');
