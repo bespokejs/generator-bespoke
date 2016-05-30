@@ -6,7 +6,9 @@ var pkg = require('./package.json'),
   plumber = require('gulp-plumber'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect'),
-  browserify = require('gulp-browserify'),
+  browserify = require('browserify'),
+  source = require('vinyl-source-stream'),
+  buffer = require('vinyl-buffer'),
   uglify = require('gulp-uglify'),
 <% if (usePug) { -%>
   pug = require('gulp-pug'),
@@ -20,10 +22,22 @@ var pkg = require('./package.json'),
   path = require('path'),
   isDist = process.argv.indexOf('serve') === -1;
 
+// Error handler when working with browserify (fills the role of plumber())
+function browserifyErrorHandler(err) {
+  if (isDist) {
+    throw err;
+  } else {
+    gutil.log(err.stack);
+    this.emit('end');
+  }
+}
+
 gulp.task('js', ['clean:js'], function() {
-  return gulp.src('src/scripts/main.js')
-    .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ debug: !isDist }))
+  // see https://wehavefaces.net/gulp-browserify-the-gulp-y-way-bb359b3f9623
+  return browserify('src/scripts/main.js').bundle()
+    .on('error', browserifyErrorHandler)
+    .pipe(source('src/scripts/main.js'))
+    .pipe(buffer())
     .pipe(isDist ? uglify() : through())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
