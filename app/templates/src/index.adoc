@@ -1,0 +1,51 @@
+= <%= title %>
+:!sectids:
+:imagesdir: images
+
+== Images
+image::bespoke-logo.jpg[]
+
+== Keyboard Interaction
+[discrete]
+=== Powered by https://github.com/markdalgleish/bespoke-keys[bespoke-keys]
+
+== Touch Interaction
+[discrete]
+=== Powered by https://github.com/markdalgleish/bespoke-scale[bespoke-scale]
+
+== Bullet List
+[discrete]
+=== Powered by https://github.com/markdalgleish/bespoke-bullets[bespoke-bullets]
+[%build]
+* Bullet 1
+* Bullet 2
+* Bullet 3
+
+// No multimedia plugin usage?
+
+<% if (syntax) { -%>
+== Syntax Highlighting
+[discrete]
+=== Powered by http://twitter.com/LeaVerou[Lea Verou]'s https://github.com/PrismJS/prism[Prism]
+[source,js]
+----
+bespoke.from('article', [
+  classes(),
+  keys(),
+  touch(),
+  bullets('li, .bullet')
+]);
+----
+<% } -%>
+
+// No named route plugin usage?
+
+== Just the beginning...
+[%build]
+* Edit http://asciidoctor.org/[AsciiDoc] markup in _'src/index.adoc'_
+* Edit http://stylus-lang.com/[Stylus] styles in _'src/styles/main.styl'_
+* Edit JavaScript in _'src/scripts/main.js'_
+
+[%build]
+*Enjoy! :)*
+http://twitter.com/markdalgleish[@markdalgleish]
