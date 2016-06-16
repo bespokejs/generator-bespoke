@@ -4,7 +4,7 @@
 
 A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
 
-The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), [Pug (formerly Jade)](http://jade-lang.com) and [Stylus](http://stylus-lang.com/) compilation, a [GitHub Pages](http://pages.github.com) deployment task, and .
+The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com) and a [GitHub Pages](http://pages.github.com) deployment task. You also have everything setup for [Stylus](http://stylus-lang.com/) compilation and [Pug (formerly Jade)](http://jade-lang.com) or AsciiDoc depending on the templating engine you chose.
 
 Additionally, your generated presentation includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins) based on your configuration:
 
@@ -24,6 +24,10 @@ Make a new directory and `cd` into it:
 $ mkdir presentation-hello-world
 $ cd presentation-hello-world
 ```
+
+> **IMPORTANT** If you're planning on creating an AsciiDoc-based presentation, be ready for the generator to execute the `bundle install` command. This command is used to install the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies. The gems are installed inside the local *.bundle/gems* directory.
+>
+> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use 2.3.1` **before** running the next command. You might also want to set your preferred Ruby version in the file named `.ruby-version` at the root of the project. If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle`.
 
 Scaffold a new presentation:
 ```bash
