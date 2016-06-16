@@ -43,6 +43,7 @@ var optionalPlugins = [
 ];
 
 var PUGJS = 'Pug (formerly jade)';
+var ASCIIDOC = 'AsciiDoc (with asciidoctor/asciidoctor-bespoke)';
 
 var questions = [
   {
@@ -54,7 +55,7 @@ var questions = [
     name: 'templatingLanguage',
     message: 'Which templating language would you like to use?',
     type: 'list',
-    choices: [PUGJS, 'HTML'],
+    choices: [PUGJS, ASCIIDOC, 'HTML'],
     default: PUGJS
   },
   {
@@ -104,6 +105,7 @@ module.exports = generators.Base.extend({
       }.bind(this));
 
       this.usePug = (answers.templatingLanguage === PUGJS);
+      this.useAsciiDoc = (answers.templatingLanguage === ASCIIDOC);
       this.useHtml = (answers.templatingLanguage === 'HTML');
 
       this.syntax = answers.syntax;
@@ -150,6 +152,10 @@ module.exports = generators.Base.extend({
       devDependencies['gulp-pug'] = '^3.0.2';
     }
 
+    if (this.useAsciiDoc) {
+      devDependencies['gulp-exec'] = '^2.1.2';
+    }
+
     this.selectedPlugins.forEach(function (plugin) {
       devDependencies['bespoke-' + plugin.name] = plugin.version;
     });
@@ -169,6 +175,10 @@ module.exports = generators.Base.extend({
 
     if (this.usePug) {
       this.template('src/index.pug', 'src/index.pug');
+    }
+    if (this.useAsciiDoc) {
+      this.template('src/index.adoc', 'src/index.adoc');
+      this.copy('Gemfile', 'Gemfile');
     }
     if (this.useHtml) {
       this.template('src/index.html', 'src/index.html');
