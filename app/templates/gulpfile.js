@@ -13,6 +13,9 @@ var pkg = require('./package.json'),
 <% if (usePug) { -%>
   pug = require('gulp-pug'),
 <% } -%>
+<% if (useAsciiDoc) { -%>
+  exec = require('gulp-exec'),
+<% } -%>
   stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
   csso = require('gulp-csso'),
@@ -45,6 +48,13 @@ gulp.task('html', ['clean:html'], function() {
   return gulp.src('src/index.pug')
     .pipe(isDist ? through() : plumber())
     .pipe(pug({ pretty: '  ' }))
+    .pipe(rename('index.html'))
+<% } -%>
+<% if (useAsciiDoc) { -%>
+  return gulp.src('src/index.adoc')
+    .pipe(isDist ? through() : plumber())
+    .pipe(exec('bundle exec asciidoctor-bespoke -o - src/index.adoc', { pipeStdout: true }))
+    .pipe(exec.reporter({ stdout: false }))
     .pipe(rename('index.html'))
 <% } -%>
 <% if (useHtml) { -%>
@@ -104,6 +114,9 @@ gulp.task('connect', ['build'], function() {
 gulp.task('watch', function() {
 <% if (usePug) { -%>
   gulp.watch('src/**/*.pug', ['html']);
+<% } -%>
+<% if (useAsciiDoc) { -%>
+  gulp.watch('src/**/*.adoc', ['html']);
 <% } -%>
 <% if (useHtml) { -%>
   gulp.watch('src/**/*.html', ['html']);

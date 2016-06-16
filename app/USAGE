@@ -5,17 +5,17 @@ Example:
   yo bespoke
 
   This will create:
-    ├── .editorconfig             : Config for editor like VIM...
-    ├── .gitignore                : Classic gitignore
-    ├── gulpfile.js               : Gulp build setup
-    ├── package.json              : You know for Node...
-    ├── README.md                 : "How to" documentation
-    ├── node_modules/**           : All the installed modules
+    ├── .editorconfig                 : Config for editor like VIM...
+    ├── .gitignore                    : Classic gitignore
+    ├── gulpfile.js                   : Gulp build setup
+    ├── package.json                  : You know for Node...
+    ├── README.md                     : "How to" documentation
+    ├── node_modules/**               : All the installed modules
     └── src
         ├── images
-        │   └── bespoke-logo.jpg  : Example image
-        ├── index.(pug | html)    : Reference template
+        │   └── bespoke-logo.jpg      : Example image
+        ├── index.(pug | adoc | html) : Reference template
         ├── scripts
-        │   └── main.js           : Bespoke setup with enabled plugins
+        │   └── main.js               : Bespoke setup with enabled plugins
         └── styles
-            └── main.styl         : Reference stylesheet
+            └── main.styl             : Reference stylesheet
