@@ -5,7 +5,7 @@ var bespoke = require('bespoke');
 }).join('\n'); %>
 
 // Bespoke.js
-bespoke.from('article', [
+bespoke.from('.deck', [
 <%- selectedPlugins.map(function (plugin) {
   return '  ' + plugin.varName + '(' + (plugin.configValue || '') + ')';
 }).join(',\n') %>
