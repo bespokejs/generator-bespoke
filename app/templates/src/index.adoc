@@ -6,12 +6,15 @@
 image::bespoke-logo.jpg[]
 
 == Keyboard Interaction
+[discrete]
 === Powered by https://github.com/markdalgleish/bespoke-keys[bespoke-keys]
 
 == Touch Interaction
+[discrete]
 === Powered by https://github.com/markdalgleish/bespoke-scale[bespoke-scale]
 
 == Bullet List
+[discrete]
 === Powered by https://github.com/markdalgleish/bespoke-bullets[bespoke-bullets]
 [%build]
 * Bullet 1
@@ -22,6 +25,7 @@ image::bespoke-logo.jpg[]
 
 <% if (syntax) { -%>
 == Syntax Highlighting
+[discrete]
 === Powered by http://twitter.com/LeaVerou[Lea Verou]'s https://github.com/PrismJS/prism[Prism]
 [source,js]
 ----
@@ -32,17 +36,16 @@ bespoke.from('article', [
   bullets('li, .bullet')
 ]);
 ----
-
 <% } -%>
 
 // No named route plugin usage?
 
 == Just the beginning...
-
 [%build]
 * Edit http://asciidoctor.org/[AsciiDoc] markup in _'src/index.adoc'_
 * Edit http://stylus-lang.com/[Stylus] styles in _'src/styles/main.styl'_
 * Edit JavaScript in _'src/scripts/main.js'_
 
-[%hardbreaks]
-* **Enjoy! :)** http://twitter.com/markdalgleish[ -@markdalgleish]
+[.bullet]
+*Enjoy! :)*
+http://twitter.com/markdalgleish[@markdalgleish]
