@@ -1,4 +1,8 @@
-node_modules
-dist
-bespoke-theme-*
-.idea
+<% if (useAsciiDoc) { -%>
+/Gemfile.lock
+/.bundle/
+<% } -%>
+/.idea/
+/bespoke-theme-*/
+/dist/
+/node_modules/
