@@ -39,6 +39,17 @@ img
 video
   vertical-align middle
 
+.deck
+  overflow hidden
+  font-feature-settings "kern" 1
+  text-rendering optimizeLegibility
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  // NOTE hide deck and slide content until Bespoke.js classes have been added
+  &:not(.bespoke-parent)
+  section:not(.bespoke-slide)
+    display none
+
 .bespoke-parent
 .bespoke-scale-parent
   position absolute
