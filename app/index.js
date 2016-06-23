@@ -36,6 +36,12 @@ var mandatoryPlugins = [
 
 var optionalPlugins = [
   {
+    name: 'highlight',
+    version: '^1.0.0',
+    message: 'Will your presentation include code samples?',
+    default: true
+  },
+  {
     name: 'multimedia',
     version: '^1.0.0',
     message: 'Would you like to use multimedia (audio, video, animated GIFs or SVGs)?',
@@ -58,12 +64,6 @@ var questions = [
     type: 'list',
     choices: [PUGJS, ASCIIDOC, 'HTML'],
     default: PUGJS
-  },
-  {
-    type: 'confirm',
-    name: 'syntax',
-    message: 'Will your presentation include code samples?',
-    default: true
   },
 ];
 
@@ -108,7 +108,6 @@ module.exports = generators.Base.extend({
       this.useAsciiDoc = (answers.templatingLanguage === ASCIIDOC);
       this.useHtml = (answers.templatingLanguage === 'HTML');
 
-      this.syntax = answers.syntax;
       this.title = answers.title;
       this.shortName = _.kebabCase(answers.title);
 
@@ -164,12 +163,6 @@ module.exports = generators.Base.extend({
     this.selectedPlugins.forEach(function (plugin) {
       devDependencies['bespoke-' + plugin.name] = plugin.version;
     });
-
-
-    if (this.syntax) {
-      devDependencies['prismjs'] = '^1.4.1';
-      devDependencies['prism-themes'] = 'PrismJS/prism-themes';
-    }
 
     packageSettings.devDependencies = sortedObject(devDependencies);
 
