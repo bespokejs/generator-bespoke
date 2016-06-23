@@ -10,9 +10,3 @@ bespoke.from('article', [
   return '  ' + plugin.varName + '(' + (plugin.configValue || '') + ')';
 }).join(',\n') %>
 ]);
-
-<% if (syntax) { -%>
-// Prism syntax highlighting
-require('prismjs');
-require('prismjs/plugins/normalize-whitespace/prism-normalize-whitespace');
-<% } -%>

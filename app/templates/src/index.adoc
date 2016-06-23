@@ -23,7 +23,7 @@ image::bespoke-logo.jpg[]
 
 // No multimedia plugin usage?
 
-<% if (syntax) { -%>
+<% if (usePluginHighlight) { -%>
 == Syntax Highlighting
 [discrete]
 === Powered by http://twitter.com/LeaVerou[Lea Verou]'s https://github.com/PrismJS/prism[Prism]
