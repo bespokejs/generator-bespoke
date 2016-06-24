@@ -34,8 +34,14 @@ var mandatoryPlugins = [
   { name: 'extern', version: '^1.0.0', configValue: "bespoke" },
 ];
 
+var PUGJS = 'Pug (formerly Jade)';
+var ASCIIDOC = 'AsciiDoc (using Asciidoctor Bespoke)';
+
 var optionalPlugins = [
   {
+    when: function (response) {
+      return response.templatingLanguage !== ASCIIDOC;
+    },
     name: 'prism',
     version: '^1.0.1',
     message: 'Will your presentation include code samples?',
@@ -48,9 +54,6 @@ var optionalPlugins = [
     default: false
   },
 ];
-
-var PUGJS = 'Pug (formerly Jade)';
-var ASCIIDOC = 'AsciiDoc (using Asciidoctor Bespoke)';
 
 var questions = [
   {
@@ -83,6 +86,7 @@ module.exports = generators.Base.extend({
           type: 'confirm',
           name: plugin.name,
           message: plugin.message,
+          when: plugin.when,
           default: 'default' in plugin ? plugin['default'] : true
         };
       }));

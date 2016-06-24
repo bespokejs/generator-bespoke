@@ -1,6 +1,8 @@
 = <%= title %>
 :!sectids:
 :imagesdir: images
+:source-highlighter: coderay
+:coderay-css: style
 
 == Images
 image::bespoke-logo.jpg[]
@@ -26,10 +28,7 @@ image::bespoke-logo.jpg[]
 video::AV3kYPutYfs[youtube,640,360,opts="loop,muted"]
 <% } -%>
 
-<% if (usePluginPrism) { -%>
 == Syntax Highlighting
-[discrete]
-=== Powered by http://twitter.com/LeaVerou[Lea Verou]'s https://github.com/PrismJS/prism[Prism]
 [source,js]
 ----
 bespoke.from('article', [
@@ -39,7 +38,6 @@ bespoke.from('article', [
   bullets('li, .bullet')
 ]);
 ----
-<% } -%>
 
 // No named route plugin usage?
 
