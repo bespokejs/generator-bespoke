@@ -193,7 +193,7 @@ module.exports = generators.Base.extend({
   install: function () {
     this.installDependencies({ bower: false });
 
-    if (this.useAsciiDoc) {
+    if (this.useAsciiDoc && this.options['skip-install'] === false) {
       try {
         execSync('gem install bundler', { stdio: [0, 1, 2] });
         execSync('bundle --path=.bundle/rubygems', { stdio: [0, 1, 2] });
