@@ -53,5 +53,14 @@ To manually deploy elsewhere, compile all assets into the `dist` directory:
 $ gulp
 ```
 
+## Tests
+
+Tests require Node.js 4+.
+Everything created by those tests (files and directories) is located in the user's temporary folder.
+
+Current tests verify basic behaviour about the plugin :
+
+* Check that `yo bespoke` generates correct files for different templating options (Pug, AsciiDoc, HTML)
+
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
