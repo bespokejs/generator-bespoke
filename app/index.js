@@ -196,26 +196,35 @@ module.exports = generators.Base.extend({
     this.installDependencies({ bower: false });
 
     if (this.useAsciiDoc) {
-      try {
+      if (this.options['skip-install'] === false) {
+        try {
+          console.log([
+            'I\'m also running ' +
+            chalk.yellow.bold('bundle install --path=.bundle/gems') +
+            ' for you to install the required Ruby gems.',
+            'If this fails, try running the command yourself.',
+            ''
+          ].join('\n'));
+          execSync('bundle install --path=.bundle/gems', { stdio: [0, 1, 2] });
+        }
+        catch (e) {
+          var warning = [
+            '',
+            chalk.red.bold('Failed to install the required Ruby gems. Try running these commands yourself:'),
+            chalk.cyan.bold('bundle version || gem install bundler'),
+            chalk.cyan.bold('bundle install --path=.bundle/gems'),
+            ''
+          ].join('\n');
+          console.warn(warning);
+        }
+      }
+      else {
         console.log([
-          'I\'m also running ' +
+          'Also run ' +
           chalk.yellow.bold('bundle install --path=.bundle/gems') +
-          ' for you to install the required Ruby gems.',
-          'If this fails, try running the command yourself.',
+          ' to install the required Ruby gems.',
           ''
         ].join('\n'));
-        execSync('bundle install --path=.bundle/gems', { stdio: [0, 1, 2] });
-      }
-      catch (e) {
-
-        var warning = [
-          '',
-          chalk.red.bold('Failed to install bundler and asciidoctor-bespoke, try these commands yourself:'),
-          chalk.cyan.bold('bundle version || gem install bundler'),
-          chalk.cyan.bold('bundle install --path=.bundle/gems'),
-          ''
-        ].join('\n');
-        console.warn(warning);
       }
     }
   }
