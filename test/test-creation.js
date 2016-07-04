@@ -1,46 +1,58 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path    = require('path');
-var helpers = require('yeoman-generator').test;
-
+var path = require('path');
+var helpers = require('yeoman-test');
+var assert = require('yeoman-assert');
 
 describe('bespoke generator', function () {
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'temp'), function (err) {
-      if (err) {
-        return done(err);
-      }
 
-      this.app = helpers.createGenerator('bespoke:app', [
-        '../../app'
-      ]);
-      done();
-    }.bind(this));
+  var baseFiles = [
+    '.editorconfig',
+    '.gitignore',
+    'gulpfile.js',
+    'package.json',
+    'README.md',
+    'src/images/bespoke-logo.jpg',
+    'src/scripts/main.js',
+    'src/styles/main.styl',
+  ];
+
+  function runGenerator(templatingLanguage) {
+    return helpers.run(path.join(__dirname, '..', 'app'))
+      .withOptions({ skipInstall: true })
+      .withPrompts({
+        'title': 'foobar',
+        'templatingLanguage': templatingLanguage,
+        'highlight': false,
+        'multimedia': false,
+      });
+  }
+
+  it('should create expected files for Pug', function () {
+
+    var ctx = runGenerator('Pug (formerly Jade)');
+    return ctx.toPromise().then(function () {
+      assert.file(baseFiles.concat('src/index.pug'));
+      ctx.cleanTestDirectory();
+    });
   });
 
-  it('creates expected files', function (done) {
-    var expected = [
-      '.editorconfig',
-      '.gitignore',
-      'gulpfile.js',
-      'package.json',
-      'README.md',
-      'src/index.jade',
-      'src/scripts/main.js',
-      'src/styles/main.styl',
-      'src/images'
-    ];
+  it('should create expected files for AsciiDoc', function () {
 
-    helpers.mockPrompt(this.app, {
-      'title': 'Foo Bar',
-      'prism': 'Y'
+    var ctx = runGenerator('AsciiDoc (using Asciidoctor Bespoke)');
+    return ctx.toPromise().then(function () {
+      assert.file(baseFiles.concat('src/index.adoc'));
+      ctx.cleanTestDirectory();
     });
+  });
 
-    this.app.options['skip-install'] = true;
-    this.app.run({}, function () {
-      helpers.assertFiles(expected);
-      done();
+  it('should create expected files for HTML', function () {
+
+    var ctx = runGenerator('HTML');
+    return ctx.toPromise().then(function () {
+      assert.file(baseFiles.concat('src/index.html'));
+      ctx.cleanTestDirectory();
     });
   });
 });
