@@ -44,12 +44,12 @@ function spawnAndCollectStderr(cmd, args, opts, done) {
 
 describe('bespoke generator', function () {
 
-  it('should provide a "gulp serve" command with a basic working bespoke deck', function (done) {
+  before(function () {
 
-    // install can be long
+    // npm install can be long
     this.timeout(60000);
 
-    helpers.run(path.join(__dirname, '../app'))
+    return helpers.run(path.join(__dirname, '../app'))
       .withOptions({ skipInstall: false })
       .withPrompts({
         'title': 'Foobar Test Title',
@@ -57,25 +57,47 @@ describe('bespoke generator', function () {
         'highlight': false,
         'multimedia': false,
       })
-      .toPromise()
-      .then(function (dir) {
+      .toPromise();
+  })
 
-        // start gulp serve (on tmp dir by default)
-        var gulpServerProcess = spawn('./node_modules/.bin/gulp', ['serve']);
+  it('should provide a "gulp serve" command with a basic working bespoke deck', function (done) {
 
-        // Wait for gulp serve to be ready (5 sec)
-        setTimeout(function () {
+    // gulp serve + phantom tests can be long
+    this.timeout(20000);
 
-          // start phantomjs tests
-          var spawnOpts = { cwd: path.join(__dirname, '..') };
-          spawnAndCollectStderr('npm', ['run', 'test-user'], spawnOpts, function (err) {
+    // start gulp serve (on tmp dir by default)
+    var gulpServerProcess = spawn('./node_modules/.bin/gulp', ['serve']);
 
-            // kill gulp serve when phantomjs tests are finished
-            process.kill(gulpServerProcess.pid);
+    // Wait for gulp serve to be ready (5 sec)
+    setTimeout(function () {
 
-            return done(err);
-          });
-        }, 5000);
+      // start phantomjs tests
+      var spawnOpts = { cwd: path.join(__dirname, '..') };
+      spawnAndCollectStderr('npm', ['run', 'test-user'], spawnOpts, function (err) {
+
+        // kill gulp serve when phantomjs tests are finished
+        process.kill(gulpServerProcess.pid);
+
+        return done(err);
       });
+    }, 5000);
+  });
+
+  it('should provide a "gulp build" command with correct generated files', function (done) {
+
+    // gulp build can be long
+    this.timeout(20000);
+
+    spawnAndCollectStderr('./node_modules/.bin/gulp', ['build'], {}, function (err) {
+
+      assert.file([
+        'dist/index.html',
+        'dist/build/build.css',
+        'dist/build/build.js',
+        'dist/images/bespoke-logo.jpg'
+      ]);
+
+      return done(err);
+    });
   });
 });
