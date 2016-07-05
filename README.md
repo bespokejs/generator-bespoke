@@ -62,6 +62,7 @@ Current tests verify basic behaviour about the plugin :
 
 * Check that `yo bespoke` generates correct files for different templating options (Pug, AsciiDoc, HTML)
 * Check that after a `yo bespoke`, `gulp serve` provides a local server with a working Bespoke.js slide deck
+* Check that after a `yo bespoke`, `gulp build` generates correct files
 
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
