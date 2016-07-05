@@ -61,6 +61,7 @@ Everything created by those tests (files and directories) is located in the user
 Current tests verify basic behaviour about the plugin :
 
 * Check that `yo bespoke` generates correct files for different templating options (Pug, AsciiDoc, HTML)
+* Check that after a `yo bespoke`, `gulp serve` provides a local server with a working Bespoke.js slide deck
 
 ## License
 [MIT License](http://markdalgleish.mit-license.org)
