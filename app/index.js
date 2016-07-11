@@ -26,12 +26,12 @@ var welcome = [
 ].join('\n');
 
 var mandatoryPlugins = [
-  { name: 'nav', version: '^1.0.2' },
-  { name: 'classes', version: '^1.0.0' },
-  { name: 'scale', version: '^1.0.0' },
-  { name: 'bullets', version: '^1.0.0', configValue: "'li, .bullet'" },
-  { name: 'hash', version: '^1.0.0' },
-  { name: 'extern', version: '^1.0.0', configValue: "bespoke" },
+  { name: 'classes', version: '^1.0.0', priority: 0 },
+  { name: 'nav', version: '^1.0.2', priority: 1 },
+  { name: 'scale', version: '^1.0.0', priority: 1 },
+  { name: 'bullets', version: '^1.0.0', configValue: "'li, .bullet'", priority: 1 },
+  { name: 'hash', version: '^1.0.0', priority: 1 },
+  { name: 'extern', version: '^1.0.0', configValue: "bespoke", priority: 2 },
 ];
 
 var PUGJS = 'Pug (formerly Jade)';
@@ -44,12 +44,14 @@ var optionalPlugins = [
     },
     name: 'highlight',
     version: '^1.0.0',
+    priority: 1,
     message: 'Will your presentation include code samples?',
     default: true
   },
   {
     name: 'multimedia',
     version: '^1.0.0',
+    priority: 1,
     message: 'Would you like to use multimedia (audio, video, animated GIFs or SVGs)?',
     default: false
   },
@@ -93,11 +95,13 @@ module.exports = generators.Base.extend({
 
     return this.prompt(prompts).then(function (answers) {
 
-      this.selectedPlugins = []
+      var plugins = []
         .concat(mandatoryPlugins)
         .concat(optionalPlugins.filter(function (plugin) {
           return answers[plugin.name];
         }));
+
+      this.selectedPlugins = _.sortBy(plugins, 'priority');
 
       this.selectedPlugins.forEach(function (plugin) {
         plugin.varName = _.camelCase(plugin.name);
