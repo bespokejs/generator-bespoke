@@ -29,7 +29,7 @@ var mandatoryPlugins = [
   { name: 'classes', version: '^1.0.0', priority: 0 },
   { name: 'nav', version: '^1.0.2', priority: 1 },
   { name: 'scale', version: '^1.0.0', priority: 1 },
-  { name: 'bullets', version: '^1.0.0', configValue: "'li, .bullet'", priority: 1 },
+  { name: 'bullets', version: '^1.0.0', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
   { name: 'hash', version: '^1.0.0', priority: 1 },
   { name: 'extern', version: '^1.0.0', configValue: "bespoke", priority: 2 },
 ];
