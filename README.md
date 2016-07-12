@@ -25,6 +25,10 @@ $ mkdir presentation-hello-world
 $ cd presentation-hello-world
 ```
 
+> **IMPORTANT** If you're planning to create an AsciiDoc-based presentation, know that the generator executes the `bundle` command to install gems required by [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) into the local *.bundle/gems* directory.
+>
+> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use default` (or `rvm use 2.3.0`) **before** running the next command. If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle`.
+
 Scaffold a new presentation:
 ```bash
 $ yo bespoke
