@@ -44,6 +44,6 @@ bespoke.from('article', [
 * Edit http://stylus-lang.com/[Stylus] styles in _'src/styles/main.styl'_
 * Edit JavaScript in _'src/scripts/main.js'_
 
-[.bullet]
+[%build]
 *Enjoy! :)*
 http://twitter.com/markdalgleish[@markdalgleish]
