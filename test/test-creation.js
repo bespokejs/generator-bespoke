@@ -40,7 +40,7 @@ describe('bespoke generator', function () {
 
   it('should create expected files for AsciiDoc', function () {
 
-    return runGenerator('AsciiDoc (with asciidoctor/asciidoctor-bespoke)')
+    return runGenerator('AsciiDoc (using Asciidoctor Bespoke)')
       .then(function () {
         assert.file(baseFiles.concat('src/index.adoc'));
       });

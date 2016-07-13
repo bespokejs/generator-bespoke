@@ -35,7 +35,7 @@ var mandatoryPlugins = [
 ];
 
 var PUGJS = 'Pug (formerly Jade)';
-var ASCIIDOC = 'AsciiDoc (with asciidoctor/asciidoctor-bespoke)';
+var ASCIIDOC = 'AsciiDoc (using Asciidoctor Bespoke)';
 
 var optionalPlugins = [
   {
@@ -131,7 +131,6 @@ module.exports = generators.Base.extend({
 
     if (this.useAsciiDoc) {
       this.copy('Gemfile', 'Gemfile');
-      this.copy('_ruby-version', '.ruby-version');
     }
 
     var packageSettings = {
@@ -197,29 +196,36 @@ module.exports = generators.Base.extend({
   install: function () {
     this.installDependencies({ bower: false });
 
-    if (this.useAsciiDoc && this.options['skip-install'] === false) {
-      try {
+    if (this.useAsciiDoc) {
+      if (this.options['skip-install'] === false) {
+        try {
+          console.log([
+            'I\'m also running ' +
+            chalk.yellow.bold('bundle install --path=.bundle/gems') +
+            ' for you to install the required Ruby gems.',
+            'If this fails, try running the command yourself.',
+            ''
+          ].join('\n'));
+          execSync('bundle install --path=.bundle/gems', { stdio: [0, 1, 2] });
+        }
+        catch (e) {
+          var warning = [
+            '',
+            chalk.red.bold('Failed to install the required Ruby gems. Try running these commands yourself:'),
+            chalk.cyan.bold('bundle version || gem install bundler'),
+            chalk.cyan.bold('bundle install --path=.bundle/gems'),
+            ''
+          ].join('\n');
+          console.warn(warning);
+        }
+      }
+      else {
         console.log([
-          'I\'m also running ' +
-          chalk.yellow.bold('gem install bundler') + ' and ' +
-          chalk.yellow.bold('bundle --path=.bundle/gems') +
-          ' for you to install the required Ruby dependencies.',
-          'If this fails, try running the commands yourself.',
+          'Also run ' +
+          chalk.yellow.bold('bundle install --path=.bundle/gems') +
+          ' to install the required Ruby gems.',
           ''
         ].join('\n'));
-        execSync('gem install bundler', { stdio: [0, 1, 2] });
-        execSync('bundle --path=.bundle/gems', { stdio: [0, 1, 2] });
-      }
-      catch (e) {
-
-        var warning = [
-          '',
-          chalk.red.bold('Failed to install bundler and asciidoctor-bespoke, try these commands yourself :'),
-          chalk.cyan.bold('gem install bundler'),
-          chalk.cyan.bold('bundle --path=.bundle/gems'),
-          ''
-        ].join('\n');
-        console.warn(warning);
       }
     }
   }
