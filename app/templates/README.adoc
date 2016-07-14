@@ -1,0 +1,26 @@
+= <%= title %>
+
+[quote]
+A http://markdalgleish.com/projects/bespoke.js[Bespoke.js] presentation, built with https://github.com/markdalgleish/generator-bespoke[generator-bespoke]
+
+== View slides locally
+
+First, ensure you have the following installed:
+
+1. http://nodejs.org[Node.js]
+2. http://gulpjs.com[Gulp]: `$ npm install -g gulp-cli`
+<% if (useAsciiDoc) { -%>
+3. https://www.ruby-lang.org/[Ruby >= 2]: `rvm use 2.3.1 --install`
+4. http://bundler.io/[Bundler]: `gem install bundler`
+<% } -%>
+
+Then, install dependencies and run the preview server:
+
+[source,bash]
+----
+<% if (useAsciiDoc) { -%>
+$ bundle install --path=.bundle/gems
+<% } -%>
+$ npm install
+$ gulp serve
+----
