@@ -67,11 +67,8 @@ gulp.task('html', ['clean:html'], function() {
 gulp.task('css', ['clean:css'], function() {
   return gulp.src('src/styles/main.styl')
     .pipe(isDist ? through() : plumber())
-    .pipe(stylus({
-      'include css': true,
-      'paths': ['./node_modules']
-    }))
-    .pipe(autoprefixer('last 2 versions', { map: false }))
+    .pipe(stylus({ 'include css': true, paths: ['./node_modules'] }))
+    .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
     .pipe(isDist ? csso() : through())
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
@@ -105,10 +102,7 @@ gulp.task('clean:images', function() {
 });
 
 gulp.task('connect', ['build'], function() {
-  connect.server({
-    root: 'dist',
-    livereload: true
-  });
+  connect.server({ root: 'dist', port: 8080, livereload: true });
 });
 
 gulp.task('watch', function() {
