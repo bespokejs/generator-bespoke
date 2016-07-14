@@ -28,9 +28,9 @@ var welcome = [
 var mandatoryPlugins = [
   { name: 'classes', version: '^1.0.0', priority: 0 },
   { name: 'nav', version: '^1.0.2', priority: 1 },
-  { name: 'scale', version: '^1.0.0', priority: 1 },
-  { name: 'bullets', version: '^1.0.0', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
-  { name: 'hash', version: '^1.0.0', priority: 1 },
+  { name: 'scale', version: '^1.0.1', priority: 1 },
+  { name: 'bullets', version: '^1.1.0', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
+  { name: 'hash', version: '^1.0.2', priority: 1 },
   { name: 'extern', version: '^1.0.0', configValue: "bespoke", priority: 2 },
 ];
 
@@ -50,7 +50,7 @@ var optionalPlugins = [
   },
   {
     name: 'multimedia',
-    version: '^1.0.0',
+    version: '^1.1.0',
     priority: 1,
     message: 'Would you like to use multimedia (audio, video, animated GIFs or SVGs)?',
     default: false
@@ -141,26 +141,25 @@ module.exports = generators.Base.extend({
     var devDependencies = {
       'bespoke': '^1.1.0',
       'browserify': '^13.0.1',
-      'del': '^2.2.0',
+      'del': '^2.2.1',
       'gh-pages': '^0.11.0',
-      'gulp': '^3.8.1',
+      'gulp': '^3.9.1',
       'gulp-autoprefixer': '^3.1.0',
-      'gulp-connect': '^4.0.0',
+      'gulp-connect': '^4.1.0',
       'gulp-csso': '^2.0.0',
       'gulp-plumber': '^1.1.0',
-      'gulp-rename': '^1.2.0',
-      'gulp-stylus': '^2.3.1',
-      'gulp-uglify': '^1.5.3',
+      'gulp-rename': '^1.2.2',
+      'gulp-stylus': '^2.5.0',
+      'gulp-uglify': '^1.5.4',
       'gulp-util': '^3.0.7',
-      'insert-css': '^0.2.0',
       'normalizecss': '^3.0.0',
-      'through': '^2.3.4',
+      'through': '^2.3.8',
       'vinyl-buffer': '^1.0.0',
       'vinyl-source-stream': '^1.1.0',
     }
 
     if (this.usePug) {
-      devDependencies['gulp-pug'] = '^3.0.2';
+      devDependencies['gulp-pug'] = '^3.0.3';
     }
 
     if (this.useAsciiDoc) {
@@ -172,6 +171,8 @@ module.exports = generators.Base.extend({
     });
 
     packageSettings.devDependencies = sortedObject(devDependencies);
+
+    packageSettings.engines = { 'node': '>=0.10.0' }
 
     this.fs.writeJSON(this.destinationPath('package.json'), packageSettings);
   },
