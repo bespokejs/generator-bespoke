@@ -12,7 +12,7 @@ describe('bespoke generator', function () {
     '.gitignore',
     'gulpfile.js',
     'package.json',
-    'README.md',
+    'README.adoc',
     'src/images/bespoke-logo.jpg',
     'src/scripts/main.js',
     'src/styles/main.styl',
