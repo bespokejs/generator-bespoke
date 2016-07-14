@@ -119,7 +119,8 @@ gulp.task('watch', function() {
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
 });
-gulp.task('deploy', ['build'], function(done) {
+
+gulp.task('deploy', ['clean', 'build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
