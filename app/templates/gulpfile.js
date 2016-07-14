@@ -1,28 +1,28 @@
 'use strict';
 
 var pkg = require('./package.json'),
-  gulp = require('gulp'),
-  gutil = require('gulp-util'),
-  plumber = require('gulp-plumber'),
-  rename = require('gulp-rename'),
-  connect = require('gulp-connect'),
+  autoprefixer = require('gulp-autoprefixer'),
   browserify = require('browserify'),
-  source = require('vinyl-source-stream'),
   buffer = require('vinyl-buffer'),
-  uglify = require('gulp-uglify'),
-<% if (usePug) { -%>
-  pug = require('gulp-pug'),
-<% } -%>
+  connect = require('gulp-connect'),
+  csso = require('gulp-csso'),
+  del = require('del'),
 <% if (useAsciiDoc) { -%>
   exec = require('gulp-exec'),
 <% } -%>
-  stylus = require('gulp-stylus'),
-  autoprefixer = require('gulp-autoprefixer'),
-  csso = require('gulp-csso'),
-  del = require('del'),
-  through = require('through'),
   ghpages = require('gh-pages'),
+  gulp = require('gulp'),
+  gutil = require('gulp-util'),
   path = require('path'),
+  plumber = require('gulp-plumber'),
+<% if (usePug) { -%>
+  pug = require('gulp-pug'),
+<% } -%>
+  rename = require('gulp-rename'),
+  source = require('vinyl-source-stream'),
+  stylus = require('gulp-stylus'),
+  through = require('through'),
+  uglify = require('gulp-uglify'),
   isDist = process.argv.indexOf('serve') === -1,
   // browserifyPlumber fills the role of plumber() when working with browserify
   browserifyPlumber = function(e) {
