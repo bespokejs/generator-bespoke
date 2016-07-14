@@ -1,44 +1,40 @@
 'use strict';
 
 var pkg = require('./package.json'),
-  gulp = require('gulp'),
-  gutil = require('gulp-util'),
-  plumber = require('gulp-plumber'),
-  rename = require('gulp-rename'),
-  connect = require('gulp-connect'),
+  autoprefixer = require('gulp-autoprefixer'),
   browserify = require('browserify'),
-  source = require('vinyl-source-stream'),
   buffer = require('vinyl-buffer'),
-  uglify = require('gulp-uglify'),
-<% if (usePug) { -%>
-  pug = require('gulp-pug'),
-<% } -%>
+  connect = require('gulp-connect'),
+  csso = require('gulp-csso'),
+  del = require('del'),
 <% if (useAsciiDoc) { -%>
   exec = require('gulp-exec'),
 <% } -%>
-  stylus = require('gulp-stylus'),
-  autoprefixer = require('gulp-autoprefixer'),
-  csso = require('gulp-csso'),
-  del = require('del'),
-  through = require('through'),
   ghpages = require('gh-pages'),
+  gulp = require('gulp'),
+  gutil = require('gulp-util'),
   path = require('path'),
-  isDist = process.argv.indexOf('serve') === -1;
-
-// Error handler when working with browserify (fills the role of plumber())
-function browserifyErrorHandler(err) {
-  if (isDist) {
-    throw err;
-  } else {
-    gutil.log(err.stack);
+  plumber = require('gulp-plumber'),
+<% if (usePug) { -%>
+  pug = require('gulp-pug'),
+<% } -%>
+  rename = require('gulp-rename'),
+  source = require('vinyl-source-stream'),
+  stylus = require('gulp-stylus'),
+  through = require('through'),
+  uglify = require('gulp-uglify'),
+  isDist = process.argv.indexOf('serve') === -1,
+  // browserifyPlumber fills the role of plumber() when working with browserify
+  browserifyPlumber = function(e) {
+    if (isDist) throw e;
+    gutil.log(e.stack);
     this.emit('end');
-  }
-}
+  };
 
 gulp.task('js', ['clean:js'], function() {
   // see https://wehavefaces.net/gulp-browserify-the-gulp-y-way-bb359b3f9623
   return browserify('src/scripts/main.js').bundle()
-    .on('error', browserifyErrorHandler)
+    .on('error', browserifyPlumber)
     .pipe(source('src/scripts/main.js'))
     .pipe(buffer())
     .pipe(isDist ? uglify() : through())
@@ -51,7 +47,7 @@ gulp.task('html', ['clean:html'], function() {
 <% if (usePug) { -%>
   return gulp.src('src/index.pug')
     .pipe(isDist ? through() : plumber())
-    .pipe(pug({ pretty: true }))
+    .pipe(pug({ pretty: '  ' }))
     .pipe(rename('index.html'))
 <% } -%>
 <% if (useAsciiDoc) { -%>
@@ -71,11 +67,8 @@ gulp.task('html', ['clean:html'], function() {
 gulp.task('css', ['clean:css'], function() {
   return gulp.src('src/styles/main.styl')
     .pipe(isDist ? through() : plumber())
-    .pipe(stylus({
-      'include css': true,
-      'paths': ['./node_modules']
-    }))
-    .pipe(autoprefixer('last 2 versions', { map: false }))
+    .pipe(stylus({ 'include css': true, paths: ['./node_modules'] }))
+    .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
     .pipe(isDist ? csso() : through())
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
@@ -88,31 +81,28 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('clean', function(done) {
+gulp.task('clean', function() {
   return del('dist');
 });
 
-gulp.task('clean:html', function(done) {
+gulp.task('clean:html', function() {
   return del('dist/index.html');
 });
 
-gulp.task('clean:js', function(done) {
+gulp.task('clean:js', function() {
   return del('dist/build/build.js');
 });
 
-gulp.task('clean:css', function(done) {
+gulp.task('clean:css', function() {
   return del('dist/build/build.css');
 });
 
-gulp.task('clean:images', function(done) {
+gulp.task('clean:images', function() {
   return del('dist/images');
 });
 
 gulp.task('connect', ['build'], function() {
-  connect.server({
-    root: 'dist',
-    livereload: true
-  });
+  connect.server({ root: 'dist', port: 8080, livereload: true });
 });
 
 gulp.task('watch', function() {
@@ -125,14 +115,12 @@ gulp.task('watch', function() {
 <% if (useHtml) { -%>
   gulp.watch('src/**/*.html', ['html']);
 <% } -%>
+  gulp.watch('src/scripts/**/*.js', ['js']);
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
-  gulp.watch([
-    'src/scripts/**/*.js',
-    'bespoke-theme-*/dist/*.js' // Allow themes to be developed in parallel
-  ], ['js']);
 });
-gulp.task('deploy', ['build'], function(done) {
+
+gulp.task('deploy', ['clean', 'build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
