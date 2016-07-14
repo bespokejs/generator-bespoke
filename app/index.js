@@ -172,6 +172,8 @@ module.exports = generators.Base.extend({
 
     packageSettings.devDependencies = sortedObject(devDependencies);
 
+    packageSettings.engines = { 'node': '>=0.10.0' }
+
     this.fs.writeJSON(this.destinationPath('package.json'), packageSettings);
   },
 
