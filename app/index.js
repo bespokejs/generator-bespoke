@@ -124,7 +124,7 @@ module.exports = generators.Base.extend({
 
   configuring: function () {
 
-    this.template('README.md', 'README.md');
+    this.template('README.adoc', 'README.adoc');
     this.template('gulpfile.js', 'gulpfile.js');
     this.copy('_gitignore', '.gitignore');
     this.copy('_editorconfig', '.editorconfig');
