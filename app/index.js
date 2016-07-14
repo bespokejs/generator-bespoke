@@ -28,9 +28,9 @@ var welcome = [
 var mandatoryPlugins = [
   { name: 'classes', version: '^1.0.0', priority: 0 },
   { name: 'nav', version: '^1.0.2', priority: 1 },
-  { name: 'scale', version: '^1.0.0', priority: 1 },
-  { name: 'bullets', version: '^1.0.0', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
-  { name: 'hash', version: '^1.0.0', priority: 1 },
+  { name: 'scale', version: '^1.0.1', priority: 1 },
+  { name: 'bullets', version: '^1.1.0', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
+  { name: 'hash', version: '^1.0.2', priority: 1 },
   { name: 'extern', version: '^1.0.0', configValue: "bespoke", priority: 2 },
 ];
 
@@ -50,7 +50,7 @@ var optionalPlugins = [
   },
   {
     name: 'multimedia',
-    version: '^1.0.0',
+    version: '^1.1.0',
     priority: 1,
     message: 'Would you like to use multimedia (audio, video, animated GIFs or SVGs)?',
     default: false
