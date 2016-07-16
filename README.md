@@ -1,68 +1,143 @@
-[![Build Status](https://img.shields.io/travis/bespokejs/generator-bespoke/master.svg?style=flat-square)](http://travis-ci.org/bespokejs/generator-bespoke)
-
 # Bespoke.js Generator
 
-A generator for [Yeoman](http://yeoman.io) that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
+[![Build Status](https://img.shields.io/travis/bespokejs/generator-bespoke/master.svg?style=flat-square)](http://travis-ci.org/bespokejs/generator-bespoke)
 
-The boilerplate project includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com) and a [GitHub Pages](http://pages.github.com) deployment task. You also have everything setup for [Stylus](http://stylus-lang.com/) compilation and [Pug (formerly Jade)](http://jade-lang.com) or AsciiDoc depending on the templating engine you chose.
+A [Yeoman](http://yeoman.io) generator that scaffolds a project for a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
 
-Additionally, your generated presentation includes the following [Bespoke.js plugins](https://github.com/markdalgleish/bespoke.js#plugins) based on your configuration:
+## Features
 
- - [bespoke-bullets](https://github.com/markdalgleish/bespoke-bullets)
- - [bespoke-scale](https://github.com/markdalgleish/bespoke-scale)
- - [bespoke-hash](https://github.com/markdalgleish/bespoke-hash)
+The boilerplate project this generator creates includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), and a [GitHub Pages](http://pages.github.com) deployment task.
+The project is also setup to perform [Stylus](http://stylus-lang.com/) compilation and, optionally, [Pug (formerly Jade)](http://jade-lang.com) or [AsciiDoc](https://github.com/asciidoctor/asciidoctor-bespoke) conversion to HTML, depending on the templating engine you chose.
+
+The following [Bespoke.js plugins](https://github.com/bespokejs/bespoke#plugins) are always included by default:
+
+- [bespoke-classes](https://github.com/bespokejs/bespoke-classes)
+- [bespoke-nav](https://github.com/opendevise/bespoke-nav)
+- [bespoke-scale](https://github.com/bespokejs/bespoke-scale)
+- [bespoke-bullets](https://github.com/bespokejs/bespoke-bullets)
+- [bespoke-hash](https://github.com/bespokejs/bespoke-hash)
+- [bespoke-extern](https://github.com/bespokejs/bespoke-extern)
+
+Based on your responses to the prompts in the generator, your presentation may also include the following optional plugins:
+
+- [bespoke-highlight](https://github.com/opendevise/bespoke-highlight)
+- [bespoke-multimedia](https://github.com/opendevise/bespoke-multimedia)
+
+## Prerequisites
+
+In order to use this project, you must first satisify the prerequisites of Bespoke.js.
+
+- Node.js >= 0.12
+  * _We strongly recommend that you use [nvm](https://github.com/creationix/nvm) to manage your Node.js installation._
+- Gulp (command line interface only)
+  ```bash
+  $ npm install -g gulp-cli
+  ```
 
 ## Usage
 
-Assuming you have [Node.js](http://nodejs.org), install `generator-bespoke`:
+Once you have [Node.js](http://nodejs.org), install the `generator-bespoke` package globally:
+
 ```bash
 $ npm install -g generator-bespoke
 ```
 
-Make a new directory and `cd` into it:
+Create a new directory and switch to it:
+
 ```bash
 $ mkdir presentation-hello-world
 $ cd presentation-hello-world
 ```
 
-> **IMPORTANT** If you're planning on creating an AsciiDoc-based presentation, be ready for the generator to execute the `bundle install` command. This command is used to install the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies. The gems are installed inside the local *.bundle/gems* directory.
+> **IMPORTANT** If you're planning to create an AsciiDoc-based presentation, be ready for the generator to execute the `bundle install` command.
+> This command is used to install the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies.
+> The gems are installed to the local _.bundle/gems_ directory.
 >
-> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use 2.3.1` **before** running the next command. You might also want to set your preferred Ruby version in the file named `.ruby-version` at the root of the project. If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle`.
+> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use` (e.g., `rvm use 2.3.1`) **before** running the next command.
+> You may also want to declare your preferred Ruby version in the file named _.ruby-version_ at the root of the project.
+>
+> If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle install`.
 
-Scaffold a new presentation:
+Scaffold a new presentation using:
+
 ```bash
 $ yo bespoke
 ```
 
-## Presentation workflow
+If you want the generator to skip `npm install` (and also `bundle install` for an AsciiDoc-based presentation), set the `skip-install` switch to false:
+
+```bash
+$ yo bespoke --skip-install=true
+```
+
+You'll then be instructed to execute the the commands that the generator skipped.
+
+Refer to the README at the root of the generated project for instructions on how to get started developing your new presentation.
+
+## Presentation Workflow
 
 All source files for the presentation reside in the `src` directory.
 
-Start a local preview server:
+Build the presentation and start a local preview server using:
+
 ```bash
 $ gulp serve
 ```
 
-Compile and deploy to GitHub Pages, assuming a git repo with `origin` pointing to GitHub:
-```bash
-$ gulp deploy
-```
+Once the server is running, you can view the slides by navigating to http://localhost:8080 in your browser.
+The build will continue monitoring for changes, so you can work on the presentation and preview it in real time.
 
-To manually deploy elsewhere, compile all assets into the `dist` directory:
+Build the presentation without starting the local preview server using:
+
 ```bash
 $ gulp
 ```
 
-## Tests
+The files are built into the _dist_ directory.
+You can view the slides by navigating to _dist/index.html_ in your browser.
+
+Compile and deploy to GitHub Pages, assuming a git repo with `origin` pointing to GitHub, using:
+
+```bash
+$ gulp deploy
+```
+
+## Generator Tests
 
 Tests require Node.js 4.4+.
 Everything created by those tests (files and directories) is located in the user's temporary folder.
 
-Current tests verify basic behaviour about the plugin :
+First, clone the git repository and switch to the project:
 
-* Check that `yo bespoke` generates correct files for different templating options (Pug, AsciiDoc, HTML)
-* Check that after a `yo bespoke`, `gulp serve` provides a local server with a working Bespoke.js slide deck
-* Check that after a `yo bespoke`, `gulp build` generates correct files
+```bash
+$ git clone git@github.com:bespokejs/generator-bespoke.git
+$ cd generator-bespoke
+```
+
+If you're using nvm to manage your Node.js installation, switch to at least Node.js 4.4+.
+
+```bash
+nvm use 4.4
+```
+
+Next, install the development dependencies into the project:
+
+```bash
+$ npm i
+```
+
+Finally, run the tests using:
+
+```bash
+npm test
+```
+
+The tests verify basic behaviour about the plugin, including:
+
+* Checks that `yo bespoke` generates correct files for different templating options (Pug, AsciiDoc, HTML)
+* Checks that after a `yo bespoke`, `gulp serve` provides a local server with a working Bespoke.js slide deck
+* Checks that after a `yo bespoke`, `gulp build` generates correct files
 
 ## License
+
 [MIT License](http://markdalgleish.mit-license.org)
