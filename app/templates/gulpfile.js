@@ -120,9 +120,12 @@ gulp.task('watch', function() {
   gulp.watch('src/images/**/*', ['images']);
 });
 
-gulp.task('deploy', ['clean', 'build'], function(done) {
+gulp.task('publish', ['clean', 'build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
+
+// old alias for publishing on gh-pages
+gulp.task('deploy', ['publish']);
 
 gulp.task('build', ['js', 'html', 'css', 'images']);
 
