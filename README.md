@@ -96,10 +96,10 @@ $ gulp
 The files are built into the _dist_ directory.
 You can view the slides by navigating to _dist/index.html_ in your browser.
 
-Compile and deploy to GitHub Pages, assuming a git repo with `origin` pointing to GitHub, using:
+Compile and publish to GitHub Pages, assuming a git repo with `origin` pointing to GitHub, using:
 
 ```bash
-$ gulp deploy
+$ gulp publish
 ```
 
 ## Generator Tests
