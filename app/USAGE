@@ -1,0 +1,14 @@
+Description:
+  Yeoman generator for Bespoke.js
+
+Example:
+  yo bespoke
+
+  This will create:
+    index.jade: Template for presentation.
+    main.styl: Style for presentation.
+    main.js: JavaScript for presentation.
+    README.md: Customized template.
+    .editorconfig
+    .bowerrc
+    .gitignore
