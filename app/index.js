@@ -174,7 +174,6 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
     'dependencies': {},
     'devDependencies': {
       'bespoke': '^1.0.0',
-      'debowerify': '^0.7.1',
       'del': '^1.1.1',
       'gh-pages': '^0.2.0',
       'gulp': '^3.8.1',
@@ -190,7 +189,8 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
       'gulp-util': '^2.2.17',
       'insert-css': '^0.2.0',
       'opn': '^0.1.2',
-      'through': '^2.3.4'
+      'through': '^2.3.4',
+      'prismjs': '^1.3.0'
     },
     'engines': {
       'node': '>=0.10.0'
@@ -205,6 +205,7 @@ BespokeGenerator.prototype.setupPackageJson = function setupPackageJson() {
     packageJson.devDependencies['normalizecss'] = '^3.0.0';
   }
 
+
   packageJson.devDependencies = sortedObject(packageJson.devDependencies);
   this.write('package.json', JSON.stringify(packageJson, null, 2));
 };
@@ -215,8 +216,6 @@ BespokeGenerator.prototype.setupBowerJson = function setupBowerJson() {
     'version': '0.0.0',
     'dependencies': {}
   };
-
-  if (this.syntax) bowerJson.dependencies['prism'] = 'gh-pages';
 
   this.write('bower.json', JSON.stringify(bowerJson, null, 2));
 };
