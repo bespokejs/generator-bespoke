@@ -22,8 +22,11 @@
     "test": "mocha"
   },
   "dependencies": {
+    "bespoke": "^1.0.0",
     "chalk": "~0.2.0",
+    "install-nw": "^1.1.1",
     "sorted-object": "^1.0.0",
+    "traverse-packages": "^1.0.0",
     "yeoman-generator": "~0.13.3"
   },
   "devDependencies": {
