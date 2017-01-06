@@ -102,7 +102,7 @@ gulp.task('clean:images', function() {
 });
 
 gulp.task('connect', ['build'], function() {
-  connect.server({ root: 'dist', port: 8080, livereload: true });
+  connect.server({ root: 'dist', port: process.env.PORT || 8080, livereload: true });
 });
 
 gulp.task('watch', function() {
