@@ -1,0 +1,84 @@
+// Base styles for Bespoke presentations.
+// Eventually this will be put in a separate package - use main.styl for custom styles instead!
+
+@import 'normalizecss/normalize.css'
+// Style using Bespoke Classes: https://github.com/markdalgleish/bespoke-classes
+
+*, ::before, ::after
+  box-sizing inherit
+
+html
+  box-sizing border-box
+
+p, li
+  line-height 1.6
+
+p
+  margin 0 0 1rem 0
+
+ul, ol
+  padding 0 0 0 20px
+
+figure
+  margin 0
+
+img, video
+  vertical-align middle
+
+.deck
+  overflow hidden
+  font-feature-settings "kern" 1
+  text-rendering optimizeLegibility
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  // NOTE hide deck and slide content until Bespoke.js classes have been added
+  &:not(.bespoke-parent), section:not(.bespoke-slide)
+    display none
+
+.bespoke-parent, .bespoke-scale-parent
+  position absolute
+  top 0
+  right 0
+  bottom 0
+  left 0
+
+.bespoke-scale-parent, .bespoke-slide
+  pointer-events none
+
+.bespoke-slide
+  overflow hidden
+  // NOTE force opacity to start at 0 to avoid transition on load when using bespoke-scale
+  opacity 0
+  background-color #fff
+  position absolute
+  top 50%
+  left 50%
+  width 640px
+  margin-left -(@width / 2)
+  height 480px
+  margin-top -(@height / 2)
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  transition opacity 200ms ease-in-out 150ms
+
+.bespoke-active
+  pointer-events auto
+  opacity 1
+  // NOTE Webkit requires z-index to be 1 for elements to receive focus (may no longer apply)
+  z-index 1
+
+.bespoke-inactive
+  transition-delay 0
+
+.bespoke-bullet
+  transition opacity 200ms ease-in-out
+  &-inactive
+    visibility hidden
+
+.emphatic
+  background-color #222
+
+.emphatic-text
+  color #fff
