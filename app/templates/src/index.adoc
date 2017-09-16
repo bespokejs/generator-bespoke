@@ -30,10 +30,12 @@ image::bespoke-logo.jpg[]
 
 <% if (usePluginMultimedia) { -%>
 == !
+
 video::AV3kYPutYfs[youtube,640,360,opts="loop,muted"]
 <% } -%>
 
 == Syntax Highlighting
+
 [source,js]
 ----
 (function() {
@@ -54,9 +56,9 @@ video::AV3kYPutYfs[youtube,640,360,opts="loop,muted"]
 == Just the beginning...
 
 [%build]
-* Edit http://asciidoctor.org/[AsciiDoc] markup in _'src/index.adoc'_
-* Edit http://stylus-lang.com/[Stylus] styles in _'src/styles/main.styl'_
-* Edit JavaScript in _'src/scripts/main.js'_
+* Edit http://asciidoctor.org[AsciiDoc] markup in [.path]_src/index.adoc_
+* Edit http://stylus-lang.com[Stylus] styles in [.path]_src/styles/main.styl_
+* Edit JavaScript in [.path]_src/scripts/main.js_
 
 [.build]
 *Enjoy! :)*
