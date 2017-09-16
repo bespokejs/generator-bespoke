@@ -1,22 +1,32 @@
 {
   "name": "generator-bespoke",
   "version": "3.0.0-pre",
-  "description": "Yeoman generator for Bespoke.js",
+  "description": "A Yeoman generator for a Bespoke.js presentation.",
   "keywords": [
     "yeoman-generator",
     "scaffold",
     "presentation"
   ],
-  "homepage": "https://github.com/markdalgleish/generator-bespoke",
-  "bugs": "https://github.com/markdalgleish/generator-bespoke/issues",
-  "author": {
-    "name": "markdalgleish",
-    "url": "https://github.com/markdalgleish"
-  },
+  "homepage": "https://github.com/bespokejs/generator-bespoke",
+  "bugs": "https://github.com/bespokejs/generator-bespoke/issues",
+  "authors": [
+    {
+      "name": "Mark Dalgleish",
+      "url": "https://github.com/markdalgleish"
+    },
+    {
+      "name": "Hubert SABLONNIÈRE",
+      "url": "https://github.com/hsablonniere"
+    },
+    {
+      "name": "Dan Allen",
+      "url": "https://github.com/mojavelinux"
+    }
+  ],
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markdalgleish/generator-bespoke.git"
+    "url": "https://github.com/bespokejs/generator-bespoke.git"
   },
   "scripts": {
     "test": "mocha",
@@ -38,11 +48,7 @@
     "yo": ">=1.0.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ]
+  "license": "MIT"
 }
