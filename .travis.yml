@@ -1,12 +1,12 @@
 sudo: false
 git:
-  depth: 1
+  depth: 2
 branches:
   only:
-    - master
+  - master
 language: node_js
 node_js:
-  - "4.4"
+- "4.4"
 notifications:
   email:
     on_success: never
