@@ -5,19 +5,24 @@
 :coderay-css: style
 
 == Images
+
 image::bespoke-logo.jpg[]
 
 == Keyboard Interaction
+
 [discrete]
-=== Powered by https://github.com/markdalgleish/bespoke-keys[bespoke-keys]
+=== Powered by https://github.com/bespokejs/bespoke-keys[bespoke-keys]
 
 == Touch Interaction
+
 [discrete]
-=== Powered by https://github.com/markdalgleish/bespoke-scale[bespoke-scale]
+=== Powered by https://github.com/bespokejs/bespoke-scale[bespoke-scale]
 
 == Bullet List
+
 [discrete]
-=== Powered by https://github.com/markdalgleish/bespoke-bullets[bespoke-bullets]
+=== Powered by https://github.com/bespokejs/bespoke-bullets[bespoke-bullets]
+
 [%build]
 * Bullet 1
 * Bullet 2
