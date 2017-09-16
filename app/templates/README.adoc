@@ -40,3 +40,26 @@ Next, install dependencies (if you ran the generator with the `--skip-install` s
 Finally, build and serve the presentation!
 
  $ gulp serve
+
+You can view the presentation in your browser at the URL displayed in the console.
+
+To build the presentation without starting the local preview server, use:
+
+ $ gulp
+
+In both cases, the files are built into the [.path]_dist_ directory.
+You can view the slides outside of the local preview server by navigating to [.path]_dist/index.html_ in your browser.
+
+== Publish to GitHub Pages
+
+The Gulp build includes a task to publish your presentation to GitHub Pages.
+
+First, make sure you have initialized the project as a git repository and linked it to a GitHub project.
+The task assumes that the git remote named `origin` points to the repository on GitHub.
+
+Now you can build the presentation and publish it to GitHub Pages using:
+
+ $ gulp publish
+
+The files in the [.path]_dist_ directory end up in the `gh-pages` branch in the repository on GitHub.
+From there, they can be viewed in a browser from anywhere on the web.
