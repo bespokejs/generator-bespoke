@@ -82,7 +82,7 @@ gulp.task('images', ['clean:images'], function() {
 });
 
 gulp.task('clean', function() {
-  return del('dist');
+  return del.sync('dist');
 });
 
 gulp.task('clean:html', function() {
