@@ -81,6 +81,12 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(connect.reload());
 });
 
+gulp.task('fonts', ['clean:fonts'], function() {
+  return gulp.src('src/fonts/*')
+    .pipe(gulp.dest('dist/fonts'))
+    .pipe(connect.reload());
+});
+
 gulp.task('clean', function() {
   return del('dist');
 });
@@ -101,6 +107,10 @@ gulp.task('clean:images', function() {
   return del('dist/images');
 });
 
+gulp.task('clean:fonts', function() {
+  return del('dist/fonts');
+});
+
 gulp.task('connect', ['build'], function() {
   connect.server({ root: 'dist', port: process.env.PORT || 8080, livereload: true });
 });
@@ -118,6 +128,7 @@ gulp.task('watch', function() {
   gulp.watch('src/scripts/**/*.js', ['js']);
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
+  gulp.watch('src/fonts/*', ['fonts']);
 });
 
 gulp.task('publish', ['clean', 'build'], function(done) {
@@ -127,7 +138,7 @@ gulp.task('publish', ['clean', 'build'], function(done) {
 // old alias for publishing on gh-pages
 gulp.task('deploy', ['publish']);
 
-gulp.task('build', ['js', 'html', 'css', 'images']);
+gulp.task('build', ['js', 'html', 'css', 'images', 'fonts']);
 
 gulp.task('serve', ['connect', 'watch']);
 
