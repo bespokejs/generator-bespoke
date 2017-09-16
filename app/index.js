@@ -198,7 +198,7 @@ module.exports = generators.Base.extend({
     this.installDependencies({ bower: false });
 
     if (this.useAsciiDoc) {
-      if (this.options['skip-install'] === false) {
+      if (!this.options['skip-install']) {
         try {
           console.log([
             'I\'m also running ' +
