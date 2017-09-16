@@ -192,6 +192,7 @@ module.exports = generators.Base.extend({
     this.copy('src/images/bespoke-logo.jpg', 'src/images/bespoke-logo.jpg');
     this.template('src/scripts/main.js', 'src/scripts/main.js');
     this.template('src/styles/base.styl', 'src/styles/base.styl');
+    this.template('src/styles/main.styl', 'src/styles/main.styl');
     this.template('src/styles/user.styl', 'src/styles/user.styl');
   },
 
