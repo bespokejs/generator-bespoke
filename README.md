@@ -53,7 +53,7 @@ $ cd presentation-hello-world
 > This command is used to install the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies.
 > The gems are installed to the local _.bundle/gems_ directory.
 >
-> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use` (e.g., `rvm use 2.3.1`) **before** running the next command.
+> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use` (e.g., `rvm use 2.4.2`) **before** running the next command.
 > You may also want to declare your preferred Ruby version in the file named _.ruby-version_ at the root of the project.
 >
 > If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle install`.
