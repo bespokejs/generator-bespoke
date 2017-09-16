@@ -1,0 +1,7 @@
+/.gitattributes
+/.jshintrc
+/.npmignore
+/.travis.yml
+/WORKLOG.adoc
+/generator-bespoke-*.tgz
+/yarn.lock
