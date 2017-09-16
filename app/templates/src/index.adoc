@@ -57,7 +57,7 @@ video::AV3kYPutYfs[youtube,640,360,opts="loop,muted"]
 
 [%build]
 * Edit http://asciidoctor.org[AsciiDoc] markup in [.path]_src/index.adoc_
-* Edit http://stylus-lang.com[Stylus] styles in [.path]_src/styles/main.styl_
+* Edit http://stylus-lang.com[Stylus] styles in [.path]_src/styles/user.styl_
 * Edit JavaScript in [.path]_src/scripts/main.js_
 
 [.build]
