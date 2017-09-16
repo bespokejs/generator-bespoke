@@ -7,7 +7,7 @@ A [Yeoman](http://yeoman.io) generator that scaffolds a project for a [Bespoke.j
 ## Features
 
 The boilerplate project this generator creates includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), and a [GitHub Pages](http://pages.github.com) deployment task.
-The project is also setup to perform [Stylus](http://stylus-lang.com/) compilation and, optionally, [Pug (formerly Jade)](http://jade-lang.com) or [AsciiDoc](https://github.com/asciidoctor/asciidoctor-bespoke) conversion to HTML, depending on the templating engine you chose.
+The project is also setup to perform [Stylus](http://stylus-lang.com/) compilation and, optionally, [Pug (formerly Jade)](https://pugjs.org) or [AsciiDoc](https://github.com/asciidoctor/asciidoctor-bespoke) conversion to HTML, depending on the templating engine you chose.
 
 The following [Bespoke.js plugins](https://github.com/bespokejs/bespoke#plugins) are always included by default:
 
