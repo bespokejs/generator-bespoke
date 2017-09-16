@@ -1,6 +1,6 @@
 {
   "name": "generator-bespoke",
-  "version": "3.0.0",
+  "version": "3.0.1-dev",
   "description": "A Yeoman generator for a Bespoke.js presentation",
   "keywords": [
     "yeoman-generator",
