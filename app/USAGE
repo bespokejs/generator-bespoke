@@ -7,15 +7,18 @@ Example:
   This will create:
     ├── .editorconfig                 : Config for editor like VIM...
     ├── .gitignore                    : Classic gitignore
-    ├── gulpfile.js                   : Gulp build setup
-    ├── package.json                  : You know for Node...
+    ├── gulpfile.js                   : Gulp build script
+    ├── package.json                  : Node dependencies
+    ├── Gemfile                       : Ruby dependencies (used in AsciiDoc-based presentations)
     ├── README.adoc                   : "How to" documentation
-    ├── node_modules/**               : All the installed modules
+    ├── node_modules/**               : All the installed Node modules
     └── src
         ├── images
-        │   └── bespoke-logo.jpg      : Example image
-        ├── index.(pug | adoc | html) : Reference template
+        │   └── bespoke-logo.jpg      : Sample image
+        ├── index.(pug | adoc | html) : Slide content
         ├── scripts
-        │   └── main.js               : Bespoke setup with enabled plugins
+        │   └── main.js               : Bespoke configuration
         └── styles
-            └── main.styl             : Reference stylesheet
+            ├── base.styl             : Base stylesheet
+            ├── main.styl             : Aggregate stylesheet
+            └── user.styl             : User stylesheet
