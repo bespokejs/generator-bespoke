@@ -49,14 +49,16 @@ $ mkdir presentation-hello-world
 $ cd presentation-hello-world
 ```
 
-> **IMPORTANT** If you're planning to create an AsciiDoc-based presentation, be ready for the generator to execute the `bundle install` command.
-> This command is used to install the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies.
+> **IMPORTANT** If you plan to create an AsciiDoc-based presentation, be ready for the generator to execute the `bundle` command.
+> This command installs the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies.
 > The gems are installed to the local _.bundle/gems_ directory.
 >
 > If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use` (e.g., `rvm use 2.4.2`) **before** running the next command.
-> You may also want to declare your preferred Ruby version in the file named _.ruby-version_ at the root of the project.
+> You may also choose to declare your preferred Ruby version in the file named _.ruby-version_ at the root of the project.
 >
-> If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle install`.
+> If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle`.
+>
+> To disable this behavior, you can use the `--skip-install` switch.
 
 Scaffold a new presentation using:
 
@@ -64,13 +66,13 @@ Scaffold a new presentation using:
 $ yo bespoke
 ```
 
-If you want the generator to skip `npm install` (and also `bundle install` for an AsciiDoc-based presentation), set the `skip-install` switch to false:
+If you want the generator to skip `npm install` (and also `bundle` for an AsciiDoc-based presentation), use the `skip-install` switch:
 
 ```bash
 $ yo bespoke --skip-install
 ```
 
-You'll then be instructed to execute the the commands that the generator skipped.
+In this case, you'll be instructed to execute the the commands that the generator skipped.
 
 Refer to the README at the root of the generated project for instructions on how to get started developing your new presentation.
 
