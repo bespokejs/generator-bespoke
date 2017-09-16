@@ -67,7 +67,7 @@ $ yo bespoke
 If you want the generator to skip `npm install` (and also `bundle install` for an AsciiDoc-based presentation), set the `skip-install` switch to false:
 
 ```bash
-$ yo bespoke --skip-install=true
+$ yo bespoke --skip-install
 ```
 
 You'll then be instructed to execute the the commands that the generator skipped.
