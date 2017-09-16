@@ -1,5 +1,5 @@
 Description:
-  Yeoman generator for Bespoke.js
+  A Yeoman generator for Bespoke.js presentations
 
 Example:
   yo bespoke
