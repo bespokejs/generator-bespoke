@@ -202,19 +202,19 @@ module.exports = generators.Base.extend({
         try {
           console.log([
             'I\'m also running ' +
-            chalk.yellow.bold('bundle install --path=.bundle/gems') +
+            chalk.yellow.bold('bundle --path=.bundle/gems') +
             ' for you to install the required Ruby gems.',
             'If this fails, try running the command yourself.',
             ''
           ].join('\n'));
-          execSync('bundle install --path=.bundle/gems', { stdio: [0, 1, 2] });
+          execSync('bundle --path=.bundle/gems', { stdio: [0, 1, 2] });
         }
         catch (e) {
           var warning = [
             '',
             chalk.red.bold('Failed to install the required Ruby gems. Try running these commands yourself:'),
             chalk.cyan.bold('bundle version || gem install bundler'),
-            chalk.cyan.bold('bundle install --path=.bundle/gems'),
+            chalk.cyan.bold('bundle --path=.bundle/gems'),
             ''
           ].join('\n');
           console.warn(warning);
@@ -223,7 +223,7 @@ module.exports = generators.Base.extend({
       else {
         console.log([
           'Also run ' +
-          chalk.yellow.bold('bundle install --path=.bundle/gems') +
+          chalk.yellow.bold('bundle --path=.bundle/gems') +
           ' to install the required Ruby gems.',
           ''
         ].join('\n'));
