@@ -43,7 +43,12 @@ Finally, build and serve the presentation!
 
 You can view the presentation in your browser at the URL displayed in the console.
 
-To build the presentation without starting the local preview server, use:
+By default, the preview server runs on port 8080.
+To change this default, you can assign a different number to the PORT environment variable:
+
+ $ PORT=8888 gulp serve
+
+To build the presentation without starting the preview server, use:
 
  $ gulp
 
