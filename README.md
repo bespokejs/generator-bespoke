@@ -123,7 +123,7 @@ nvm use 4.4
 Next, install the development dependencies into the project:
 
 ```bash
-$ npm i
+$ npm install
 ```
 
 Finally, run the tests using:
