@@ -27,7 +27,7 @@ Based on your responses to the prompts in the generator, your presentation may a
 
 In order to use this project, you must first satisify the prerequisites of Bespoke.js.
 
-- Node.js >= 0.12
+- Node.js >= 0.10
   * _We strongly recommend that you use [nvm](https://github.com/creationix/nvm) to manage your Node.js installation._
 - Gulp (command line interface only)
   ```bash
@@ -40,6 +40,12 @@ Once you have [Node.js](http://nodejs.org), install the `generator-bespoke` pack
 
 ```bash
 $ npm install -g generator-bespoke
+```
+
+You can check that it installed properly and view the usage statement by running:
+
+```base
+$ yo bespoke --help
 ```
 
 Create a new directory and switch to it:
