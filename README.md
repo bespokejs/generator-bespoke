@@ -42,7 +42,7 @@ Once you have [Node.js](http://nodejs.org), install the `generator-bespoke` pack
 $ npm install -g generator-bespoke
 ```
 
-You can check that the generator installed properly and view its usage statement by running:
+You can verify the generator installed properly and view its usage statement by running:
 
 ```base
 $ yo bespoke --help
