@@ -112,7 +112,7 @@ $ gulp publish
 
 ## Generator Tests
 
-Tests require Node.js 4.4+.
+Tests require Node.js >= 4.5.
 Everything created by those tests (files and directories) is located in the user's temporary folder.
 
 First, clone the git repository and switch to the project:
@@ -122,10 +122,10 @@ $ git clone git@github.com:bespokejs/generator-bespoke.git
 $ cd generator-bespoke
 ```
 
-If you're using nvm to manage your Node.js installation, switch to at least Node.js 4.4+.
+If you're using nvm to manage your Node.js installation, switch to at least Node.js 4.5.
 
 ```bash
-nvm use 4.4
+nvm use 4.5
 ```
 
 Next, install the development dependencies into the project:
