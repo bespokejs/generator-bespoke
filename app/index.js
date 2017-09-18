@@ -144,7 +144,8 @@ module.exports = generators.Base.extend({
       'del': '^3.0.0',
       'gh-pages': '^1.0.0',
       'gulp': '^3.9.1',
-      'gulp-autoprefixer': '^4.0.0',
+      // hold back gulp-autoprefixer as latest release requires Node 4.5
+      'gulp-autoprefixer': '^3.1.1',
       'gulp-connect': '^5.0.0',
       'gulp-csso': '^3.0.0',
       'gulp-plumber': '^1.1.0',
@@ -172,7 +173,7 @@ module.exports = generators.Base.extend({
 
     packageSettings.devDependencies = sortedObject(devDependencies);
 
-    packageSettings.engines = { 'node': '>=0.10.0' }
+    packageSettings.engines = { 'node': '>=4.2.0' }
 
     this.fs.writeJSON(this.destinationPath('package.json'), packageSettings);
   },
