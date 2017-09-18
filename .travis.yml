@@ -2,9 +2,6 @@ sudo: false
 dist: trusty
 git:
   depth: 2
-#branches:
-#  only:
-#  - master
 language: node_js
 node_js:
 - &release_node 4.4
