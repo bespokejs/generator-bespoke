@@ -1,8 +1,8 @@
-# Bespoke.js Generator
+# Bespoke.js Presentation Generator
 
 [![Build Status](https://img.shields.io/travis/bespokejs/generator-bespoke/master.svg?style=flat-square)](http://travis-ci.org/bespokejs/generator-bespoke)
 
-A [Yeoman](http://yeoman.io) generator that scaffolds a project for a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation.
+A [Yeoman](http://yeoman.io) generator that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation project.
 
 ## Features
 
