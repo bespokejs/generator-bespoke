@@ -135,7 +135,7 @@ module.exports = generators.Base.extend({
 
     var packageSettings = {
       name: 'presentation-' + this.shortName,
-      version: '0.0.0'
+      version: '1.0.0'
     };
 
     var devDependencies = {
