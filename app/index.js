@@ -65,6 +65,11 @@ var questions = [
     default: 'Hello World'
   },
   {
+    name: 'license',
+    message: 'Which license (by identifier) do you want to apply? [see https://spdx.org/licenses]',
+    default: 'UNLICENSED'
+  },
+  {
     name: 'templatingLanguage',
     message: 'Which templating language would you like to use?',
     type: 'list',
@@ -139,6 +144,7 @@ module.exports = generators.Base.extend({
 
       this.title = answers.title;
       this.shortName = _.kebabCase(answers.title);
+      this.license = answers.license;
 
     }.bind(this));
   },
@@ -156,7 +162,8 @@ module.exports = generators.Base.extend({
 
     var packageSettings = {
       name: 'presentation-' + this.shortName,
-      version: '1.0.0'
+      version: '1.0.0',
+      license: this.license
     };
 
     var gitRepoUrl = detectGitRepository();
