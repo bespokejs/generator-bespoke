@@ -1,5 +1,6 @@
 'use strict';
 
+var fs = require('fs');
 var util = require('util');
 var path = require('path');
 var generators = require('yeoman-generator');
@@ -72,6 +73,26 @@ var questions = [
   },
 ];
 
+var detectGitRepository = function () {
+  let repo;
+  if (fs.existsSync('.git/config')) {
+    const lines = fs.readFileSync('.git/config', 'utf8').split(/\r?\n/);
+    let startIndex = lines.indexOf('[remote "origin"]');
+    if (startIndex > -1) {
+      lines.slice(startIndex + 1, lines.length).every((line) => {
+        if (line.startsWith("\t")) {
+          if (line.startsWith("\turl = ")) {
+            repo = line.slice(7, line.length).replace(/^git@([^:]+):/, 'https://$1/')
+            return
+          }
+          return true
+        }
+      })
+    }
+  }
+  return repo
+}
+
 module.exports = generators.Base.extend({
 
   constructor: function () {
@@ -137,6 +158,14 @@ module.exports = generators.Base.extend({
       name: 'presentation-' + this.shortName,
       version: '1.0.0'
     };
+
+    var gitRepoUrl = detectGitRepository();
+    if (gitRepoUrl) {
+      packageSettings['repository'] = {
+        type: 'git',
+        url: gitRepoUrl
+      };
+    }
 
     var devDependencies = {
       'bespoke': '^1.1.0',

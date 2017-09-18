@@ -42,18 +42,28 @@ Once you have [Node.js](http://nodejs.org), install the `generator-bespoke` pack
 $ npm install -g generator-bespoke
 ```
 
-You can check that it installed properly and view the usage statement by running:
+You can check that the generator installed properly and view its usage statement by running:
 
 ```base
 $ yo bespoke --help
 ```
 
-Create a new directory and switch to it:
+The generator must be run from inside a project folder.
+Therefore, to start, create a new directory for the project and switch to it:
 
 ```bash
 $ mkdir presentation-hello-world
 $ cd presentation-hello-world
 ```
+
+Another approach is to first create an empty repository on GitHub, then clone and switch to it:
+
+```bash
+$ git clone git@github.com:<username>/presentation-hello-world.git
+$ cd presentation-hello-world
+```
+
+The benefit of the clone workflow is that the generator will automatically populate the repository field in the generated package.json file.
 
 > **IMPORTANT** If you plan to create an AsciiDoc-based presentation, be ready for the generator to execute the `bundle` command.
 > This command installs the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies.
