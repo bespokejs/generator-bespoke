@@ -27,7 +27,7 @@ Based on your responses to the prompts in the generator, your presentation may a
 
 In order to use this project, you must first satisify the prerequisites of Bespoke.js.
 
-- Node.js >= 0.10
+- Node.js >= 4.2
   * _We strongly recommend that you use [nvm](https://github.com/creationix/nvm) to manage your Node.js installation._
 - Gulp (command line interface only)
   ```bash
@@ -112,7 +112,7 @@ $ gulp publish
 
 ## Generator Tests
 
-Tests require Node.js 4.4+.
+Tests require Node.js >= 4.4.
 Everything created by those tests (files and directories) is located in the user's temporary folder.
 
 First, clone the git repository and switch to the project:
@@ -122,7 +122,7 @@ $ git clone git@github.com:bespokejs/generator-bespoke.git
 $ cd generator-bespoke
 ```
 
-If you're using nvm to manage your Node.js installation, switch to at least Node.js 4.4+.
+If you're using nvm to manage your Node.js installation, switch to at least Node.js 4.4.
 
 ```bash
 nvm use 4.4

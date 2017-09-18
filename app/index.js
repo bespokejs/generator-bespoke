@@ -140,18 +140,19 @@ module.exports = generators.Base.extend({
 
     var devDependencies = {
       'bespoke': '^1.1.0',
-      'browserify': '^13.0.1',
-      'del': '^2.2.1',
-      'gh-pages': '^0.11.0',
+      'browserify': '^14.4.0',
+      'del': '^3.0.0',
+      'gh-pages': '^1.0.0',
       'gulp': '^3.9.1',
-      'gulp-autoprefixer': '^3.1.0',
-      'gulp-connect': '^4.1.0',
-      'gulp-csso': '^2.0.0',
+      // hold back gulp-autoprefixer as latest release requires Node 4.5
+      'gulp-autoprefixer': '^3.1.1',
+      'gulp-connect': '^5.0.0',
+      'gulp-csso': '^3.0.0',
       'gulp-plumber': '^1.1.0',
       'gulp-rename': '^1.2.2',
-      'gulp-stylus': '^2.5.0',
-      'gulp-uglify': '^1.5.4',
-      'gulp-util': '^3.0.7',
+      'gulp-stylus': '^2.6.0',
+      'gulp-uglify': '^3.0.0',
+      'gulp-util': '^3.0.8',
       'normalizecss': '^3.0.0',
       'through': '^2.3.8',
       'vinyl-buffer': '^1.0.0',
@@ -172,7 +173,7 @@ module.exports = generators.Base.extend({
 
     packageSettings.devDependencies = sortedObject(devDependencies);
 
-    packageSettings.engines = { 'node': '>=0.10.0' }
+    packageSettings.engines = { 'node': '>=4.2.0' }
 
     this.fs.writeJSON(this.destinationPath('package.json'), packageSettings);
   },
