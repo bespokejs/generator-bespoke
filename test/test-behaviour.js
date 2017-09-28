@@ -47,7 +47,7 @@ describe('bespoke generator', function () {
   before(function () {
 
     // npm install can be long
-    this.timeout(60000);
+    this.timeout(2 * 60 * 1000);
 
     this.ctx = helpers.run(path.join(__dirname, '../app'))
       .inTmpDir(function (dir) {
@@ -66,7 +66,7 @@ describe('bespoke generator', function () {
   });
 
   after(function () {
-    this.timeout(20000);
+    this.timeout(60 * 1000);
     this.ctx.cleanTestDirectory();
   });
 
@@ -83,7 +83,7 @@ describe('bespoke generator', function () {
   it('should provide a "gulp serve" command with a basic working bespoke deck', function (done) {
 
     // gulp serve + phantom tests can be long
-    this.timeout(20000);
+    this.timeout(60 * 1000);
 
     // start gulp serve (on tmp dir by default)
     var gulpServerProcess = childProcess.spawn('./node_modules/.bin/gulp', ['serve']);
@@ -106,7 +106,7 @@ describe('bespoke generator', function () {
   it('should provide a "gulp build" command with correct generated files', function (done) {
 
     // gulp build can be long
-    this.timeout(20000);
+    this.timeout(60 * 1000);
 
     spawnAndCollectStderr('./node_modules/.bin/gulp', ['build'], {}, function (err) {
 
