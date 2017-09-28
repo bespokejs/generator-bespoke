@@ -25,10 +25,14 @@ Based on your responses to the prompts in the generator, your presentation may a
 
 ## Prerequisites
 
-In order to use this project, you must first satisify the prerequisites of Bespoke.js.
+In order to use this generator and the project it creates, you must satisify the following prerequisites:
 
-- Node.js >= 4.2
+- [Node.js](https://nodejs.org) >= 4.2
   * _We strongly recommend using [nvm](https://github.com/creationix/nvm) to manage your Node.js installation._
+- Yeoman
+  ```bash
+  $ npm install -g yo
+  ```
 - Gulp (command line interface only)
   ```bash
   $ npm install -g gulp-cli
@@ -36,13 +40,13 @@ In order to use this project, you must first satisify the prerequisites of Bespo
 
 ## Usage
 
-Once you have [Node.js](http://nodejs.org), install the `generator-bespoke` package globally:
+Once you have satisfied the prerequisites, install the `generator-bespoke` package globally:
 
 ```bash
 $ npm install -g generator-bespoke
 ```
 
-You can verify the generator installed properly and view its usage statement by running:
+You can verify the generator installed properly, and view its usage statement, by running:
 
 ```base
 $ yo bespoke --help
