@@ -10,6 +10,7 @@ var pkg = require('./package.json'),
   del = require('del'),
 <% if (useAsciiDoc) { -%>
   exec = require('gulp-exec'),
+  MAX_HTML_FILE_SIZE = 100 * 1024 * 1024,
 <% } -%>
   ghpages = require('gh-pages'),
   gulp = require('gulp'),
@@ -24,14 +25,7 @@ var pkg = require('./package.json'),
   stylus = require('gulp-stylus'),
   through = require('through'),
   uglify = require('gulp-uglify'),
-  isDist = process.argv.indexOf('serve') === -1,
-  // browserifyPlumber fills the role of plumber() when working with browserify
-  browserifyPlumber = function(e) {
-    if (isDist) throw e;
-    gutil.log(e.stack);
-    this.emit('end');
-  },
-  MAX_HTML_FILE_SIZE = 100 * 1024 * 1024;
+  isDist = process.argv.indexOf('publish') >= 0;
 
 gulp.task('clean:css', del.bind(null, 'public/build/build.css'));
 
@@ -88,9 +82,8 @@ gulp.task('clean:js', del.bind(null, 'public/build/build.js'));
 
 gulp.task('js', gulp.series('clean:js', function _js() {
   return browserify('src/scripts/main.js', { detectGlobals: false })
-    .plugin('browser-pack-flat/plugin')
+    .on('error', function (e) { if (isDist) throw e; log(e.stack || e); this.emit('end'); })
     .bundle()
-    .on('error', browserifyPlumber)
     .pipe(source('main.bundle.js'))
     .pipe(buffer())
     .pipe(isDist ? uglify() : through())
