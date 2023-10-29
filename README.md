@@ -2,12 +2,12 @@
 
 [![Build Status](https://github.com/bespokejs/generator-bespoke/workflows/CI/badge.svg)](https://github.com/bespokejs/generator-bespoke/actions)
 
-A [Yeoman](http://yeoman.io) generator that scaffolds a [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation project.
+A [Yeoman](https://yeoman.io) generator that scaffolds a [Bespoke.js](https://markdalgleish.com/projects/bespoke.js) presentation project.
 
 ## Features
 
-The boilerplate project this generator creates includes a [Gulp](http://gulpjs.com) build system, a preview server with [LiveReload](http://livereload.com), and a [GitHub Pages](http://pages.github.com) deployment task.
-The project is also setup to perform [Stylus](http://stylus-lang.com/) compilation and, optionally, [Pug (formerly Jade)](https://pugjs.org) or [AsciiDoc](https://github.com/asciidoctor/asciidoctor-bespoke) conversion to HTML, depending on the templating engine you chose.
+The boilerplate project this generator creates includes a [Gulp](https://gulpjs.com) build system, a preview server with [LiveReload](https://livereload.com), and a [GitHub Pages](https://pages.github.com) deployment task.
+The project is also setup to perform [Stylus](https://stylus-lang.com/) compilation and, optionally, [Pug (formerly Jade)](https://pugjs.org) or [AsciiDoc](https://github.com/asciidoctor/asciidoctor-bespoke) conversion to HTML, depending on the templating engine you chose.
 
 The following [Bespoke.js plugins](https://github.com/bespokejs/bespoke#plugins) are always included by default:
 
@@ -160,4 +160,4 @@ The tests verify basic behaviour about the plugin, including:
 
 ## License
 
-[MIT License](http://markdalgleish.mit-license.org)
+[MIT License](https://markdalgleish.mit-license.org)
