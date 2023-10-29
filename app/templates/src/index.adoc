@@ -52,8 +52,8 @@ console.log(hanoi(3, 'left', 'right', 'mid')
 == Just the beginning...
 
 [%build]
-* Edit http://asciidoctor.org[AsciiDoc] markup in [.path]_src/index.adoc_
-* Edit http://stylus-lang.com[Stylus] styles in [.path]_src/styles/user.styl_
+* Edit https://asciidoctor.org[AsciiDoc] markup in [.path]_src/index.adoc_
+* Edit https://stylus-lang.com[Stylus] styles in [.path]_src/styles/user.styl_
 * Edit JavaScript in [.path]_src/scripts/main.js_
 
 [.build]
