@@ -41,17 +41,16 @@ var PUGJS = 'Pug (formerly Jade)';
 var ASCIIDOC = 'AsciiDoc (using Asciidoctor Bespoke)';
 
 var optionalPlugins = [
-  // bespoke-prism seems to be broken
-  //{
-  //  when: function (response) {
-  //    return response.templatingLanguage !== ASCIIDOC;
-  //  },
-  //  name: 'prism',
-  //  version: '~1.0',
-  //  priority: 1,
-  //  message: 'Will your presentation include code samples?',
-  //  default: true
-  //},
+  {
+    when: function (response) {
+      return response.templatingLanguage !== ASCIIDOC;
+    },
+    name: 'prism',
+    version: '~1.0',
+    priority: 1,
+    message: 'Will your presentation include code samples?',
+    default: true
+  },
   {
     name: 'multimedia',
     version: '~1.1',

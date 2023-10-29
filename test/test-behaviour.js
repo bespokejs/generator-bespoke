@@ -58,7 +58,7 @@ describe('bespoke generator', function () {
       .withPrompts({
         'title': 'Foobar Test Title',
         'templatingLanguage': 'Pug (formerly Jade)',
-        //'prism': false,
+        'prism': false,
         'multimedia': false,
       });
 

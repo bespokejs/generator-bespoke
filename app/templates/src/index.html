@@ -49,23 +49,21 @@
   </section>
 
 <% } -%>
+<% if (usePluginPrism) { -%>
   <section>
     <h2>Syntax Highlighting</h2>
     <h3>Powered by <a href="https://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/PrismJS/prism">Prism</a></h3>
     <pre><code class="language-javascript">
-(function() {
-  function hanoi(n, a, b, c) {
-    return n ? hanoi(n - 1, a, c, b)
-        .concat([[a, b]])
-        .concat(hanoi(n - 1, c, b, a)) : [];
-  }
-  return hanoi(3, 'left', 'right', 'mid')
-    .map(function(d) {
-      return d[0] + ' -&gt; ' + d[1];
-    });
-})();</code></pre>
+function hanoi (n, a, b, c) {
+  return n ? hanoi(n - 1, a, c, b)
+      .concat([[a, b]])
+      .concat(hanoi(n - 1, c, b, a)) : []
+}
+console.log(hanoi(3, 'left', 'right', 'mid')
+  .map((d) =&gt; `${d[0]} -&gt; ${d[1]}`))</code></pre>
   </section>
 
+<% } -%>
   <section data-bespoke-hash="named-route">
     <h2>Named Route</h2>
     <h3>Powered by <a href="https://github.com/bespokejs/bespoke-hash">bespoke-hash</a></h3>
