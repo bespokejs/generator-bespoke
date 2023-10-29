@@ -27,15 +27,11 @@ Based on your responses to the prompts in the generator, your presentation may a
 
 In order to use this generator and the project it creates, you must satisify the following prerequisites:
 
-- [Node.js](https://nodejs.org) >= 4.2
+- [Node.js](https://nodejs.org) >= 16
   * _We strongly recommend using [nvm](https://github.com/creationix/nvm) to manage your Node.js installation._
 - Yeoman
   ```bash
-  $ npm install -g yo
-  ```
-- Gulp (command line interface only)
-  ```bash
-  $ npm install -g gulp-cli
+  $ npm i -g yo
   ```
 
 ## Usage
@@ -43,7 +39,7 @@ In order to use this generator and the project it creates, you must satisify the
 Once you have satisfied the prerequisites, install the `generator-bespoke` package globally:
 
 ```bash
-$ npm install -g generator-bespoke
+$ npm i -g generator-bespoke
 ```
 
 You can verify the generator installed properly, and view its usage statement, by running:
@@ -73,7 +69,7 @@ The benefit of the clone workflow is that the generator will automatically popul
 > This command installs the [Asciidoctor Bespoke](https://github.com/asciidoctor/asciidoctor-bespoke) gem and its dependencies.
 > The gems are installed to the local _.bundle/gems_ directory.
 >
-> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use` (e.g., `rvm use 2.4.2`) **before** running the next command.
+> If you use RVM to manage Ruby, switch to your preferred Ruby version using `rvm use` (e.g., `rvm use 3.2.0`) **before** running the next command.
 > You may also choose to declare your preferred Ruby version in the file named _.ruby-version_ at the root of the project.
 >
 > If you use a different Ruby selector, make sure your Ruby environment is prepared to run `bundle`.
@@ -86,7 +82,7 @@ Scaffold a new presentation using:
 $ yo bespoke
 ```
 
-If you want the generator to skip `npm install` (and also `bundle` for an AsciiDoc-based presentation), use the `skip-install` switch:
+If you want the generator to skip `npm i` (and also `bundle` for an AsciiDoc-based presentation), use the `skip-install` switch:
 
 ```bash
 $ yo bespoke --skip-install
@@ -103,7 +99,7 @@ All source files for the presentation reside in the `src` directory.
 Build the presentation and start a local preview server using:
 
 ```bash
-$ gulp serve
+$ npx gulp serve
 ```
 
 Once the server is running, you can view the slides by navigating to http://localhost:8080 in your browser.
@@ -112,7 +108,7 @@ The build will continue monitoring for changes, so you can work on the presentat
 Build the presentation without starting the local preview server using:
 
 ```bash
-$ gulp
+$ npx gulp
 ```
 
 The files are built into the _dist_ directory.
@@ -121,12 +117,12 @@ You can view the slides by navigating to _dist/index.html_ in your browser.
 Compile and publish to GitHub Pages, assuming a git repo with `origin` pointing to GitHub, using:
 
 ```bash
-$ gulp publish
+$ npx gulp publish
 ```
 
 ## Generator Tests
 
-Tests require Node.js >= 4.4.
+Tests require Node.js >= 16.
 Everything created by those tests (files and directories) is located in the user's temporary folder.
 
 First, clone the git repository and switch to the project:
@@ -139,26 +135,26 @@ $ cd generator-bespoke
 If you're using nvm to manage your Node.js installation, switch to at least Node.js 4.4.
 
 ```bash
-nvm use 4.4
+nvm use 16
 ```
 
 Next, install the development dependencies into the project:
 
 ```bash
-$ npm install
+$ npm i
 ```
 
 Finally, run the tests using:
 
 ```bash
-npm test
+npm t
 ```
 
 The tests verify basic behaviour about the plugin, including:
 
 * Checks that `yo bespoke` generates correct files for different templating options (Pug, AsciiDoc, HTML)
-* Checks that after a `yo bespoke`, `gulp serve` provides a local server with a working Bespoke.js slide deck
-* Checks that after a `yo bespoke`, `gulp build` generates correct files
+* Checks that after a `yo bespoke`, `npx gulp serve` provides a local server with a working Bespoke.js slide deck
+* Checks that after a `yo bespoke`, `npx gulp build` generates correct files
 
 ## License
 

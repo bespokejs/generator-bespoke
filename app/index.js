@@ -27,31 +27,34 @@ var welcome = [
 ].join('\n');
 
 var mandatoryPlugins = [
-  { name: 'classes', version: '^1.0.0', priority: 0 },
-  { name: 'nav', version: '^1.0.2', priority: 1 },
-  { name: 'scale', version: '^1.0.1', priority: 1 },
-  { name: 'bullets', version: '^1.1.0', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
-  { name: 'hash', version: '^1.0.2', priority: 1 },
-  { name: 'extern', version: '^1.0.0', configValue: "bespoke", priority: 2 },
+  { name: 'classes', version: '~1.0', priority: 0 },
+  { name: 'nav', version: '~1.0', priority: 1 },
+  { name: 'fullscreen', version: '~1.0', priority: 1 },
+  { name: 'scale', version: '~1.0', priority: 1, configValue: 'scaleMethod' },
+  { name: 'overview', version: '~1.0', priority: 1, configValue: '{ columns: 4 }' },
+  { name: 'bullets', version: '~1.1', configValue: "'.build, .build-items > *:not(.build-items)'", priority: 1 },
+  { name: 'hash', version: '~1.1', priority: 1 },
+  { name: 'extern', version: '~1.0', configValue: "bespoke", priority: 2 },
 ];
 
 var PUGJS = 'Pug (formerly Jade)';
 var ASCIIDOC = 'AsciiDoc (using Asciidoctor Bespoke)';
 
 var optionalPlugins = [
-  {
-    when: function (response) {
-      return response.templatingLanguage !== ASCIIDOC;
-    },
-    name: 'prism',
-    version: '^1.0.1',
-    priority: 1,
-    message: 'Will your presentation include code samples?',
-    default: true
-  },
+  // bespoke-prism seems to be broken
+  //{
+  //  when: function (response) {
+  //    return response.templatingLanguage !== ASCIIDOC;
+  //  },
+  //  name: 'prism',
+  //  version: '~1.0',
+  //  priority: 1,
+  //  message: 'Will your presentation include code samples?',
+  //  default: true
+  //},
   {
     name: 'multimedia',
-    version: '^1.1.0',
+    version: '~1.1',
     priority: 1,
     message: 'Would you like to use multimedia (audio, video, animated GIFs or SVGs)?',
     default: false
@@ -175,32 +178,33 @@ module.exports = generators.Base.extend({
     }
 
     var devDependencies = {
-      'bespoke': '^1.1.0',
-      'browserify': '^14.4.0',
-      'del': '^3.0.0',
-      'gh-pages': '^1.0.0',
-      'gulp': '^3.9.1',
-      // hold back gulp-autoprefixer as latest release requires Node 4.5
-      'gulp-autoprefixer': '^3.1.1',
-      'gulp-connect': '^5.0.0',
-      'gulp-csso': '^3.0.0',
-      'gulp-plumber': '^1.1.0',
-      'gulp-rename': '^1.2.2',
-      'gulp-stylus': '^2.6.0',
-      'gulp-uglify': '^3.0.0',
-      'gulp-util': '^3.0.8',
-      'normalizecss': '^3.0.0',
-      'through': '^2.3.8',
-      'vinyl-buffer': '^1.0.0',
-      'vinyl-source-stream': '^1.1.0',
+      'bespoke': '~1.1',
+      'browser-pack-flat': '~3.5',
+      'browserify': '~17.0',
+      'del': '~6.1',
+      'fancy-log': '~2.0',
+      'gh-pages': '~6.0',
+      'gulp': '~4.0',
+      'gulp-autoprefixer': '~8.0',
+      'gulp-chmod': '~3.1',
+      'gulp-connect': '~5.7',
+      'gulp-csso': '~4.0',
+      'gulp-plumber': '~1.2',
+      'gulp-rename': '~2.0',
+      'gulp-stylus': '~3.0',
+      'gulp-uglify': '~3.0',
+      'normalizecss': '~3.0',
+      'through': '~2.3',
+      'vinyl-buffer': '~1.0',
+      'vinyl-source-stream': '~2.0',
     };
 
     if (this.usePug) {
-      devDependencies['gulp-pug'] = '^3.0.3';
+      devDependencies['gulp-pug'] = '~5.0';
     }
 
     if (this.useAsciiDoc) {
-      devDependencies['gulp-exec'] = '^2.1.2';
+      devDependencies['gulp-exec'] = '~5.0';
     }
 
     this.selectedPlugins.forEach(function (plugin) {
@@ -209,7 +213,7 @@ module.exports = generators.Base.extend({
 
     packageSettings.devDependencies = sortedObject(devDependencies);
 
-    packageSettings.engines = { 'node': '>=4.2.0' }
+    packageSettings.engines = { 'node': '>=16.0.0' }
 
     this.fs.writeJSON(this.destinationPath('package.json'), packageSettings);
   },
@@ -240,20 +244,22 @@ module.exports = generators.Base.extend({
       if (!this.options['skip-install']) {
         try {
           console.log([
-            'I\'m also running ' +
-            chalk.yellow.bold('bundle --path=.bundle/gems') +
+            'I\'m also configuring and running ' +
+            chalk.yellow.bold('bundle') +
             ' for you to install the required Ruby gems.',
             'If this fails, try running the command yourself.',
             ''
           ].join('\n'));
-          execSync('bundle --path=.bundle/gems', { stdio: [0, 1, 2] });
+          execSync('bundle config set --local path .bundle/gems', { stdio: [0, 1, 2] });
+          execSync('bundle', { stdio: [0, 1, 2] });
         }
         catch (e) {
           var warning = [
             '',
             chalk.red.bold('Failed to install the required Ruby gems. Try running these commands yourself:'),
             chalk.cyan.bold('bundle version || gem install bundler'),
-            chalk.cyan.bold('bundle --path=.bundle/gems'),
+            chalk.cyan.bold('bundle config set --local path .bundle/gems'),
+            chalk.cyan.bold('bundle'),
             ''
           ].join('\n');
           console.warn(warning);
@@ -262,7 +268,9 @@ module.exports = generators.Base.extend({
       else {
         console.log([
           'Also run ' +
-          chalk.yellow.bold('bundle --path=.bundle/gems') +
+          chalk.yellow.bold('bundle config set --local path .bundle/gems') +
+          ' and ' +
+          chalk.yellow.bold('bundle') +
           ' to install the required Ruby gems.',
           ''
         ].join('\n'));

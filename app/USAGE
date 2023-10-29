@@ -9,7 +9,7 @@ Example:
     ├── .gitignore                    : Classic gitignore
     ├── gulpfile.js                   : Gulp build script
     ├── package.json                  : Node dependencies
-    ├── Gemfile                       : Ruby dependencies (used in AsciiDoc-based presentations)
+    ├── Gemfile                       : Ruby dependencies (only used in AsciiDoc-based presentations)
     ├── README.adoc                   : "How to" documentation
     ├── node_modules/**               : All the installed Node modules
     └── src

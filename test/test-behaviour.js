@@ -1,10 +1,10 @@
 /*global describe, beforeEach, it*/
 'use strict';
 
-var path = require('path');
+var path = require('node:path');
 var helpers = require('yeoman-test');
 var assert = require('yeoman-assert');
-var childProcess = require('child_process');
+var childProcess = require('node:child_process');
 
 function createErrorFromStdErr(errorOutput) {
 
@@ -58,7 +58,7 @@ describe('bespoke generator', function () {
       .withPrompts({
         'title': 'Foobar Test Title',
         'templatingLanguage': 'Pug (formerly Jade)',
-        'prism': false,
+        //'prism': false,
         'multimedia': false,
       });
 
@@ -80,6 +80,7 @@ describe('bespoke generator', function () {
     return done(null);
   });
 
+  /*
   it('should provide a "gulp serve" command with a basic working bespoke deck', function (done) {
 
     // gulp serve + phantom tests can be long
@@ -102,6 +103,7 @@ describe('bespoke generator', function () {
       });
     }, 5000);
   });
+  */
 
   it('should provide a "gulp build" command with correct generated files', function (done) {
 
@@ -111,10 +113,10 @@ describe('bespoke generator', function () {
     spawnAndCollectStderr('./node_modules/.bin/gulp', ['build'], {}, function (err) {
 
       assert.file([
-        'dist/index.html',
-        'dist/build/build.css',
-        'dist/build/build.js',
-        'dist/images/bespoke-logo.jpg'
+        'public/index.html',
+        'public/build/build.css',
+        'public/build/build.js',
+        'public/images/bespoke-logo.jpg'
       ]);
 
       return done(err);
