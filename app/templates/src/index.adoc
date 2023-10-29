@@ -36,19 +36,15 @@ video::AV3kYPutYfs[youtube,640,360,opts="loop,muted"]
 
 == Syntax Highlighting
 
-[source,js]
+[,js]
 ----
-(function() {
-  function hanoi(n, a, b, c) {
-    return n ? hanoi(n - 1, a, c, b)
-        .concat([[a, b]])
-        .concat(hanoi(n - 1, c, b, a)) : [];
-  }
-  return hanoi(3, 'left', 'right', 'mid')
-    .map(function(d) {
-      return d[0] + ' -> ' + d[1];
-    });
-})();
+function hanoi (n, a, b, c) {
+  return n ? hanoi(n - 1, a, c, b)
+      .concat([[a, b]])
+      .concat(hanoi(n - 1, c, b, a)) : []
+}
+console.log(hanoi(3, 'left', 'right', 'mid')
+  .map((d) => `${d[0]} -&gt; ${d[1]}`))
 ----
 
 // No named route plugin usage?
