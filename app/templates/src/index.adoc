@@ -31,7 +31,7 @@ image::bespoke-logo.jpg[]
 <% if (usePluginMultimedia) { -%>
 == !
 
-video::AV3kYPutYfs[youtube,640,360,opts="loop,muted"]
+video::Ux8xAuQBdkk[youtube,640,360,opts="autoplay,loop,muted"]
 <% } -%>
 
 == Syntax Highlighting
