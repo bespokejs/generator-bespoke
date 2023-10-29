@@ -19,7 +19,7 @@ First, ensure you have the following installed:
 <% if (useAsciiDoc) { -%>
 . {uri-ruby}[Ruby >= 2] footnote:[We strongly recommend using {uri-rvm}[RVM] to manage Ruby.]
 
- $ rvm use 3.2.0 --install # optional
+ $ rvm use 3.2 --install # optional
 <% } -%>
 
 Next, install dependencies (if you ran the generator with the `--skip-install` switch):
