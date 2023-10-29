@@ -66,6 +66,7 @@ gulp.task('html', gulp.series('clean:html', function _html() {
   return gulp.src('src/index.html')
 <% } -%>
     .pipe(rename('index.html'))
+    .pipe(chmod(0o644))
     .pipe(gulp.dest('public'))
     .pipe(connect.reload());
 }));
