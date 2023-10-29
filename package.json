@@ -33,19 +33,19 @@
     "test-user": "phantomjs test-phantomjs/test-simple-navigation.js"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
-    "lodash": "^4.17.4",
-    "sorted-object": "^2.0.1",
-    "yeoman-generator": "^0.23.4"
+    "chalk": "~4.1",
+    "lodash": "~4.17",
+    "sorted-object": "~2.0",
+    "yeoman-generator": "^0.24.0"
   },
   "devDependencies": {
-    "mocha": "^3.5.3",
-    "phantomjs-prebuilt": "2.1.15",
-    "yeoman-assert": "3.0.0",
-    "yeoman-test": "1.7.0"
+    "mocha": "~10.2",
+    "phantomjs-prebuilt": "~2.1",
+    "yeoman-assert": "~3.1",
+    "yeoman-test": "~6.3"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0"
+    "yo": "~4.3"
   },
   "engines": {
     "node": ">=16.0.0"
